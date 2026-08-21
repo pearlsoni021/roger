@@ -3,7 +3,7 @@ import { CompanyProfile } from '../../types/finance';
 import { formatINR } from '../../utils/formatters';
 import { Building2, ChevronDown, Sparkles, SlidersHorizontal, ShieldCheck, Palette } from 'lucide-react';
 
-export type AppTheme = 'default' | 'navy' | 'slate';
+export type AppTheme = 'vintage' | 'dark' | 'slate';
 
 interface NavbarProps {
   companies: CompanyProfile[];
@@ -21,7 +21,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSelectCompany,
   onOpenDemo,
   onOpenCopilot,
-  currentTheme = 'default',
+  currentTheme = 'vintage',
   onSelectTheme,
 }) => {
   return (
@@ -35,7 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="text-sm font-semibold tracking-tight text-slate-100">
-                Razorpay <span className="text-blue-400 font-medium">LedgerMind</span>
+                Razorpay <span className="text-blue-600 font-medium">LedgerMind</span>
               </span>
               <span className="rounded border border-slate-700 bg-slate-800/80 px-1.5 py-0.5 text-[10px] font-medium text-slate-300">
                 AI Finance Controller
@@ -74,26 +74,26 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Theme Palette Switcher */}
           {onSelectTheme && (
             <div className="hidden lg:flex items-center gap-1 rounded-lg border border-slate-800 bg-slate-900/70 p-1 text-[11px]">
-              <Palette className="h-3 w-3 text-slate-400 ml-1 mr-0.5" />
+              <Palette className="h-3.5 w-3.5 text-slate-400 ml-1 mr-0.5" />
               <button
-                onClick={() => onSelectTheme('default')}
-                className={`rounded px-2 py-0.5 font-medium transition-colors ${
-                  currentTheme === 'default' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-slate-200'
+                onClick={() => onSelectTheme('vintage')}
+                className={`rounded px-2.5 py-0.5 font-medium transition-colors ${
+                  currentTheme === 'vintage' ? 'bg-[#92400E] text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                Vintage Beige
+              </button>
+              <button
+                onClick={() => onSelectTheme('dark')}
+                className={`rounded px-2.5 py-0.5 font-medium transition-colors ${
+                  currentTheme === 'dark' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 Blade Dark
               </button>
               <button
-                onClick={() => onSelectTheme('navy')}
-                className={`rounded px-2 py-0.5 font-medium transition-colors ${
-                  currentTheme === 'navy' ? 'bg-sky-600 text-white' : 'text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                Midnight Navy
-              </button>
-              <button
                 onClick={() => onSelectTheme('slate')}
-                className={`rounded px-2 py-0.5 font-medium transition-colors ${
+                className={`rounded px-2.5 py-0.5 font-medium transition-colors ${
                   currentTheme === 'slate' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-slate-200'
                 }`}
               >

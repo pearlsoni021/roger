@@ -27,7 +27,7 @@ export function App() {
   const [companies] = useState<CompanyProfile[]>(MOCK_COMPANIES);
   const [selectedCompany, setSelectedCompany] = useState<CompanyProfile>(MOCK_COMPANIES[0]);
   const [activeTab, setActiveTab] = useState<TabType>('dashboard');
-  const [theme, setTheme] = useState<AppTheme>('default');
+  const [theme, setTheme] = useState<AppTheme>('vintage');
   const [reconciliationRecords, setReconciliationRecords] = useState<ReconciliationRecord[]>(INITIAL_RECONCILIATION_RECORDS);
   const [vendors] = useState(MOCK_VENDORS);
   const [vendorInvoices, setVendorInvoices] = useState<VendorInvoice[]>(INITIAL_VENDOR_INVOICES);
@@ -204,10 +204,10 @@ export function App() {
     showToast('Reset ledgers and simulations to benchmark state.', 'info');
   };
 
-  const themeClass = theme === 'navy' ? 'theme-navy' : theme === 'slate' ? 'theme-slate' : '';
+  const themeClass = theme === 'vintage' ? 'theme-vintage' : theme === 'slate' ? 'theme-slate' : 'theme-dark';
 
   return (
-    <div className={`min-h-screen text-slate-100 flex flex-col font-sans transition-colors duration-300 ${themeClass}`} style={{ backgroundColor: 'var(--rzp-bg)' }}>
+    <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${themeClass}`}>
       {/* Toast Notification */}
       {toast && (
         <div className="fixed top-4 right-4 z-50 flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-900/95 px-3.5 py-2.5 shadow-xl text-xs backdrop-blur-md">
