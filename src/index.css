@@ -2,31 +2,40 @@
 
 @layer base {
   :root {
-    /* Default: Vintage Light & Beige Theme */
-    --bg-main: #F7F3EB;
+    --bg-page: #F5F1E8;
+    --bg-surface: #FAF7F2;
     --bg-card: #FFFFFF;
-    --bg-card-subtle: #EFE8DC;
-    --bg-card-muted: #E6DDCF;
-    --border-color: #E2D7C7;
-    --border-subtle: #EDE4D8;
-    --border-hover: #CFC1AD;
-    --text-primary: #1F1B16;
-    --text-secondary: #5C5245;
-    --text-muted: #8C7E6D;
-    
-    /* Vintage Accents */
-    --accent-blue: #1E40AF;
-    --accent-blue-hover: #1D4ED8;
-    --accent-sage: #166534;
-    --accent-terracotta: #991B1B;
-    --accent-ochre: #B45309;
-    --accent-plum: #6B21A8;
+    --bg-card-subtle: #EFE9DD;
+    --bg-card-accent: #E8E0D0;
+    --border-main: #E3D9C8;
+    --border-subtle: #EFE8DC;
+    --border-hover: #D0C3AE;
+    --text-heading: #181410;
+    --text-body: #4A3E31;
+    --text-sub: #786B5A;
+    --text-muted: #9E907E;
+    --accent-navy: #1B365D;
+    --accent-navy-hover: #142A4A;
+    --accent-gold: #9A6728;
+    --accent-gold-hover: #80541E;
+    --badge-green-bg: #EAF4EC;
+    --badge-green-text: #195229;
+    --badge-green-border: #C9E5CD;
+    --badge-red-bg: #FCECE9;
+    --badge-red-text: #992318;
+    --badge-red-border: #F7CCC5;
+    --badge-blue-bg: #EAF2FC;
+    --badge-blue-text: #1A4E8A;
+    --badge-blue-border: #C8DCF7;
+    --badge-purple-bg: #F5ECFA;
+    --badge-purple-text: #66268A;
+    --badge-purple-border: #E5CCF5;
   }
 
   body {
-    background-color: var(--bg-main);
-    color: var(--text-primary);
-    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-heading);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', -apple-system, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -35,209 +44,239 @@
   }
 }
 
-/* =========================================================
-   VINTAGE BEIGE THEME (Default & Active)
-   Warm parchment, crisp ivory cards, espresso text, vintage accents
-   ========================================================= */
-.theme-vintage {
-  --bg-main: #F7F3EB;
-  --bg-card: #FFFFFF;
-  --bg-card-subtle: #EFE8DC;
-  --bg-card-muted: #E6DDCF;
-  --border-color: #E2D7C7;
-  --border-subtle: #EDE4D8;
-  --border-hover: #CFC1AD;
-  --text-primary: #1F1B16;
-  --text-secondary: #5C5245;
-  --text-muted: #8C7E6D;
-  --accent-blue: #1E40AF;
-  --accent-blue-hover: #1D4ED8;
+/* =========================================================================
+   COMPREHENSIVE LUXURY VINTAGE BEIGE & WARM IVORY THEME (WHOLE PAGE OVERRIDE)
+   ========================================================================= */
+
+/* Whole page background */
+.theme-vintage,
+.theme-vintage #root,
+.theme-vintage body {
+  background-color: #F5F1E8 !important;
+  color: #181410 !important;
 }
 
+/* Main background containers */
 .theme-vintage .bg-\[\#0B0F19\],
 .theme-vintage .bg-\[\#090D16\],
-.theme-vintage .bg-\[\#050B18\] {
-  background-color: #F7F3EB !important;
-  color: #1F1B16 !important;
-}
-
-.theme-vintage .bg-\[\#111726\],
-.theme-vintage .bg-\[\#0F172A\],
-.theme-vintage .bg-\[\#0A1224\] {
-  background-color: #FFFFFF !important;
-  border-color: #E2D7C7 !important;
-  box-shadow: 0 1px 3px rgba(45, 35, 20, 0.05);
-}
-
+.theme-vintage .bg-\[\#050B18\],
+.theme-vintage .bg-\[\#080C14\],
 .theme-vintage .bg-\[\#0D131F\],
 .theme-vintage .bg-\[\#0B1120\],
-.theme-vintage .bg-\[\#070D1C\],
+.theme-vintage .bg-\[\#070D1C\] {
+  background-color: #F5F1E8 !important;
+  color: #181410 !important;
+}
+
+/* Luxury Cards & Panels */
+.theme-vintage .bg-\[\#111726\],
+.theme-vintage .bg-\[\#0F172A\],
+.theme-vintage .bg-\[\#0A1224\],
+.theme-vintage .bg-\[\#141C2E\] {
+  background-color: #FFFFFF !important;
+  border-color: #E3D9C8 !important;
+  box-shadow: 0 2px 8px -2px rgba(50, 40, 25, 0.05), 0 1px 3px rgba(50, 40, 25, 0.03) !important;
+  color: #181410 !important;
+}
+
+/* Sub-panels, inputs, and internal containers */
+.theme-vintage .bg-slate-900\/40,
 .theme-vintage .bg-slate-900\/60,
+.theme-vintage .bg-slate-900\/70,
 .theme-vintage .bg-slate-900\/90,
+.theme-vintage .bg-slate-900,
 .theme-vintage .bg-slate-950,
 .theme-vintage .bg-slate-950\/70 {
-  background-color: #EFE8DC !important;
-  border-color: #E2D7C7 !important;
+  background-color: #EFE8DD !important;
+  border-color: #E3D9C8 !important;
+  color: #181410 !important;
 }
 
-.theme-vintage .bg-slate-900 {
-  background-color: #EFE8DC !important;
-  border-color: #E2D7C7 !important;
-}
-
+/* Interactive buttons & pill items */
 .theme-vintage .bg-slate-800,
 .theme-vintage .bg-slate-800\/60,
 .theme-vintage .bg-slate-800\/70,
 .theme-vintage .bg-slate-800\/80,
 .theme-vintage .bg-slate-800\/90 {
-  background-color: #E4DACB !important;
-  border-color: #D6C8B4 !important;
-  color: #2D251C !important;
+  background-color: #E6DCce !important;
+  border-color: #D5C7B3 !important;
+  color: #181410 !important;
 }
 
 .theme-vintage .hover\:bg-slate-800\/40:hover,
-.theme-vintage .hover\:bg-slate-700:hover {
-  background-color: #EDE4D6 !important;
+.theme-vintage .hover\:bg-slate-700:hover,
+.theme-vintage .hover\:bg-slate-900\/60:hover {
+  background-color: #ECE1D2 !important;
 }
 
+/* Borders */
 .theme-vintage .border-slate-800,
 .theme-vintage .border-slate-800\/60,
 .theme-vintage .border-slate-800\/80,
 .theme-vintage .border-slate-700,
 .theme-vintage .border-slate-700\/60,
-.theme-vintage .border-slate-700\/70 {
-  border-color: #E2D7C7 !important;
+.theme-vintage .border-slate-700\/70,
+.theme-vintage .border-slate-700\/80,
+.theme-vintage .border-slate-900,
+.theme-vintage .border-slate-900\/60 {
+  border-color: #E3D9C8 !important;
 }
 
+.theme-vintage .divide-slate-800\/60 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #EFE8DC !important;
+}
+
+/* Typography Overrides */
 .theme-vintage .text-slate-100,
 .theme-vintage .text-slate-200,
 .theme-vintage .text-white {
-  color: #1F1B16 !important;
+  color: #181410 !important;
 }
 
 .theme-vintage .text-slate-300,
 .theme-vintage .text-slate-400 {
-  color: #5C5245 !important;
+  color: #524434 !important;
 }
 
-.theme-vintage .text-slate-500 {
-  color: #8C7E6D !important;
+.theme-vintage .text-slate-500,
+.theme-vintage .text-slate-600 {
+  color: #857563 !important;
 }
 
+/* Primary Action Buttons */
+.theme-vintage .bg-blue-600 {
+  background-color: #1B365D !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 4px rgba(27, 54, 93, 0.15) !important;
+}
+
+.theme-vintage .bg-blue-600 .text-white,
+.theme-vintage .bg-blue-600 span,
+.theme-vintage .bg-blue-600 svg {
+  color: #FFFFFF !important;
+}
+
+.theme-vintage .bg-blue-600:hover {
+  background-color: #142A4A !important;
+}
+
+/* Form Inputs, Selects & Sliders */
 .theme-vintage input,
 .theme-vintage select {
-  background-color: #FAF6F0 !important;
-  border-color: #D6C8B4 !important;
-  color: #1F1B16 !important;
+  background-color: #FAF7F2 !important;
+  border-color: #D8CBB7 !important;
+  color: #181410 !important;
 }
 
 .theme-vintage input::placeholder {
-  color: #9C8E7E !important;
+  color: #9E907E !important;
 }
 
-.theme-vintage .bg-blue-600 {
-  background-color: #1E40AF !important;
-  color: #FFFFFF !important;
+.theme-vintage input[type="range"] {
+  accent-color: #1B365D !important;
 }
 
-.theme-vintage .bg-blue-600 .text-white {
-  color: #FFFFFF !important;
+/* Table Headers & Rows */
+.theme-vintage table thead {
+  background-color: #EFE9DD !important;
+  border-bottom: 1px solid #E3D9C8 !important;
 }
 
-.theme-vintage .hover\:bg-blue-500:hover {
-  background-color: #1D4ED8 !important;
+.theme-vintage table thead th {
+  color: #6E5F4D !important;
+  font-weight: 600 !important;
 }
 
-/* Status Chips in Vintage Theme */
+.theme-vintage table tbody tr:hover {
+  background-color: #F8F4EC !important;
+}
+
+/* Luxury Status Badges in Vintage Mode */
 .theme-vintage .bg-emerald-950\/40,
-.theme-vintage .bg-emerald-900\/50 {
-  background-color: #E2ECE5 !important;
-  border-color: #B5D4C0 !important;
-  color: #166534 !important;
+.theme-vintage .bg-emerald-900\/50,
+.theme-vintage .bg-emerald-800\/60 {
+  background-color: #EAF4EC !important;
+  border-color: #C9E5CD !important;
+  color: #195229 !important;
 }
 
 .theme-vintage .bg-rose-950\/40,
-.theme-vintage .bg-rose-900\/50 {
-  background-color: #FCE8E8 !important;
-  border-color: #F3B8B8 !important;
-  color: #991B1B !important;
+.theme-vintage .bg-rose-900\/50,
+.theme-vintage .bg-rose-800\/60 {
+  background-color: #FCECE9 !important;
+  border-color: #F7CCC5 !important;
+  color: #992318 !important;
 }
 
 .theme-vintage .bg-amber-950\/40,
-.theme-vintage .bg-amber-900\/50 {
+.theme-vintage .bg-amber-900\/50,
+.theme-vintage .bg-amber-800\/60 {
   background-color: #FEF3C7 !important;
   border-color: #FDE68A !important;
   color: #92400E !important;
 }
 
 .theme-vintage .bg-purple-950\/20,
-.theme-vintage .bg-purple-950\/40 {
-  background-color: #F3E8FF !important;
-  border-color: #E9D5FF !important;
-  color: #6B21A8 !important;
+.theme-vintage .bg-purple-950\/40,
+.theme-vintage .bg-purple-900\/50 {
+  background-color: #F5ECFA !important;
+  border-color: #E5CCF5 !important;
+  color: #66268A !important;
 }
 
-/* Recharts Tooltip Theme Overrides */
+.theme-vintage .bg-blue-950\/80,
+.theme-vintage .bg-blue-900\/60 {
+  background-color: #EAF2FC !important;
+  border-color: #C8DCF7 !important;
+  color: #1A4E8A !important;
+}
+
+/* Recharts Tooltips & Grids in Vintage Mode */
 .theme-vintage .recharts-default-tooltip {
   background-color: #FFFFFF !important;
-  border: 1px solid #E2D7C7 !important;
-  border-radius: 8px !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08) !important;
-  color: #1F1B16 !important;
+  border: 1px solid #E3D9C8 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 10px 15px -3px rgba(50, 40, 25, 0.1) !important;
+  color: #181410 !important;
 }
 
 .theme-vintage .recharts-tooltip-item {
-  color: #1F1B16 !important;
+  color: #181410 !important;
 }
 
 .theme-vintage .recharts-cartesian-grid-horizontal line,
 .theme-vintage .recharts-cartesian-grid-vertical line {
-  stroke: #EDE4D8 !important;
+  stroke: #EDE5D8 !important;
 }
 
-/* =========================================================
-   BLADE DARK THEME
-   ========================================================= */
-.theme-dark {
-  --bg-main: #090D16;
-  --bg-card: #0F172A;
-  --bg-card-subtle: #0B1120;
-  --border-color: #1E293B;
-  --text-primary: #F8FAFC;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
+.theme-vintage .recharts-text {
+  fill: #6E5F4D !important;
 }
 
-/* =========================================================
-   NORDIC SLATE THEME
-   ========================================================= */
-.theme-slate {
-  --bg-main: #0F172A;
-  --bg-card: #1E293B;
-  --bg-card-subtle: #141E30;
-  --border-color: #334155;
-  --text-primary: #F8FAFC;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
+/* Modals & Dialogs in Vintage Mode */
+.theme-vintage .fixed.inset-0 {
+  background-color: rgba(30, 25, 18, 0.45) !important;
+  backdrop-filter: blur(4px) !important;
 }
 
-/* Refined enterprise scrollbar */
-::-webkit-scrollbar {
+/* Refined Vintage Scrollbar */
+.theme-vintage ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-::-webkit-scrollbar-track {
-  background: transparent;
+.theme-vintage ::-webkit-scrollbar-track {
+  background: #F5F1E8;
 }
-::-webkit-scrollbar-thumb {
-  background: #D6C8B4;
+.theme-vintage ::-webkit-scrollbar-thumb {
+  background: #D8CBB7;
   border-radius: 9999px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #B8A68E;
+.theme-vintage ::-webkit-scrollbar-thumb:hover {
+  background: #BAAB94;
 }
 
-.theme-dark ::-webkit-scrollbar-thumb,
-.theme-slate ::-webkit-scrollbar-thumb {
-  background: #1E293B;
+/* Focus styles */
+input:focus, select:focus, button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(27, 54, 93, 0.25);
 }

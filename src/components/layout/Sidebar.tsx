@@ -74,8 +74,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <aside className="w-60 shrink-0 border-r border-slate-800/80 bg-[#0B0F19] p-3 hidden lg:block">
-      <div className="space-y-0.5">
-        <div className="px-3 py-2 text-[11px] font-medium tracking-wide text-slate-500 uppercase">
+      <div className="space-y-1">
+        <div className="px-3 py-2 text-[10px] font-semibold tracking-wider text-slate-500 uppercase">
           Finance Operations
         </div>
 
@@ -86,16 +86,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <button
               key={item.id}
               onClick={() => onSelectTab(item.id)}
-              className={`group flex w-full items-center justify-between rounded-lg px-2.5 py-2 text-left transition-colors ${
+              className={`group flex w-full items-center justify-between rounded-xl px-3 py-2 text-left transition-all ${
                 isActive
                   ? 'bg-slate-800/80 text-white font-medium border border-slate-700/80 shadow-sm'
                   : 'text-slate-400 hover:bg-slate-900/60 hover:text-slate-200 border border-transparent'
               }`}
             >
               <div className="flex items-center gap-2.5">
-                <Icon className={`h-4 w-4 ${isActive ? 'text-blue-400' : 'text-slate-400 group-hover:text-slate-300'}`} />
+                <Icon className={`h-4 w-4 shrink-0 ${isActive ? 'text-blue-600' : 'text-slate-400 group-hover:text-slate-300'}`} />
                 <div>
-                  <div className="text-xs leading-none">
+                  <div className="text-xs leading-none font-medium">
                     {item.label}
                   </div>
                   <div className="text-[10px] text-slate-500 mt-1">
@@ -105,7 +105,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </div>
 
               {item.badge && (
-                <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-mono text-slate-300 border border-slate-700">
+                <span className="rounded-md bg-slate-800 px-1.5 py-0.5 text-[10px] font-mono text-slate-300 border border-slate-700">
                   {item.badge}
                 </span>
               )}
@@ -115,9 +115,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
       </div>
 
       {/* Subtle RazorpayX Trust Footer */}
-      <div className="mt-8 rounded-lg border border-slate-800/80 bg-slate-900/40 p-3 text-xs">
+      <div className="mt-8 rounded-xl border border-slate-800/80 bg-slate-900/40 p-3 text-xs">
         <div className="flex items-center gap-1.5 text-slate-300 font-medium text-[11px]">
-          <ShieldCheck className="h-3.5 w-3.5 text-slate-400" />
+          <ShieldCheck className="h-3.5 w-3.5 text-blue-600" />
           <span>RazorpayX Escrow Guard</span>
         </div>
         <p className="mt-1 text-[10px] text-slate-400 leading-relaxed">
