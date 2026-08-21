@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --rzp-navy: #0B0F19;
+    --rzp-surface: #111827;
+    --rzp-card: #141C2E;
+    --rzp-border: #1E293B;
+    --rzp-text-primary: #F8FAFC;
+    --rzp-text-secondary: #94A3B8;
+    --rzp-text-muted: #64748B;
+    --rzp-accent: #2563EB;
+    --rzp-accent-hover: #1D4ED8;
+    --rzp-emerald: #10B981;
+    --rzp-amber: #D97706;
+    --rzp-rose: #E11D48;
+  }
+
+  body {
+    background-color: #0B0F19;
+    color: #F8FAFC;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Refined natural enterprise scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Clean natural card & panel styling */
+.natural-card {
+  background: #111726;
+  border: 1px solid #1E293B;
+  border-radius: 12px;
+}
+
+.natural-card-subtle {
+  background: #0D131F;
+  border: 1px solid #1A2333;
+}
+
+.natural-header {
+  background: rgba(11, 15, 25, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid #1E293B;
+}
+
+/* Subtle focus state */
+input:focus, select:focus, button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.35);
+}
