@@ -19,7 +19,14 @@ export interface CompanyProfile {
   razorpayXBalanceINR: number;
 }
 
-export type MatchStatus = 'MATCHED' | 'DISCREPANCY_MDR' | 'TIMING_LAG' | 'MISSING_BANK_CREDIT' | 'UNRECORDED_REFUND' | 'GHOST_PAYMENT';
+export type MatchStatus = 
+  | 'MATCHED' 
+  | 'DISCREPANCY_MDR' 
+  | 'TIMING_LAG' 
+  | 'MISSING_BANK_CREDIT' 
+  | 'UNRECORDED_REFUND' 
+  | 'GHOST_PAYMENT'
+  | 'UNRESOLVED_EXCEPTION';
 
 export interface GatewaySettlement {
   id: string;
@@ -75,8 +82,8 @@ export interface ReconciliationRecord {
   varianceINR: number;
   status: MatchStatus;
   aiExplanation: string;
-  suggestedAction: 'POST_ADJUSTMENT_JOURNAL' | 'RAISE_RAZORPAY_TICKET' | 'WAIT_T2_FLOAT' | 'INITIATE_REFUND_MATCH' | 'NONE';
-  resolutionStatus: 'PENDING' | 'RESOLVED' | 'AUTO_BALANCED';
+  suggestedAction: 'POST_ADJUSTMENT_JOURNAL' | 'RAISE_RAZORPAY_TICKET' | 'WAIT_T2_FLOAT' | 'INITIATE_REFUND_MATCH' | 'FLAG_HUMAN_REVIEW' | 'NONE';
+  resolutionStatus: 'PENDING' | 'RESOLVED' | 'AUTO_BALANCED' | 'FLAGGED_UNRESOLVED';
   journalEntry?: {
     debitAccount: string;
     creditAccount: string;

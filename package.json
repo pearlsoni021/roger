@@ -1,10 +1,13 @@
 {
-  "name": "rozerpay",
+  "name": "razorpay-ledgermind-ai",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Razorpay LedgerMind AI — Autonomous Finance Controller & 3-Way Reconciliation Swarm (Track 4: AI Finance Controller)",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "tsx server/index.ts",
+    "test:engines": "tsx scripts/verify_engines.ts",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview"
@@ -14,6 +17,8 @@
     "@types/canvas-confetti": "^1.9.0",
     "canvas-confetti": "^1.9.4",
     "clsx": "^2.1.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
     "lucide-react": "^1.33.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
@@ -22,11 +27,14 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.4",
     "oxlint": "^1.75.0",
+    "tsx": "^4.19.3",
     "typescript": "~6.0.2",
     "vite": "^8.2.0"
   }

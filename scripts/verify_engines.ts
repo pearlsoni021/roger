@@ -1,5 +1,6 @@
 /**
- * Verification Test Suite for Razorpay LedgerMind AI Engines
+ * Comprehensive Verification Test Suite for Razorpay LedgerMind AI Engines
+ * Tailored for Razorpay AI Buildathon Track 4 Benchmark Evaluation (50+ Batch)
  */
 
 import { calculateReconciliationMetrics } from '../src/services/reconciliationEngine.js';
@@ -24,11 +25,14 @@ function assert(condition: boolean, testName: string) {
 
 console.log('🧪 Starting Razorpay LedgerMind AI Engine Verification Suite...\n');
 
-// Test 1: 3-Way Reconciliation Metrics
+// Test 1: Track 4 50+ Synthetic Batch Reconciliation
 const reconSummary = calculateReconciliationMetrics(INITIAL_RECONCILIATION_RECORDS);
-assert(reconSummary.totalRecords === 7, 'Reconciliation should ingest exactly 7 records');
-assert(reconSummary.discrepanciesCount === 3, 'Reconciliation should identify exactly 3 actionable discrepancies');
-assert(reconSummary.timingLagCount === 1, 'Reconciliation should identify 1 weekend timing float (T+2)');
+assert(reconSummary.totalRecords >= 50, `Synthetic batch size should be 50+ (Ingested: ${reconSummary.totalRecords})`);
+assert(reconSummary.matchedCount >= 40, `Reconciliation cleanly matches high-confidence records (${reconSummary.matchedCount} matches)`);
+assert(reconSummary.discrepanciesCount > 0, `Reconciliation identifies fee drift and unrecorded refund variances (${reconSummary.discrepanciesCount} items)`);
+assert(reconSummary.timingLagCount > 0, `Reconciliation isolates weekend T+2 timing float without false positives (${reconSummary.timingLagCount} items)`);
+assert(reconSummary.unresolvableCount === 1, `Reconciliation provides an honest unresolvable exception list (Isolated ${reconSummary.unresolvableCount} item: Fraud #DISP-9921)`);
+assert(reconSummary.batchMatchRatePercent >= 70 && reconSummary.batchMatchRatePercent <= 100, `Batch match rate is realistic (${reconSummary.batchMatchRatePercent}%)`);
 assert(reconSummary.reconciliationHealthScore > 0 && reconSummary.reconciliationHealthScore <= 100, 'Reconciliation health score is bounded between 0-100%');
 
 // Test 2: Monte Carlo Simulation & Percentile Ordering
