@@ -2,22 +2,21 @@
 
 @layer base {
   :root {
-    --rzp-navy: #0B0F19;
-    --rzp-surface: #111827;
-    --rzp-card: #141C2E;
+    --rzp-bg: #090D16;
+    --rzp-card: #0F172A;
+    --rzp-card-subtle: #0B1120;
     --rzp-border: #1E293B;
-    --rzp-text-primary: #F8FAFC;
-    --rzp-text-secondary: #94A3B8;
-    --rzp-text-muted: #64748B;
-    --rzp-accent: #2563EB;
-    --rzp-accent-hover: #1D4ED8;
+    --rzp-border-hover: #334155;
+    --rzp-blue: #0C83FF;
+    --rzp-blue-hover: #006CE6;
     --rzp-emerald: #10B981;
-    --rzp-amber: #D97706;
-    --rzp-rose: #E11D48;
+    --rzp-amber: #F59E0B;
+    --rzp-rose: #F43F5E;
+    --rzp-purple: #A855F7;
   }
 
   body {
-    background-color: #0B0F19;
+    background-color: var(--rzp-bg);
     color: #F8FAFC;
     font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
@@ -28,7 +27,29 @@
   }
 }
 
-/* Refined natural enterprise scrollbar */
+/* Theme: Razorpay Midnight Navy */
+.theme-navy {
+  --rzp-bg: #050B18;
+  --rzp-card: #0A1224;
+  --rzp-card-subtle: #070D1C;
+  --rzp-border: #14223E;
+  --rzp-border-hover: #1E335C;
+  --rzp-blue: #38BDF8;
+  --rzp-blue-hover: #0284C7;
+}
+
+/* Theme: Nordic Slate */
+.theme-slate {
+  --rzp-bg: #0F172A;
+  --rzp-card: #1E293B;
+  --rzp-card-subtle: #141E30;
+  --rzp-border: #334155;
+  --rzp-border-hover: #475569;
+  --rzp-blue: #10B981;
+  --rzp-blue-hover: #059669;
+}
+
+/* Refined enterprise scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -44,27 +65,8 @@
   background: #334155;
 }
 
-/* Clean natural card & panel styling */
-.natural-card {
-  background: #111726;
-  border: 1px solid #1E293B;
-  border-radius: 12px;
-}
-
-.natural-card-subtle {
-  background: #0D131F;
-  border: 1px solid #1A2333;
-}
-
-.natural-header {
-  background: rgba(11, 15, 25, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid #1E293B;
-}
-
-/* Subtle focus state */
+/* Focus styles */
 input:focus, select:focus, button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 0 0 2px rgba(12, 131, 255, 0.35);
 }

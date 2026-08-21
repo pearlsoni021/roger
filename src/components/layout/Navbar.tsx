@@ -1,7 +1,9 @@
 import React from 'react';
 import { CompanyProfile } from '../../types/finance';
 import { formatINR } from '../../utils/formatters';
-import { Building2, ChevronDown, Sparkles, SlidersHorizontal, ShieldCheck } from 'lucide-react';
+import { Building2, ChevronDown, Sparkles, SlidersHorizontal, ShieldCheck, Palette } from 'lucide-react';
+
+export type AppTheme = 'default' | 'navy' | 'slate';
 
 interface NavbarProps {
   companies: CompanyProfile[];
@@ -9,6 +11,8 @@ interface NavbarProps {
   onSelectCompany: (company: CompanyProfile) => void;
   onOpenDemo: () => void;
   onOpenCopilot: () => void;
+  currentTheme?: AppTheme;
+  onSelectTheme?: (theme: AppTheme) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -17,9 +21,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSelectCompany,
   onOpenDemo,
   onOpenCopilot,
+  currentTheme = 'default',
+  onSelectTheme,
 }) => {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-[#0B0F19]/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-[#090D16]/90 backdrop-blur-md">
       <div className="flex h-14 items-center justify-between px-4 sm:px-6">
         {/* Left: Brand & Product Title */}
         <div className="flex items-center gap-3">
@@ -29,9 +35,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="text-sm font-semibold tracking-tight text-slate-100">
-                Razorpay <span className="text-slate-400 font-normal">LedgerMind</span>
+                Razorpay <span className="text-blue-400 font-medium">LedgerMind</span>
               </span>
-              <span className="rounded border border-slate-700 bg-slate-800/60 px-1.5 py-0.5 text-[10px] font-medium text-slate-300">
+              <span className="rounded border border-slate-700 bg-slate-800/80 px-1.5 py-0.5 text-[10px] font-medium text-slate-300">
                 AI Finance Controller
               </span>
             </div>
@@ -39,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Center: Active Company Selector */}
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center gap-2">
           <div className="relative">
             <label htmlFor="company-select" className="sr-only">Select Company</label>
             <select
@@ -63,13 +69,38 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        {/* Right: Telemetry & Natural Action Controls */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          {/* Subtle Live Agent Monitor */}
-          <div className="hidden lg:flex items-center gap-1.5 rounded-md border border-slate-800 bg-slate-900/60 px-2.5 py-1 text-xs text-slate-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-            <span className="text-[11px] text-slate-400">4 Active Monitors</span>
-          </div>
+        {/* Right: Theme Selector & Action Controls */}
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          {/* Theme Palette Switcher */}
+          {onSelectTheme && (
+            <div className="hidden lg:flex items-center gap-1 rounded-lg border border-slate-800 bg-slate-900/70 p-1 text-[11px]">
+              <Palette className="h-3 w-3 text-slate-400 ml-1 mr-0.5" />
+              <button
+                onClick={() => onSelectTheme('default')}
+                className={`rounded px-2 py-0.5 font-medium transition-colors ${
+                  currentTheme === 'default' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                Blade Dark
+              </button>
+              <button
+                onClick={() => onSelectTheme('navy')}
+                className={`rounded px-2 py-0.5 font-medium transition-colors ${
+                  currentTheme === 'navy' ? 'bg-sky-600 text-white' : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                Midnight Navy
+              </button>
+              <button
+                onClick={() => onSelectTheme('slate')}
+                className={`rounded px-2 py-0.5 font-medium transition-colors ${
+                  currentTheme === 'slate' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                Nordic Slate
+              </button>
+            </div>
+          )}
 
           {/* RazorpayX Escrow Balance */}
           <div className="hidden sm:flex items-center gap-2 rounded-md border border-slate-800 bg-slate-900/60 px-2.5 py-1 text-xs">

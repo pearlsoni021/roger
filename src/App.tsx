@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navbar } from './components/layout/Navbar';
+import { Navbar, AppTheme } from './components/layout/Navbar';
 import { Sidebar, TabType } from './components/layout/Sidebar';
 import { MetricCards } from './components/dashboard/MetricCards';
 import { CashFlowChart } from './components/dashboard/CashFlowChart';
@@ -27,6 +27,7 @@ export function App() {
   const [companies] = useState<CompanyProfile[]>(MOCK_COMPANIES);
   const [selectedCompany, setSelectedCompany] = useState<CompanyProfile>(MOCK_COMPANIES[0]);
   const [activeTab, setActiveTab] = useState<TabType>('dashboard');
+  const [theme, setTheme] = useState<AppTheme>('default');
   const [reconciliationRecords, setReconciliationRecords] = useState<ReconciliationRecord[]>(INITIAL_RECONCILIATION_RECORDS);
   const [vendors] = useState(MOCK_VENDORS);
   const [vendorInvoices, setVendorInvoices] = useState<VendorInvoice[]>(INITIAL_VENDOR_INVOICES);
@@ -203,8 +204,10 @@ export function App() {
     showToast('Reset ledgers and simulations to benchmark state.', 'info');
   };
 
+  const themeClass = theme === 'navy' ? 'theme-navy' : theme === 'slate' ? 'theme-slate' : '';
+
   return (
-    <div className="min-h-screen bg-[#0B0F19] text-slate-100 flex flex-col font-sans">
+    <div className={`min-h-screen text-slate-100 flex flex-col font-sans transition-colors duration-300 ${themeClass}`} style={{ backgroundColor: 'var(--rzp-bg)' }}>
       {/* Toast Notification */}
       {toast && (
         <div className="fixed top-4 right-4 z-50 flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-900/95 px-3.5 py-2.5 shadow-xl text-xs backdrop-blur-md">
@@ -225,6 +228,8 @@ export function App() {
         onSelectCompany={setSelectedCompany}
         onOpenDemo={() => setActiveTab('demo')}
         onOpenCopilot={() => setActiveTab('copilot')}
+        currentTheme={theme}
+        onSelectTheme={setTheme}
       />
 
       {/* Main Workspace Layout */}
