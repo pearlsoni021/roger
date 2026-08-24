@@ -15,12 +15,12 @@ interface CashFlowChartProps {
 }
 
 const CASHFLOW_DATA = [
-  { month: 'Jan', value: 7.2, fill: '#1E2024' },
-  { month: 'Feb', value: 6.4, fill: '#1E2024' },
-  { month: 'Mar', value: 9.8, fill: '#7A7E85' }, // Active highlight month
-  { month: 'Apr', value: 5.1, fill: '#1E2024' },
-  { month: 'May', value: 8.6, fill: '#1E2024' },
-  { month: 'Jun', value: 3.5, fill: '#1E2024' },
+  { month: 'Jan', value: 7.2, fill: '#2D323B' },
+  { month: 'Feb', value: 6.4, fill: '#2D323B' },
+  { month: 'Mar', value: 9.8, fill: '#707684' }, // Highlighted active bar
+  { month: 'Apr', value: 5.1, fill: '#2D323B' },
+  { month: 'May', value: 8.6, fill: '#2D323B' },
+  { month: 'Jun', value: 3.5, fill: '#2D323B' },
 ];
 
 export const CashFlowChart: React.FC<CashFlowChartProps> = () => {
@@ -57,8 +57,8 @@ export const CashFlowChart: React.FC<CashFlowChartProps> = () => {
             <Tooltip
               cursor={{ fill: 'transparent' }}
               contentStyle={{
-                backgroundColor: '#1E2024',
-                borderColor: '#1E2024',
+                backgroundColor: '#2D323B',
+                borderColor: '#3E4450',
                 borderRadius: '12px',
                 fontSize: '12px',
                 color: '#FFFFFF',

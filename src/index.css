@@ -5,13 +5,13 @@
     --bg-canvas: #EDEDF0;
     --bg-sidebar: #FFFFFF;
     --bg-card: #FFFFFF;
-    --bg-card-dark: #1E2024;
+    --bg-card-dark: #282C35;
     --border-light: #E5E7EB;
     --border-subtle: #F3F4F6;
     --text-main: #121316;
     --text-muted: #6B7280;
     --text-sub: #9CA3AF;
-    --accent-dark: #1E2024;
+    --accent-dark: #282C35;
     --accent-emerald: #10B981;
     --accent-blue: #2563EB;
   }
@@ -29,7 +29,7 @@
 }
 
 /* =========================================================================
-   CLEAN MINIMALIST STUDIO LIGHT THEME (EXACT FIGMA/DRIBBLE REFERENCE)
+   CLEAN MINIMALIST STUDIO LIGHT THEME WITH HIGH-CONTRAST LEGIBILITY
    ========================================================================= */
 
 /* Main Canvas Background */
@@ -101,26 +101,54 @@ header {
   border-color: #F3F4F6 !important;
 }
 
-/* Typography Overrides */
-.text-slate-100,
-.text-slate-200,
+/* Crisp White Text for Dark Cards & Dark Badges (Never Override to Black!) */
 .text-white {
-  color: #121316 !important;
+  color: #FFFFFF !important;
 }
 
-.text-slate-300,
-.text-slate-400 {
-  color: #6B7280 !important;
+/* Dark Hero Card Styling (Lighter Slate-Charcoal with Ultra-Crisp White Text) */
+.dark-hero-card {
+  background: linear-gradient(135deg, #2D323B 0%, #1F2228 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid #3E4450 !important;
+  box-shadow: 0 4px 14px -2px rgba(31, 34, 40, 0.25) !important;
 }
 
-.text-slate-500,
-.text-slate-600 {
-  color: #9CA3AF !important;
+.dark-hero-card span,
+.dark-hero-card div,
+.dark-hero-card h1,
+.dark-hero-card h2,
+.dark-hero-card h3,
+.dark-hero-card p {
+  color: #FFFFFF !important;
+}
+
+.dark-hero-card .text-slate-300,
+.dark-hero-card .text-slate-400 {
+  color: #D1D5DB !important;
+}
+
+.dark-hero-card .text-emerald-400 {
+  color: #34D399 !important;
+}
+
+/* Active Dark Button & Pills */
+.active-dark-pill,
+.bg-\[\#1E2024\],
+.bg-\[\#23262B\] {
+  background-color: #2D323B !important;
+  color: #FFFFFF !important;
+}
+
+.active-dark-pill *,
+.bg-\[\#1E2024\] *,
+.bg-\[\#23262B\] * {
+  color: #FFFFFF !important;
 }
 
 /* Primary Action Buttons & Pills */
 .bg-blue-600 {
-  background-color: #1E2024 !important;
+  background-color: #2D323B !important;
   color: #FFFFFF !important;
   border-radius: 9999px !important;
   font-weight: 600 !important;
@@ -133,7 +161,7 @@ header {
 }
 
 .bg-blue-600:hover {
-  background-color: #2D3036 !important;
+  background-color: #3A404C !important;
 }
 
 /* Inputs & Selects */
@@ -149,7 +177,7 @@ input::placeholder {
 }
 
 input[type="range"] {
-  accent-color: #1E2024 !important;
+  accent-color: #2D323B !important;
 }
 
 /* Table Headers & Rows */
@@ -221,15 +249,15 @@ table tbody tr:hover {
 
 /* Tooltips */
 .recharts-default-tooltip {
-  background-color: #FFFFFF !important;
-  border: 1px solid #E5E7EB !important;
+  background-color: #2D323B !important;
+  border: 1px solid #3E4450 !important;
   border-radius: 12px !important;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08) !important;
-  color: #121316 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15) !important;
+  color: #FFFFFF !important;
 }
 
 .recharts-tooltip-item {
-  color: #121316 !important;
+  color: #FFFFFF !important;
 }
 
 .recharts-cartesian-grid-horizontal line,
@@ -267,5 +295,5 @@ table tbody tr:hover {
 /* Focus states */
 input:focus, select:focus, button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(30, 32, 36, 0.2);
+  box-shadow: 0 0 0 2px rgba(45, 50, 59, 0.25);
 }

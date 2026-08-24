@@ -10,7 +10,6 @@ import {
   ShieldCheck,
   Settings,
   HelpCircle,
-  LogOut,
   Zap
 } from 'lucide-react';
 
@@ -53,15 +52,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
     <aside className="w-64 shrink-0 bg-white border-r border-slate-200/80 p-5 flex flex-col justify-between hidden lg:flex min-h-screen">
       <div>
         {/* Brand Logo Header */}
-        <div className="flex items-center gap-2.5 px-2 mb-8">
-          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#1E2024] text-white font-bold text-sm shadow-sm">
-            <ShieldCheck className="h-5 w-5" />
+        <div className="flex items-center gap-3 px-2 mb-8">
+          <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-[#2D323B] text-white font-bold text-sm shadow-sm">
+            <ShieldCheck className="h-5 w-5 text-white" />
           </div>
           <div>
-            <div className="font-extrabold text-lg text-slate-900 tracking-tight leading-none">
+            <div className="font-black text-xl text-slate-900 tracking-tight leading-none">
               Razorpay
             </div>
-            <div className="text-[10px] font-semibold text-slate-400 mt-0.5">
+            <div className="text-[11px] font-semibold text-slate-400 mt-0.5">
               LedgerMind AI
             </div>
           </div>
@@ -76,15 +75,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <button
                 key={item.id}
                 onClick={() => onSelectTab(item.id)}
-                className={`flex w-full items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-semibold transition-all ${
+                className={`flex w-full items-center justify-between rounded-2xl px-3.5 py-3 text-xs font-bold transition-all ${
                   isActive
-                    ? 'bg-[#1E2024] text-white shadow-sm'
-                    : 'text-slate-500 hover:bg-slate-100/80 hover:text-slate-900'
+                    ? 'bg-[#2D323B] text-white shadow-sm'
+                    : 'text-slate-500 hover:bg-slate-100 hover:text-slate-900'
                 }`}
               >
                 <div className="flex items-center gap-3">
                   <Icon className={`h-4 w-4 ${isActive ? 'text-white' : 'text-slate-400'}`} />
-                  <span>{item.label}</span>
+                  <span className={isActive ? 'text-white' : 'text-slate-700'}>{item.label}</span>
                 </div>
 
                 {item.badge && (
@@ -100,18 +99,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </nav>
       </div>
 
-      {/* Middle/Bottom: Dark Promo Card (Matching Screenshot 'Upgrade To Pro' Card) */}
+      {/* Middle/Bottom: Lighter Slate Dark Promo Card */}
       <div className="space-y-6">
-        <div className="rounded-2xl bg-gradient-to-br from-[#23262B] to-[#121316] p-4 text-white shadow-md">
+        <div className="rounded-3xl bg-gradient-to-br from-[#333844] to-[#22252C] p-4 text-white shadow-md border border-slate-700/50">
           <div className="flex items-center gap-2">
-            <Zap className="h-4 w-4 text-amber-400" />
-            <div className="text-xs font-bold">Track 4: Controller</div>
+            <Zap className="h-4 w-4 text-amber-400 shrink-0" />
+            <div className="text-xs font-bold text-white">Track 4: Controller</div>
           </div>
-          <p className="text-[10px] text-slate-300 mt-1.5 leading-relaxed">
-            Autonomous multi-agent 3-way reconciliation, Monte Carlo runway & tax hub.
+          <p className="text-[11px] text-slate-200 mt-1.5 leading-relaxed font-medium">
+            Autonomous 3-way reconciliation, Monte Carlo runway & tax hub.
           </p>
           <div className="mt-3">
-            <span className="inline-block w-full text-center rounded-xl bg-white/15 py-1.5 text-[11px] font-semibold text-white backdrop-blur-sm">
+            <span className="inline-block w-full text-center rounded-xl bg-white/20 py-1.5 text-[11px] font-bold text-white backdrop-blur-sm border border-white/10">
               Live AI Swarm
             </span>
           </div>
@@ -119,11 +118,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         {/* Bottom System Links */}
         <div className="space-y-1 pt-2 border-t border-slate-100 text-xs font-semibold text-slate-500">
-          <button className="flex w-full items-center gap-3 rounded-xl px-3 py-2 hover:bg-slate-100/80 hover:text-slate-900 transition-colors">
+          <button className="flex w-full items-center gap-3 rounded-xl px-3 py-2 hover:bg-slate-100 hover:text-slate-900 transition-colors">
             <Settings className="h-4 w-4 text-slate-400" />
             <span>Settings</span>
           </button>
-          <button className="flex w-full items-center gap-3 rounded-xl px-3 py-2 hover:bg-slate-100/80 hover:text-slate-900 transition-colors">
+          <button className="flex w-full items-center gap-3 rounded-xl px-3 py-2 hover:bg-slate-100 hover:text-slate-900 transition-colors">
             <HelpCircle className="h-4 w-4 text-slate-400" />
             <span>Help Center</span>
           </button>
