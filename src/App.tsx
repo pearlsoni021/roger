@@ -11,6 +11,7 @@ import { VendorPayoutHub } from './components/vendors/VendorPayoutHub';
 import { ConversationalCFO } from './components/copilot/ConversationalCFO';
 import { AnomalyRadar } from './components/anomalies/AnomalyRadar';
 import { DemoControlPanel } from './components/demo/DemoControlPanel';
+import { SettingsHub } from './components/settings/SettingsHub';
 
 import { MOCK_COMPANIES } from './data/mockCompanies';
 import { INITIAL_RECONCILIATION_RECORDS } from './data/mockReconciliation';
@@ -218,7 +219,7 @@ export function App() {
         </div>
       )}
 
-      {/* Left Sidebar (White Background with Clean Nav & Dark Promo Card) */}
+      {/* Left Sidebar */}
       <Sidebar
         activeTab={activeTab}
         onSelectTab={setActiveTab}
@@ -241,7 +242,7 @@ export function App() {
         <main className="flex-1 p-6 pt-2 overflow-y-auto max-w-7xl w-full">
           {activeTab === 'dashboard' && (
             <div className="space-y-6">
-              {/* Row 1: 4 Metric Cards (Dark Hero Card + 3 White Cards) */}
+              {/* Row 1: 4 Metric Cards */}
               <MetricCards
                 company={selectedCompany}
                 reconciliationHealth={reconMetrics.reconciliationHealthScore}
@@ -323,6 +324,13 @@ export function App() {
               onAutoReconcileAll={handleAutoResolveAll}
               onResetBenchmark={handleResetBenchmark}
               onNavigateToTab={setActiveTab}
+            />
+          )}
+
+          {activeTab === 'settings' && (
+            <SettingsHub
+              company={selectedCompany}
+              onSave={() => showToast('Configuration saved successfully.', 'success')}
             />
           )}
         </main>

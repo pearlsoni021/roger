@@ -13,7 +13,7 @@ import {
   Zap
 } from 'lucide-react';
 
-export type TabType = 'dashboard' | 'reconciliation' | 'treasury' | 'vendors' | 'copilot' | 'anomalies' | 'demo';
+export type TabType = 'dashboard' | 'reconciliation' | 'treasury' | 'vendors' | 'copilot' | 'anomalies' | 'demo' | 'settings';
 
 interface SidebarProps {
   activeTab: TabType;
@@ -46,6 +46,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       badge: openAnomaliesCount > 0 ? `${openAnomaliesCount}` : undefined,
     },
     { id: 'demo' as TabType, label: 'Demo Sandbox', icon: SlidersHorizontal },
+    { id: 'settings' as TabType, label: 'System Settings', icon: Settings },
   ];
 
   return (
@@ -118,11 +119,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         {/* Bottom System Links */}
         <div className="space-y-1 pt-2 border-t border-slate-200 text-xs font-bold text-slate-700">
-          <button className="flex w-full items-center gap-3 rounded-xl px-3 py-2 hover:bg-slate-100 hover:text-slate-950 transition-colors font-bold">
+          <button 
+            onClick={() => onSelectTab('settings')}
+            className={`flex w-full items-center gap-3 rounded-xl px-3 py-2 transition-colors font-bold ${
+              activeTab === 'settings' ? 'bg-[#242831] text-white' : 'hover:bg-slate-100 hover:text-slate-950'
+            }`}
+          >
             <Settings className="h-4 w-4 text-slate-600" />
             <span>Settings</span>
           </button>
-          <button className="flex w-full items-center gap-3 rounded-xl px-3 py-2 hover:bg-slate-100 hover:text-slate-950 transition-colors font-bold">
+          <button 
+            onClick={() => onSelectTab('copilot')}
+            className="flex w-full items-center gap-3 rounded-xl px-3 py-2 hover:bg-slate-100 hover:text-slate-950 transition-colors font-bold"
+          >
             <HelpCircle className="h-4 w-4 text-slate-600" />
             <span>Help Center</span>
           </button>
