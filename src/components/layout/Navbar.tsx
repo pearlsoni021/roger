@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CompanyProfile } from '../../types/finance';
-import { formatINR } from '../../utils/formatters';
-import { Building2, ChevronDown, Sparkles, SlidersHorizontal, ShieldCheck, Palette } from 'lucide-react';
-
-export type AppTheme = 'vintage' | 'dark' | 'slate';
+import { 
+  Search, 
+  Bell, 
+  Calendar, 
+  Sparkles, 
+  SlidersHorizontal, 
+  Building2, 
+  ChevronDown 
+} from 'lucide-react';
 
 interface NavbarProps {
   companies: CompanyProfile[];
@@ -11,8 +16,8 @@ interface NavbarProps {
   onSelectCompany: (company: CompanyProfile) => void;
   onOpenDemo: () => void;
   onOpenCopilot: () => void;
-  currentTheme?: AppTheme;
-  onSelectTheme?: (theme: AppTheme) => void;
+  currentTheme?: string;
+  onSelectTheme?: (theme: any) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -21,150 +26,100 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSelectCompany,
   onOpenDemo,
   onOpenCopilot,
-  currentTheme = 'vintage',
-  onSelectTheme,
 }) => {
-  const isVintage = currentTheme === 'vintage';
+  const [period, setPeriod] = useState<'Day' | 'Week' | 'Month' | 'Year'>('Month');
 
   return (
-    <header className={`sticky top-0 z-40 w-full border-b backdrop-blur-md transition-colors duration-200 ${
-      isVintage 
-        ? 'border-[#E3D9C8] bg-[#FAF7F2]/95 shadow-[0_1px_4px_rgba(40,30,15,0.04)]' 
-        : 'border-slate-800/80 bg-[#090D16]/90'
-    }`}>
-      <div className="flex h-14 items-center justify-between px-4 sm:px-6">
-        {/* Left: Brand & Product Title */}
+    <header className="w-full bg-[#EDEDF0] py-4 px-6">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        {/* Left: Page Title */}
         <div className="flex items-center gap-3">
-          <div className={`flex h-8 w-8 items-center justify-center rounded-lg shadow-sm ${
-            isVintage ? 'bg-[#1B365D] text-white' : 'bg-blue-600 text-white'
-          }`}>
-            <ShieldCheck className="h-4 w-4" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className={`text-sm font-semibold tracking-tight ${
-                isVintage ? 'text-[#181410]' : 'text-slate-100'
-              }`}>
-                Razorpay <span className={isVintage ? 'text-[#1B365D] font-bold' : 'text-blue-400 font-medium'}>LedgerMind</span>
-              </span>
-              <span className={`rounded px-1.5 py-0.5 text-[10px] font-medium border ${
-                isVintage 
-                  ? 'border-[#D8CBB7] bg-[#EFE8DD] text-[#524434]' 
-                  : 'border-slate-700 bg-slate-800/80 text-slate-300'
-              }`}>
-                AI Finance Controller
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Center: Active Company Selector */}
-        <div className="hidden md:flex items-center gap-2">
-          <div className="relative">
-            <label htmlFor="company-select" className="sr-only">Select Company</label>
+          <h1 className="text-2xl font-bold tracking-tight text-[#121316]">
+            Dashboard
+          </h1>
+          <div className="relative hidden sm:block">
             <select
-              id="company-select"
               aria-label="Select Company"
               value={selectedCompany.id}
               onChange={(e) => {
                 const found = companies.find(c => c.id === e.target.value);
                 if (found) onSelectCompany(found);
               }}
-              className={`appearance-none cursor-pointer rounded-lg border py-1.5 pl-8 pr-7 text-xs font-medium focus:outline-none transition-colors ${
-                isVintage 
-                  ? 'border-[#D8CBB7] bg-[#FAF7F2] text-[#181410] hover:border-[#B8A68E]' 
-                  : 'border-slate-700/70 bg-slate-900/90 text-slate-200 hover:border-slate-600'
-              }`}
+              className="appearance-none cursor-pointer rounded-full border border-slate-200 bg-white py-1.5 pl-8 pr-7 text-xs font-semibold text-slate-800 shadow-sm hover:border-slate-300 focus:outline-none transition-colors"
             >
               {companies.map((comp) => (
                 <option key={comp.id} value={comp.id}>
-                  {comp.name} — {comp.industry}
+                  {comp.name}
                 </option>
               ))}
             </select>
-            <Building2 className={`pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 ${
-              isVintage ? 'text-[#786B5A]' : 'text-slate-400'
-            }`} />
-            <ChevronDown className={`pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 ${
-              isVintage ? 'text-[#786B5A]' : 'text-slate-400'
-            }`} />
+            <Building2 className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
+            <ChevronDown className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
           </div>
         </div>
 
-        {/* Right: Theme Selector & Action Controls */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
-          {/* Theme Palette Switcher */}
-          {onSelectTheme && (
-            <div className={`hidden lg:flex items-center gap-1 rounded-lg border p-1 text-[11px] ${
-              isVintage ? 'border-[#E3D9C8] bg-[#EFE8DD]' : 'border-slate-800 bg-slate-900/70'
-            }`}>
-              <Palette className={`h-3.5 w-3.5 ml-1 mr-0.5 ${isVintage ? 'text-[#786B5A]' : 'text-slate-400'}`} />
+        {/* Center/Right: Period Filter Pills & Search */}
+        <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-start md:justify-end">
+          {/* Timeframe Pill Switcher */}
+          <div className="flex items-center gap-1 rounded-full bg-white p-1 border border-slate-200/80 shadow-sm text-xs font-medium">
+            {(['Day', 'Week', 'Month', 'Year'] as const).map((p) => (
               <button
-                onClick={() => onSelectTheme('vintage')}
-                className={`rounded px-2.5 py-0.5 font-semibold transition-all ${
-                  currentTheme === 'vintage' 
-                    ? 'bg-[#1B365D] text-white shadow-sm' 
-                    : isVintage ? 'text-[#524434] hover:text-[#181410]' : 'text-slate-400 hover:text-slate-200'
+                key={p}
+                onClick={() => setPeriod(p)}
+                className={`rounded-full px-3 py-1 transition-all ${
+                  period === p
+                    ? 'bg-[#1E2024] text-white font-semibold shadow-sm'
+                    : 'text-slate-500 hover:text-slate-900'
                 }`}
               >
-                Vintage Ivory
+                {p}
               </button>
-              <button
-                onClick={() => onSelectTheme('dark')}
-                className={`rounded px-2.5 py-0.5 font-semibold transition-all ${
-                  currentTheme === 'dark' 
-                    ? 'bg-blue-600 text-white shadow-sm' 
-                    : isVintage ? 'text-[#524434] hover:text-[#181410]' : 'text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                Blade Dark
-              </button>
-              <button
-                onClick={() => onSelectTheme('slate')}
-                className={`rounded px-2.5 py-0.5 font-semibold transition-all ${
-                  currentTheme === 'slate' 
-                    ? 'bg-emerald-600 text-white shadow-sm' 
-                    : isVintage ? 'text-[#524434] hover:text-[#181410]' : 'text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                Nordic Slate
-              </button>
-            </div>
-          )}
+            ))}
+          </div>
 
-          {/* RazorpayX Escrow Balance */}
-          <div className={`hidden sm:flex items-center gap-2 rounded-md border px-2.5 py-1 text-xs ${
-            isVintage ? 'border-[#E3D9C8] bg-[#EFE8DD]' : 'border-slate-800 bg-slate-900/60'
-          }`}>
-            <span className={`text-[11px] ${isVintage ? 'text-[#786B5A]' : 'text-slate-400'}`}>RazorpayX Escrow:</span>
-            <span className={`font-semibold font-mono ${isVintage ? 'text-[#181410]' : 'text-slate-200'}`}>
-              {formatINR(selectedCompany.razorpayXBalanceINR, { compact: true })}
-            </span>
+          {/* Date Range Pill */}
+          <div className="hidden xl:flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-xs font-medium text-slate-700 border border-slate-200/80 shadow-sm">
+            <Calendar className="h-3.5 w-3.5 text-slate-400" />
+            <span>1 Sep 2026 - 30 Sep 2026</span>
+          </div>
+
+          {/* Search Pill */}
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="rounded-full border border-slate-200 bg-white py-1.5 pl-8 pr-4 text-xs text-slate-800 placeholder-slate-400 shadow-sm focus:outline-none w-36 sm:w-48"
+            />
+            <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
           </div>
 
           {/* Ask CFO Copilot Button */}
           <button
             onClick={onOpenCopilot}
-            className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium text-white shadow-sm transition-colors ${
-              isVintage ? 'bg-[#1B365D] hover:bg-[#142A4A]' : 'bg-blue-600 hover:bg-blue-500'
-            }`}
+            className="flex items-center gap-1.5 rounded-full bg-[#1E2024] px-4 py-1.5 text-xs font-semibold text-white hover:bg-slate-800 transition-colors shadow-sm"
           >
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>Ask CFO AI</span>
+            <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+            <span>CFO AI</span>
           </button>
 
-          {/* Evaluator Demo Controls Button */}
+          {/* Demo Controls Button */}
           <button
             onClick={onOpenDemo}
-            className={`flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
-              isVintage 
-                ? 'border-[#D5C7B3] bg-[#E6DCCF] text-[#181410] hover:bg-[#D5C7B3]' 
-                : 'border-slate-700 bg-slate-800 text-slate-200 hover:bg-slate-700 hover:text-white'
-            }`}
+            className="flex items-center gap-1.5 rounded-full bg-white border border-slate-200 px-3.5 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm"
           >
-            <SlidersHorizontal className={`h-3.5 w-3.5 ${isVintage ? 'text-[#524434]' : 'text-slate-400'}`} />
-            <span className="hidden sm:inline">Demo Controls</span>
+            <SlidersHorizontal className="h-3.5 w-3.5 text-slate-500" />
+            <span className="hidden sm:inline">Sandbox</span>
           </button>
+
+          {/* Notification Bell */}
+          <button className="flex h-8 w-8 items-center justify-center rounded-full bg-white border border-slate-200 text-slate-600 shadow-sm hover:bg-slate-50">
+            <Bell className="h-3.5 w-3.5" />
+          </button>
+
+          {/* User Profile Avatar */}
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1E2024] text-white font-bold text-xs shadow-sm">
+            RP
+          </div>
         </div>
       </div>
     </header>

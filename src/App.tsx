@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navbar, AppTheme } from './components/layout/Navbar';
+import { Navbar } from './components/layout/Navbar';
 import { Sidebar, TabType } from './components/layout/Sidebar';
 import { MetricCards } from './components/dashboard/MetricCards';
 import { CashFlowChart } from './components/dashboard/CashFlowChart';
@@ -27,7 +27,6 @@ export function App() {
   const [companies] = useState<CompanyProfile[]>(MOCK_COMPANIES);
   const [selectedCompany, setSelectedCompany] = useState<CompanyProfile>(MOCK_COMPANIES[0]);
   const [activeTab, setActiveTab] = useState<TabType>('dashboard');
-  const [theme, setTheme] = useState<AppTheme>('vintage');
   const [reconciliationRecords, setReconciliationRecords] = useState<ReconciliationRecord[]>(INITIAL_RECONCILIATION_RECORDS);
   const [vendors] = useState(MOCK_VENDORS);
   const [vendorInvoices, setVendorInvoices] = useState<VendorInvoice[]>(INITIAL_VENDOR_INVOICES);
@@ -204,48 +203,45 @@ export function App() {
     showToast('Reset ledgers and simulations to benchmark state.', 'info');
   };
 
-  const themeClass = theme === 'vintage' ? 'theme-vintage' : theme === 'slate' ? 'theme-slate' : 'theme-dark';
-
   return (
-    <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${themeClass}`}>
+    <div className="min-h-screen bg-[#EDEDF0] flex font-sans">
       {/* Toast Notification */}
       {toast && (
-        <div className="fixed top-4 right-4 z-50 flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-900/95 px-3.5 py-2.5 shadow-xl text-xs backdrop-blur-md">
-          {toast.type === 'success' && <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />}
-          {toast.type === 'warning' && <AlertCircle className="h-4 w-4 text-amber-400 shrink-0" />}
-          {toast.type === 'info' && <Sparkles className="h-4 w-4 text-blue-400 shrink-0" />}
-          <span className="text-slate-200">{toast.message}</span>
-          <button onClick={() => setToast(null)} className="text-slate-500 hover:text-white ml-2">
+        <div className="fixed top-5 right-5 z-50 flex items-center gap-2.5 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-xl text-xs">
+          {toast.type === 'success' && <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />}
+          {toast.type === 'warning' && <AlertCircle className="h-4 w-4 text-amber-500 shrink-0" />}
+          {toast.type === 'info' && <Sparkles className="h-4 w-4 text-slate-800 shrink-0" />}
+          <span className="text-slate-800 font-medium">{toast.message}</span>
+          <button onClick={() => setToast(null)} className="text-slate-400 hover:text-slate-700 ml-2">
             <X className="h-3.5 w-3.5" />
           </button>
         </div>
       )}
 
-      {/* Top Navbar */}
-      <Navbar
-        companies={companies}
-        selectedCompany={selectedCompany}
-        onSelectCompany={setSelectedCompany}
-        onOpenDemo={() => setActiveTab('demo')}
-        onOpenCopilot={() => setActiveTab('copilot')}
-        currentTheme={theme}
-        onSelectTheme={setTheme}
+      {/* Left Sidebar (White Background with Clean Nav & Dark Promo Card) */}
+      <Sidebar
+        activeTab={activeTab}
+        onSelectTab={setActiveTab}
+        openAnomaliesCount={openAnomaliesCount}
+        unreconciledCount={unreconciledCount}
       />
 
-      {/* Main Workspace Layout */}
-      <div className="flex-1 flex max-w-[1540px] w-full mx-auto">
-        {/* Left Sidebar */}
-        <Sidebar
-          activeTab={activeTab}
-          onSelectTab={setActiveTab}
-          openAnomaliesCount={openAnomaliesCount}
-          unreconciledCount={unreconciledCount}
+      {/* Right Content Area */}
+      <div className="flex-1 flex flex-col min-w-0">
+        {/* Top Header Navbar */}
+        <Navbar
+          companies={companies}
+          selectedCompany={selectedCompany}
+          onSelectCompany={setSelectedCompany}
+          onOpenDemo={() => setActiveTab('demo')}
+          onOpenCopilot={() => setActiveTab('copilot')}
         />
 
-        {/* Tab Content View */}
-        <main className="flex-1 p-4 sm:p-5 lg:p-6 overflow-y-auto">
+        {/* Tab Content Body */}
+        <main className="flex-1 p-6 pt-2 overflow-y-auto max-w-7xl w-full">
           {activeTab === 'dashboard' && (
-            <div className="space-y-5">
+            <div className="space-y-6">
+              {/* Row 1: 4 Metric Cards (Dark Hero Card + 3 White Cards) */}
               <MetricCards
                 company={selectedCompany}
                 reconciliationHealth={reconMetrics.reconciliationHealthScore}
@@ -253,20 +249,22 @@ export function App() {
                 onNavigateToTab={setActiveTab}
               />
 
+              {/* Row 2: CashFlow Bar Chart + Calendar Widget */}
+              <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+                <div className="lg:col-span-8">
+                  <CashFlowChart companyName={selectedCompany.name} />
+                </div>
+                <div className="lg:col-span-4">
+                  <ExpenseBreakdown />
+                </div>
+              </div>
+
+              {/* Row 3: Recent Transactions Table */}
               <PriorityActions
                 onNavigateToTab={setActiveTab}
                 onAutoReconcile={handleAutoResolveAll}
                 onExecutePayouts={handleExecuteBatchPayout}
               />
-
-              <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
-                <div className="lg:col-span-7">
-                  <CashFlowChart companyName={selectedCompany.name} />
-                </div>
-                <div className="lg:col-span-5">
-                  <ExpenseBreakdown />
-                </div>
-              </div>
             </div>
           )}
 
