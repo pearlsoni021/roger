@@ -45,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 const found = companies.find(c => c.id === e.target.value);
                 if (found) onSelectCompany(found);
               }}
-              className="appearance-none cursor-pointer rounded-full border border-slate-200 bg-white py-1.5 pl-8 pr-7 text-xs font-bold text-slate-800 shadow-sm hover:border-slate-300 focus:outline-none transition-colors"
+              className="appearance-none cursor-pointer rounded-full border border-slate-300 bg-white py-1.5 pl-8 pr-7 text-xs font-bold text-slate-900 shadow-sm hover:border-slate-400 focus:outline-none transition-colors"
             >
               {companies.map((comp) => (
                 <option key={comp.id} value={comp.id}>
@@ -53,23 +53,23 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </option>
               ))}
             </select>
-            <Building2 className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
-            <ChevronDown className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
+            <Building2 className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-600" />
+            <ChevronDown className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-600" />
           </div>
         </div>
 
         {/* Center/Right: Period Filter Pills & Search */}
         <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-start md:justify-end">
           {/* Timeframe Pill Switcher */}
-          <div className="flex items-center gap-1 rounded-full bg-white p-1 border border-slate-200 shadow-sm text-xs font-semibold">
+          <div className="flex items-center gap-1 rounded-full bg-white p-1 border border-slate-300 shadow-sm text-xs font-bold">
             {(['Day', 'Week', 'Month', 'Year'] as const).map((p) => (
               <button
                 key={p}
                 onClick={() => setPeriod(p)}
                 className={`rounded-full px-3 py-1 transition-all ${
                   period === p
-                    ? 'bg-[#2D323B] text-white font-bold shadow-sm'
-                    : 'text-slate-500 hover:text-slate-900'
+                    ? 'bg-[#242831] text-white font-extrabold shadow-sm'
+                    : 'text-slate-700 hover:text-slate-950 font-bold'
                 }`}
               >
                 {p}
@@ -78,8 +78,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Date Range Pill */}
-          <div className="hidden xl:flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-700 border border-slate-200 shadow-sm">
-            <Calendar className="h-3.5 w-3.5 text-slate-400" />
+          <div className="hidden xl:flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-xs font-bold text-slate-800 border border-slate-300 shadow-sm">
+            <Calendar className="h-3.5 w-3.5 text-slate-600" />
             <span>1 Sep 2026 - 30 Sep 2026</span>
           </div>
 
@@ -88,36 +88,36 @@ export const Navbar: React.FC<NavbarProps> = ({
             <input
               type="text"
               placeholder="Search..."
-              className="rounded-full border border-slate-200 bg-white py-1.5 pl-8 pr-4 text-xs font-medium text-slate-800 placeholder-slate-400 shadow-sm focus:outline-none w-36 sm:w-48"
+              className="rounded-full border border-slate-300 bg-white py-1.5 pl-8 pr-4 text-xs font-bold text-slate-900 placeholder:text-slate-500 shadow-sm focus:outline-none w-36 sm:w-48"
             />
-            <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
+            <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-500" />
           </div>
 
           {/* Ask CFO Copilot Button */}
           <button
             onClick={onOpenCopilot}
-            className="flex items-center gap-1.5 rounded-full bg-[#2D323B] px-4 py-1.5 text-xs font-bold text-white hover:bg-slate-700 transition-colors shadow-sm"
+            className="flex items-center gap-1.5 rounded-full bg-[#242831] px-4 py-1.5 text-xs font-black text-white hover:bg-slate-800 transition-colors shadow-sm"
           >
             <Sparkles className="h-3.5 w-3.5 text-amber-400" />
-            <span className="text-white">CFO AI</span>
+            <span className="text-white font-extrabold">CFO AI</span>
           </button>
 
           {/* Demo Controls Button */}
           <button
             onClick={onOpenDemo}
-            className="flex items-center gap-1.5 rounded-full bg-white border border-slate-200 px-3.5 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm"
+            className="flex items-center gap-1.5 rounded-full bg-white border border-slate-300 px-3.5 py-1.5 text-xs font-bold text-slate-800 hover:bg-slate-50 transition-colors shadow-sm"
           >
-            <SlidersHorizontal className="h-3.5 w-3.5 text-slate-500" />
+            <SlidersHorizontal className="h-3.5 w-3.5 text-slate-600" />
             <span className="hidden sm:inline">Sandbox</span>
           </button>
 
           {/* Notification Bell */}
-          <button className="flex h-8 w-8 items-center justify-center rounded-full bg-white border border-slate-200 text-slate-600 shadow-sm hover:bg-slate-50">
+          <button className="flex h-8 w-8 items-center justify-center rounded-full bg-white border border-slate-300 text-slate-700 shadow-sm hover:bg-slate-50 font-bold">
             <Bell className="h-3.5 w-3.5" />
           </button>
 
           {/* User Profile Avatar */}
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2D323B] text-white font-bold text-xs shadow-sm">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#242831] text-white font-black text-xs shadow-sm">
             RP
           </div>
         </div>
