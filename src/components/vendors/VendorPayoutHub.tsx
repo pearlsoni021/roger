@@ -42,28 +42,28 @@ export const VendorPayoutHub: React.FC<VendorPayoutHubProps> = ({
     switch (status) {
       case 'PAID':
         return (
-          <span className="inline-flex items-center gap-1.5 rounded-md border border-slate-700/60 bg-slate-800/60 px-2 py-0.5 text-[11px] font-medium text-slate-300">
+          <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E6DFD5] bg-[#F5F0E6] px-2 py-0.5 text-[11px] font-medium text-[#68554A]">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
             Paid (RazorpayX)
           </span>
         );
       case 'TAX_VERIFIED':
         return (
-          <span className="inline-flex items-center gap-1.5 rounded-md border border-slate-700/60 bg-slate-800/60 px-2 py-0.5 text-[11px] font-medium text-slate-300">
+          <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E6DFD5] bg-[#F5F0E6] px-2 py-0.5 text-[11px] font-medium text-[#68554A]">
             <span className="h-1.5 w-1.5 rounded-full bg-blue-400"></span>
             TDS Verified
           </span>
         );
       case 'SCHEDULED_PAYOUT':
         return (
-          <span className="inline-flex items-center gap-1.5 rounded-md border border-slate-700/60 bg-slate-800/60 px-2 py-0.5 text-[11px] font-medium text-slate-300">
+          <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E6DFD5] bg-[#F5F0E6] px-2 py-0.5 text-[11px] font-medium text-[#68554A]">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
             Scheduled
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center gap-1 rounded-md border border-slate-800 bg-slate-900 px-2 py-0.5 text-[11px] text-slate-400">
+          <span className="inline-flex items-center gap-1 rounded-md border border-[#E6DFD5] bg-[#FCFBF8] px-2 py-0.5 text-[11px] text-[#68554A]">
             Pending
           </span>
         );
@@ -73,13 +73,13 @@ export const VendorPayoutHub: React.FC<VendorPayoutHubProps> = ({
   return (
     <div className="space-y-5">
       {/* Top Banner */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-slate-800 bg-[#111726] p-4">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-[#E6DFD5] bg-[#FCFBF8] p-4">
         <div>
           <div className="flex items-center gap-2">
-            <Receipt className="h-4 w-4 text-slate-300" />
-            <h2 className="text-sm font-semibold text-slate-100">Vendor Liabilities & Tax Compliance Hub</h2>
+            <Receipt className="h-4 w-4 text-[#68554A]" />
+            <h2 className="text-sm font-semibold text-[#2D1E17]">Vendor Liabilities & Tax Compliance Hub</h2>
           </div>
-          <p className="text-[11px] text-slate-400 mt-0.5">
+          <p className="text-[11px] text-[#68554A] mt-0.5">
             Automated <strong>Section 194C/194J TDS deductions</strong>, <strong>Penny-Drop beneficiary verification</strong>, and <strong>RazorpayX payouts</strong>.
           </p>
         </div>
@@ -87,15 +87,15 @@ export const VendorPayoutHub: React.FC<VendorPayoutHubProps> = ({
         <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={() => setIsTaxReportOpen(true)}
-            className="flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-200 hover:bg-slate-700 transition-colors"
+            className="flex items-center gap-1.5 rounded-lg border border-[#E6DFD5] bg-[#F5F0E6] px-3 py-1.5 text-xs font-medium text-[#2D1E17] hover:bg-[#E6DFD5] transition-colors"
           >
-            <FileSpreadsheet className="h-3.5 w-3.5 text-slate-400" />
+            <FileSpreadsheet className="h-3.5 w-3.5 text-[#68554A]" />
             <span>Form 26Q Report</span>
           </button>
 
           <button
             onClick={() => setIsNewInvoiceOpen(true)}
-            className="flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-200 hover:bg-slate-700 transition-colors"
+            className="flex items-center gap-1.5 rounded-lg border border-[#E6DFD5] bg-[#F5F0E6] px-3 py-1.5 text-xs font-medium text-[#2D1E17] hover:bg-[#E6DFD5] transition-colors"
           >
             <Plus className="h-3.5 w-3.5" />
             <span>Add Invoice</span>
@@ -104,7 +104,7 @@ export const VendorPayoutHub: React.FC<VendorPayoutHubProps> = ({
           {pendingInvoices.length > 0 && (
             <button
               onClick={() => setIsBatchPayoutOpen(true)}
-              className="flex items-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-medium text-white hover:bg-blue-500 transition-colors shadow-sm"
+              className="flex items-center gap-1.5 rounded-lg bg-[#A67C52] px-3.5 py-1.5 text-xs font-medium text-[#2D1E17] hover:bg-[#8F6641] transition-colors shadow-sm"
             >
               <Send className="h-3.5 w-3.5" />
               <span>Execute Payouts ({formatINR(totalPendingNetINR, { compact: true })})</span>
@@ -115,36 +115,36 @@ export const VendorPayoutHub: React.FC<VendorPayoutHubProps> = ({
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <div className="rounded-lg border border-slate-800 bg-[#0D131F] p-3">
-          <div className="text-[10px] font-medium text-slate-400 uppercase">Pending Net Payable</div>
-          <div className="text-base font-bold text-slate-100 font-mono mt-1">{formatINR(totalPendingNetINR, { compact: true })}</div>
+        <div className="rounded-lg border border-[#E6DFD5] bg-[#F5F0E6] p-3">
+          <div className="text-[10px] font-medium text-[#68554A] uppercase">Pending Net Payable</div>
+          <div className="text-base font-bold text-[#2D1E17] font-mono mt-1">{formatINR(totalPendingNetINR, { compact: true })}</div>
         </div>
-        <div className="rounded-lg border border-slate-800 bg-[#0D131F] p-3">
-          <div className="text-[10px] font-medium text-slate-400 uppercase">Total TDS Retained (Q2)</div>
-          <div className="text-base font-bold text-slate-100 font-mono mt-1">{formatINR(totalTdsDeductedINR)}</div>
+        <div className="rounded-lg border border-[#E6DFD5] bg-[#F5F0E6] p-3">
+          <div className="text-[10px] font-medium text-[#68554A] uppercase">Total TDS Retained (Q2)</div>
+          <div className="text-base font-bold text-[#2D1E17] font-mono mt-1">{formatINR(totalTdsDeductedINR)}</div>
         </div>
-        <div className="rounded-lg border border-slate-800 bg-[#0D131F] p-3">
-          <div className="text-[10px] font-medium text-slate-400 uppercase">Registered Entities</div>
-          <div className="text-base font-bold text-slate-100 font-mono mt-1">{vendors.length} Vendors</div>
+        <div className="rounded-lg border border-[#E6DFD5] bg-[#F5F0E6] p-3">
+          <div className="text-[10px] font-medium text-[#68554A] uppercase">Registered Entities</div>
+          <div className="text-base font-bold text-[#2D1E17] font-mono mt-1">{vendors.length} Vendors</div>
         </div>
-        <div className="rounded-lg border border-slate-800 bg-[#0D131F] p-3">
-          <div className="text-[10px] font-medium text-slate-400 uppercase">Penny-Drop Validation</div>
-          <div className="text-base font-bold text-slate-100 font-mono mt-1 flex items-center gap-1">
+        <div className="rounded-lg border border-[#E6DFD5] bg-[#F5F0E6] p-3">
+          <div className="text-[10px] font-medium text-[#68554A] uppercase">Penny-Drop Validation</div>
+          <div className="text-base font-bold text-[#2D1E17] font-mono mt-1 flex items-center gap-1">
             <ShieldCheck className="h-4 w-4 text-emerald-500" /> 100% Passed
           </div>
         </div>
       </div>
 
       {/* Invoices Table */}
-      <div className="rounded-xl border border-slate-800 bg-[#111726] overflow-hidden">
-        <div className="border-b border-slate-800/80 p-3.5 flex items-center justify-between">
-          <h3 className="text-xs font-semibold text-slate-200">Vendor Invoices & TDS Allocation Ledger</h3>
-          <span className="text-[11px] text-slate-400 font-mono">{invoices.length} invoices recorded</span>
+      <div className="rounded-xl border border-[#E6DFD5] bg-[#FCFBF8] overflow-hidden">
+        <div className="border-b border-[#E6DFD5] p-3.5 flex items-center justify-between">
+          <h3 className="text-xs font-semibold text-[#2D1E17]">Vendor Invoices & TDS Allocation Ledger</h3>
+          <span className="text-[11px] text-[#68554A] font-mono">{invoices.length} invoices recorded</span>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="border-b border-slate-800 bg-slate-900/60 text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+            <thead className="border-b border-[#E6DFD5] bg-[#FCFBF8] text-[11px] font-medium text-[#68554A] uppercase tracking-wider">
               <tr>
                 <th className="py-2.5 px-3.5">Vendor & Invoice #</th>
                 <th className="py-2.5 px-3.5">Base Amount</th>
@@ -158,30 +158,30 @@ export const VendorPayoutHub: React.FC<VendorPayoutHubProps> = ({
             </thead>
             <tbody className="divide-y divide-slate-800/60 font-mono">
               {invoices.map((inv) => (
-                <tr key={inv.id} className="hover:bg-slate-800/40 transition-colors">
+                <tr key={inv.id} className="hover:bg-[#F5F0E6] transition-colors">
                   <td className="py-3 px-3.5 font-sans">
-                    <div className="font-medium text-slate-200">{inv.vendorName}</div>
-                    <div className="text-[10px] font-mono text-slate-400">{inv.invoiceNumber}</div>
+                    <div className="font-medium text-[#2D1E17]">{inv.vendorName}</div>
+                    <div className="text-[10px] font-mono text-[#68554A]">{inv.invoiceNumber}</div>
                   </td>
-                  <td className="py-3 px-3.5 text-slate-300">
+                  <td className="py-3 px-3.5 text-[#68554A]">
                     {formatINR(inv.baseAmountINR)}
                   </td>
-                  <td className="py-3 px-3.5 text-slate-400">
+                  <td className="py-3 px-3.5 text-[#68554A]">
                     +{formatINR(inv.gstAmountINR)}
                   </td>
-                  <td className="py-3 px-3.5 font-sans text-slate-300">
-                    <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-mono border border-slate-700">
+                  <td className="py-3 px-3.5 font-sans text-[#68554A]">
+                    <span className="rounded bg-[#F5F0E6] px-1.5 py-0.5 text-[10px] font-mono border border-[#E6DFD5]">
                       {inv.tdsSection}
                     </span>
-                    <span className="text-slate-500 text-[10px] ml-1">({inv.tdsRatePercent}%)</span>
+                    <span className="text-[#68554A] text-[10px] ml-1">({inv.tdsRatePercent}%)</span>
                   </td>
-                  <td className="py-3 px-3.5 text-slate-400">
+                  <td className="py-3 px-3.5 text-[#68554A]">
                     -{formatINR(inv.tdsAmountINR)}
                   </td>
-                  <td className="py-3 px-3.5 text-slate-100 font-bold">
+                  <td className="py-3 px-3.5 text-[#2D1E17] font-bold">
                     {formatINR(inv.netPayableINR)}
                   </td>
-                  <td className="py-3 px-3.5 text-slate-400 font-sans text-[11px]">
+                  <td className="py-3 px-3.5 text-[#68554A] font-sans text-[11px]">
                     {formatDate(inv.dueDate)}
                   </td>
                   <td className="py-3 px-3.5 text-right font-sans">

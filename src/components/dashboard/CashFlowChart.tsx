@@ -15,23 +15,23 @@ interface CashFlowChartProps {
 }
 
 const CASHFLOW_DATA = [
-  { month: 'Jan', value: 7.2, fill: '#1E3A5F' },
-  { month: 'Feb', value: 6.4, fill: '#1E3A5F' },
-  { month: 'Mar', value: 9.8, fill: '#C9A84C' }, // Highlighted active bar
-  { month: 'Apr', value: 5.1, fill: '#1E3A5F' },
-  { month: 'May', value: 8.6, fill: '#1E3A5F' },
-  { month: 'Jun', value: 3.5, fill: '#1E3A5F' },
+  { month: 'Jan', value: 7.2, fill: '#D7CCC8' },
+  { month: 'Feb', value: 6.4, fill: '#D7CCC8' },
+  { month: 'Mar', value: 9.8, fill: '#A67C52' }, // Highlighted active bar
+  { month: 'Apr', value: 5.1, fill: '#D7CCC8' },
+  { month: 'May', value: 8.6, fill: '#D7CCC8' },
+  { month: 'Jun', value: 3.5, fill: '#D7CCC8' },
 ];
 
 export const CashFlowChart: React.FC<CashFlowChartProps> = () => {
   return (
-    <div className="rounded-xl bg-[#0F1629] border border-[#1E293B] p-6 shadow-sm flex flex-col justify-between h-full min-h-[320px]">
+    <div className="rounded-xl bg-[#FCFBF8] border border-[#E6DFD5] p-6 shadow-sm flex flex-col justify-between h-full min-h-[320px]">
       <div className="flex items-center justify-between pb-4">
         <div>
-          <h3 className="text-base font-semibold text-white tracking-tight">Total Revenue & Cashflow</h3>
-          <p className="text-xs font-normal text-slate-500 mt-0.5">Razorpay Gateway Gross Settlements (₹ in Lakhs)</p>
+          <h3 className="text-base font-semibold text-[#2D1E17] tracking-tight">Total Revenue & Cashflow</h3>
+          <p className="text-xs font-normal text-[#68554A] mt-0.5">Razorpay Gateway Gross Settlements (₹ in Lakhs)</p>
         </div>
-        <button className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-slate-400 hover:bg-white/10 transition-colors font-medium">
+        <button className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F2EBE1] text-[#68554A] hover:bg-[#E6DFD5] transition-colors font-medium">
           <ArrowUpRight className="h-4 w-4" />
         </button>
       </div>
@@ -41,7 +41,7 @@ export const CashFlowChart: React.FC<CashFlowChartProps> = () => {
           <BarChart data={CASHFLOW_DATA} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <XAxis 
               dataKey="month" 
-              stroke="#475569" 
+              stroke="#938278" 
               fontSize={11} 
               fontWeight={400}
               tickLine={false} 
@@ -49,7 +49,7 @@ export const CashFlowChart: React.FC<CashFlowChartProps> = () => {
               dy={8}
             />
             <YAxis 
-              stroke="#475569" 
+              stroke="#938278" 
               fontSize={11} 
               fontWeight={400}
               tickLine={false} 
@@ -59,13 +59,13 @@ export const CashFlowChart: React.FC<CashFlowChartProps> = () => {
             <Tooltip
               cursor={{ fill: 'transparent' }}
               contentStyle={{
-                backgroundColor: '#111827',
-                borderColor: 'rgba(201,168,76,0.3)',
+                backgroundColor: '#FCFBF8',
+                borderColor: '#E6DFD5',
                 borderRadius: '8px',
                 fontSize: '12px',
                 fontWeight: 500,
-                color: '#F1F5F9',
-                boxShadow: '0 8px 16px rgba(0,0,0,0.2)',
+                color: '#2D1E17',
+                boxShadow: '0 8px 16px rgba(0,0,0,0.05)',
               }}
               formatter={(value: any) => [`₹${value} Lakhs`, 'Settlement Volume']}
             />
