@@ -30,11 +30,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [period, setPeriod] = useState<'Day' | 'Week' | 'Month' | 'Year'>('Month');
 
   return (
-    <header className="w-full bg-[#EDEDF0] py-4 px-6">
+    <header className="w-full bg-[#0C1222] py-4 px-6">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         {/* Left: Page Title */}
         <div className="flex items-center gap-3">
-          <h1 className="text-2xl font-black tracking-tight text-slate-900">
+          <h1 className="text-2xl font-semibold tracking-tight text-white">
             Dashboard
           </h1>
           <div className="relative hidden sm:block">
@@ -45,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 const found = companies.find(c => c.id === e.target.value);
                 if (found) onSelectCompany(found);
               }}
-              className="appearance-none cursor-pointer rounded-full border border-slate-300 bg-white py-1.5 pl-8 pr-7 text-xs font-bold text-slate-900 shadow-sm hover:border-slate-400 focus:outline-none transition-colors"
+              className="appearance-none cursor-pointer rounded-lg border border-[#1E293B] bg-[#0F1629] py-1.5 pl-8 pr-7 text-xs font-normal text-slate-300 hover:border-[#C9A84C] focus:outline-none transition-colors"
             >
               {companies.map((comp) => (
                 <option key={comp.id} value={comp.id}>
@@ -53,23 +53,23 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </option>
               ))}
             </select>
-            <Building2 className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-600" />
-            <ChevronDown className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-600" />
+            <Building2 className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-500" />
+            <ChevronDown className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-500" />
           </div>
         </div>
 
         {/* Center/Right: Period Filter Pills & Search */}
         <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-start md:justify-end">
           {/* Timeframe Pill Switcher */}
-          <div className="flex items-center gap-1 rounded-full bg-white p-1 border border-slate-300 shadow-sm text-xs font-bold">
+          <div className="flex items-center gap-1 rounded-lg bg-[#0F1629] p-1 border border-[#1E293B] text-xs font-normal">
             {(['Day', 'Week', 'Month', 'Year'] as const).map((p) => (
               <button
                 key={p}
                 onClick={() => setPeriod(p)}
-                className={`rounded-full px-3 py-1 transition-all ${
+                className={`rounded-md px-3 py-1 transition-all ${
                   period === p
-                    ? 'bg-[#242831] text-white font-extrabold shadow-sm'
-                    : 'text-slate-700 hover:text-slate-950 font-bold'
+                    ? 'bg-[#C9A84C] text-[#0C1222] font-medium'
+                    : 'text-slate-400 font-normal hover:text-white'
                 }`}
               >
                 {p}
@@ -78,8 +78,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Date Range Pill */}
-          <div className="hidden xl:flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-xs font-bold text-slate-800 border border-slate-300 shadow-sm">
-            <Calendar className="h-3.5 w-3.5 text-slate-600" />
+          <div className="hidden xl:flex items-center gap-1.5 rounded-lg bg-[#0F1629] px-3.5 py-1.5 text-xs font-normal text-slate-400 border border-[#1E293B]">
+            <Calendar className="h-3.5 w-3.5 text-slate-400" />
             <span>1 Sep 2026 - 30 Sep 2026</span>
           </div>
 
@@ -88,7 +88,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <input
               type="text"
               placeholder="Search..."
-              className="rounded-full border border-slate-300 bg-white py-1.5 pl-8 pr-4 text-xs font-bold text-slate-900 placeholder:text-slate-500 shadow-sm focus:outline-none w-36 sm:w-48"
+              className="rounded-lg border border-[#1E293B] bg-[#0F1629] py-1.5 pl-8 pr-4 text-xs font-normal text-slate-300 placeholder:text-slate-500 focus:outline-none w-36 sm:w-48"
             />
             <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-500" />
           </div>
@@ -96,28 +96,28 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Ask CFO Copilot Button */}
           <button
             onClick={onOpenCopilot}
-            className="flex items-center gap-1.5 rounded-full bg-[#242831] px-4 py-1.5 text-xs font-black text-white hover:bg-slate-800 transition-colors shadow-sm"
+            className="flex items-center gap-1.5 rounded-lg bg-[#C9A84C] px-4 py-1.5 text-xs font-medium text-[#0C1222] hover:bg-[#D4B65E] transition-colors"
           >
-            <Sparkles className="h-3.5 w-3.5 text-amber-400" />
-            <span className="text-white font-extrabold">CFO AI</span>
+            <Sparkles className="h-3.5 w-3.5 text-[#0C1222]" />
+            <span>CFO AI</span>
           </button>
 
           {/* Demo Controls Button */}
           <button
             onClick={onOpenDemo}
-            className="flex items-center gap-1.5 rounded-full bg-white border border-slate-300 px-3.5 py-1.5 text-xs font-bold text-slate-800 hover:bg-slate-50 transition-colors shadow-sm"
+            className="flex items-center gap-1.5 rounded-lg bg-[#0F1629] border border-[#1E293B] px-3.5 py-1.5 text-xs font-normal text-slate-400 hover:text-white transition-colors"
           >
-            <SlidersHorizontal className="h-3.5 w-3.5 text-slate-600" />
+            <SlidersHorizontal className="h-3.5 w-3.5 text-slate-400" />
             <span className="hidden sm:inline">Sandbox</span>
           </button>
 
           {/* Notification Bell */}
-          <button className="flex h-8 w-8 items-center justify-center rounded-full bg-white border border-slate-300 text-slate-700 shadow-sm hover:bg-slate-50 font-bold">
+          <button className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0F1629] border border-[#1E293B] text-slate-400 hover:text-white transition-colors font-normal">
             <Bell className="h-3.5 w-3.5" />
           </button>
 
           {/* User Profile Avatar */}
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#242831] text-white font-black text-xs shadow-sm">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0F1629] border-2 border-[#C9A84C] text-[#C9A84C] font-medium text-xs">
             RP
           </div>
         </div>
