@@ -45,18 +45,18 @@ export const LiveReconcileLogModal: React.FC<LiveReconcileLogModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4">
-      <div className="w-full max-w-2xl rounded-xl border border-slate-800 bg-[#111726] p-6 shadow-xl">
+      <div className="w-full max-w-2xl rounded-xl border border-[#E2DFD8] bg-[#111726] p-6 shadow-xl">
         {/* Modal Header */}
-        <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div className="flex items-center justify-between border-b border-[#E2DFD8] pb-4">
           <div className="flex items-center gap-2.5">
-            <div className="flex h-7 w-7 items-center justify-center rounded bg-slate-800 text-slate-300">
+            <div className="flex h-7 w-7 items-center justify-center rounded bg-[#F7F6F2] text-[#1C2331]">
               <Terminal className="h-4 w-4" />
             </div>
             <div>
               <h3 className="text-sm font-semibold text-slate-100 flex items-center gap-2">
                 <span>Autonomous 3-Way Reconciliation Stream</span>
                 {!isFinished ? (
-                  <span className="flex items-center gap-1 text-[11px] font-normal text-slate-400">
+                  <span className="flex items-center gap-1 text-[11px] font-normal text-[#5E6C84]">
                     <Loader2 className="h-3 w-3 animate-spin" /> In Progress
                   </span>
                 ) : (
@@ -65,12 +65,12 @@ export const LiveReconcileLogModal: React.FC<LiveReconcileLogModalProps> = ({
                   </span>
                 )}
               </h3>
-              <p className="text-xs text-slate-400">Cross-referencing Gateway Settlements, ICICI MT940 logs, and ERP Invoices</p>
+              <p className="text-xs text-[#5E6C84]">Cross-referencing Gateway Settlements, ICICI MT940 logs, and ERP Invoices</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="rounded-md p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white transition-colors"
+            className="rounded-md p-1.5 text-[#5E6C84] hover:bg-[#F7F6F2] hover:text-[#1C2331] transition-colors"
           >
             <X className="h-4 w-4" />
           </button>
@@ -85,11 +85,11 @@ export const LiveReconcileLogModal: React.FC<LiveReconcileLogModalProps> = ({
                 key={step.id}
                 className={`rounded-lg border p-3 transition-colors ${
                   isCurrent
-                    ? 'border-slate-700 bg-slate-900/90 text-slate-200'
-                    : 'border-slate-800/80 bg-[#0D131F] text-slate-300'
+                    ? 'border-[#E2DFD8] bg-[#FFFFFF]/90 text-[#1C2331]'
+                    : 'border-[#E2DFD8]/80 bg-[#0D131F] text-[#1C2331]'
                 }`}
               >
-                <div className="flex items-center justify-between text-[10px] text-slate-500 mb-1">
+                <div className="flex items-center justify-between text-[10px] text-[#5E6C84] mb-1">
                   <span className="text-blue-400 font-medium">
                     {step.agentRole}
                   </span>
@@ -97,19 +97,19 @@ export const LiveReconcileLogModal: React.FC<LiveReconcileLogModalProps> = ({
                 </div>
                 <div className="flex items-start gap-2">
                   {isCurrent ? (
-                    <Loader2 className="h-3.5 w-3.5 shrink-0 text-slate-400 animate-spin mt-0.5" />
+                    <Loader2 className="h-3.5 w-3.5 shrink-0 text-[#5E6C84] animate-spin mt-0.5" />
                   ) : (
                     <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-emerald-500 mt-0.5" />
                   )}
-                  <p className="text-xs font-sans leading-relaxed text-slate-300">
+                  <p className="text-xs font-sans leading-relaxed text-[#1C2331]">
                     {step.thought}
                   </p>
                 </div>
 
                 {step.toolCall && (
-                  <div className="mt-2 rounded bg-slate-950 p-2 text-[10px] font-mono border border-slate-800/80 text-slate-400">
-                    <span className="text-slate-300">TOOL</span>: {step.toolCall.toolName}(
-                    <span className="text-slate-400">{JSON.stringify(step.toolCall.input)}</span>
+                  <div className="mt-2 rounded bg-slate-950 p-2 text-[10px] font-mono border border-[#E2DFD8]/80 text-[#5E6C84]">
+                    <span className="text-[#1C2331]">TOOL</span>: {step.toolCall.toolName}(
+                    <span className="text-[#5E6C84]">{JSON.stringify(step.toolCall.input)}</span>
                     )
                   </div>
                 )}
@@ -119,8 +119,8 @@ export const LiveReconcileLogModal: React.FC<LiveReconcileLogModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="mt-5 flex items-center justify-between border-t border-slate-800 pt-4">
-          <span className="text-xs text-slate-400">
+        <div className="mt-5 flex items-center justify-between border-t border-[#E2DFD8] pt-4">
+          <span className="text-xs text-[#5E6C84]">
             Double-entry balancing ledger synchronized
           </span>
           <button
@@ -129,7 +129,7 @@ export const LiveReconcileLogModal: React.FC<LiveReconcileLogModalProps> = ({
             className={`rounded-lg px-4 py-1.5 text-xs font-medium transition-colors ${
               isFinished
                 ? 'bg-blue-600 text-white hover:bg-blue-500 shadow-sm'
-                : 'bg-slate-800 text-slate-500 cursor-not-allowed'
+                : 'bg-[#F7F6F2] text-[#5E6C84] cursor-not-allowed'
             }`}
           >
             {isFinished ? 'View Results' : 'Reconciling...'}

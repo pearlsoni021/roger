@@ -13,12 +13,12 @@ interface CashFlowChartProps {
 }
 
 const CASHFLOW_DATA = [
-  { month: 'Jan', value: 800000 },
-  { month: 'Feb', value: 850000 },
-  { month: 'Mar', value: 820000 },
-  { month: 'Apr', value: 950000 },
-  { month: 'May', value: 910000 },
-  { month: 'Jun', value: 1040000 },
+  { month: 'Jan', value: 720000 },
+  { month: 'Feb', value: 640000 },
+  { month: 'Mar', value: 980000 },
+  { month: 'Apr', value: 510000 },
+  { month: 'May', value: 860000 },
+  { month: 'Jun', value: 350000 },
   { month: 'Jul', value: 1100000 },
   { month: 'Aug', value: 1080000 },
   { month: 'Sep', value: 1240560 },
@@ -28,11 +28,11 @@ export const CashFlowChart: React.FC<CashFlowChartProps> = () => {
   return (
     <div className="rounded-lg bg-[#FFFFFF] border border-[#E2DFD8] p-6 flex flex-col justify-between h-full min-h-[320px]">
       <div>
-        <h3 className="font-serif text-[#1C2331] text-lg mb-4">Net Worth</h3>
+        <h3 className="font-serif text-[#1C2331] text-lg mb-4">Total Revenue & Cashflow</h3>
         <div className="text-4xl font-serif text-[#1C2331] mb-1">
-          $1,240,560.80
+          ₹12,40,560.80
         </div>
-        <div className="text-sm font-medium text-[#4B6359]">
+        <div className="text-sm font-medium text-[#3A5A40]">
           +2.1% this month
         </div>
       </div>
@@ -61,7 +61,7 @@ export const CashFlowChart: React.FC<CashFlowChartProps> = () => {
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
                 color: '#1C2331',
               }}
-              formatter={(val: any) => [`$${Number(val).toLocaleString()}`, 'Net Worth']}
+              formatter={(val: any) => [`₹${Number(val).toLocaleString()}`, 'Revenue']}
               labelStyle={{ color: '#5E6C84' }}
             />
           </AreaChart>

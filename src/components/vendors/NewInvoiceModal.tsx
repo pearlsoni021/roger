@@ -68,20 +68,20 @@ export const NewInvoiceModal: React.FC<NewInvoiceModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4">
-      <div className="w-full max-w-lg rounded-xl border border-slate-800 bg-[#111726] p-6 shadow-xl">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-3.5">
+      <div className="w-full max-w-lg rounded-xl border border-[#E2DFD8] bg-[#111726] p-6 shadow-xl">
+        <div className="flex items-center justify-between border-b border-[#E2DFD8] pb-3.5">
           <h3 className="text-sm font-semibold text-slate-100 flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-blue-400" />
             <span>Ingest Vendor Invoice</span>
           </h3>
-          <button onClick={onClose} className="text-slate-400 hover:text-white">
+          <button onClick={onClose} className="text-[#5E6C84] hover:text-[#1C2331]">
             <X className="h-4 w-4" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="mt-4 space-y-3 text-xs">
           <div>
-            <label className="block text-slate-400 mb-1">Select Vendor Entity</label>
+            <label className="block text-[#5E6C84] mb-1">Select Vendor Entity</label>
             <select
               value={vendorId}
               onChange={(e) => {
@@ -89,7 +89,7 @@ export const NewInvoiceModal: React.FC<NewInvoiceModalProps> = ({
                 const v = vendors.find(item => item.id === e.target.value);
                 if (v) setTdsSection(v.applicableTdsSection);
               }}
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 p-2 text-slate-200"
+              className="w-full rounded-lg border border-[#E2DFD8] bg-[#FFFFFF] p-2 text-[#1C2331]"
             >
               {vendors.map(v => (
                 <option key={v.id} value={v.id}>{v.name} ({v.category})</option>
@@ -99,35 +99,35 @@ export const NewInvoiceModal: React.FC<NewInvoiceModalProps> = ({
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-slate-400 mb-1">Invoice Number</label>
+              <label className="block text-[#5E6C84] mb-1">Invoice Number</label>
               <input
                 type="text"
                 placeholder="e.g. AWS-2026-991"
                 value={invoiceNumber}
                 onChange={(e) => setInvoiceNumber(e.target.value)}
                 required
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 p-2 text-slate-200"
+                className="w-full rounded-lg border border-[#E2DFD8] bg-[#FFFFFF] p-2 text-[#1C2331]"
               />
             </div>
             <div>
-              <label className="block text-slate-400 mb-1">Base Amount (Excl. GST)</label>
+              <label className="block text-[#5E6C84] mb-1">Base Amount (Excl. GST)</label>
               <input
                 type="number"
                 value={baseAmount}
                 onChange={(e) => setBaseAmount(Number(e.target.value))}
                 required
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 p-2 text-slate-200"
+                className="w-full rounded-lg border border-[#E2DFD8] bg-[#FFFFFF] p-2 text-[#1C2331]"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-slate-400 mb-1">GST Rate (%)</label>
+              <label className="block text-[#5E6C84] mb-1">GST Rate (%)</label>
               <select
                 value={gstRate}
                 onChange={(e) => setGstRate(Number(e.target.value))}
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 p-2 text-slate-200"
+                className="w-full rounded-lg border border-[#E2DFD8] bg-[#FFFFFF] p-2 text-[#1C2331]"
               >
                 <option value={18}>18% (Standard Services)</option>
                 <option value={12}>12%</option>
@@ -136,11 +136,11 @@ export const NewInvoiceModal: React.FC<NewInvoiceModalProps> = ({
               </select>
             </div>
             <div>
-              <label className="block text-slate-400 mb-1">Applicable TDS Section</label>
+              <label className="block text-[#5E6C84] mb-1">Applicable TDS Section</label>
               <select
                 value={tdsSection}
                 onChange={(e) => setTdsSection(e.target.value as TdsSection)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 p-2 text-slate-200"
+                className="w-full rounded-lg border border-[#E2DFD8] bg-[#FFFFFF] p-2 text-[#1C2331]"
               >
                 <option value="194J_TECH">Section 194J (Tech/Cloud @ 2%)</option>
                 <option value="194C">Section 194C (Contractors @ 1%/2%)</option>
@@ -152,30 +152,30 @@ export const NewInvoiceModal: React.FC<NewInvoiceModalProps> = ({
           </div>
 
           {/* Real-time Calculation Summary Box */}
-          <div className="rounded-lg border border-slate-800 bg-[#0D131F] p-3 space-y-1.5 font-mono">
-            <div className="flex justify-between text-slate-400">
+          <div className="rounded-lg border border-[#E2DFD8] bg-[#0D131F] p-3 space-y-1.5 font-mono">
+            <div className="flex justify-between text-[#5E6C84]">
               <span>Base Amount:</span>
-              <span className="text-slate-200">{formatINR(taxCalc.baseAmountINR)}</span>
+              <span className="text-[#1C2331]">{formatINR(taxCalc.baseAmountINR)}</span>
             </div>
-            <div className="flex justify-between text-slate-400">
+            <div className="flex justify-between text-[#5E6C84]">
               <span>+ GST ({taxCalc.gstRatePercent}%):</span>
-              <span className="text-slate-300">+{formatINR(taxCalc.gstAmountINR)}</span>
+              <span className="text-[#1C2331]">+{formatINR(taxCalc.gstAmountINR)}</span>
             </div>
-            <div className="flex justify-between text-slate-400 border-b border-slate-800 pb-1">
+            <div className="flex justify-between text-[#5E6C84] border-b border-[#E2DFD8] pb-1">
               <span>- TDS ({taxCalc.tdsRatePercent}% on Base):</span>
-              <span className="text-slate-300">-{formatINR(taxCalc.tdsAmountINR)}</span>
+              <span className="text-[#1C2331]">-{formatINR(taxCalc.tdsAmountINR)}</span>
             </div>
             <div className="flex justify-between font-bold text-xs pt-0.5">
-              <span className="text-slate-300 font-sans">Net Payable via RazorpayX:</span>
+              <span className="text-[#1C2331] font-sans">Net Payable via RazorpayX:</span>
               <span className="text-slate-100">{formatINR(taxCalc.netPayableINR)}</span>
             </div>
           </div>
 
-          <div className="flex justify-end gap-2 pt-2 border-t border-slate-800">
+          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2DFD8]">
             <button
               type="button"
               onClick={onClose}
-              className="rounded-lg border border-slate-700 bg-slate-800 px-3.5 py-1.5 text-slate-300 hover:bg-slate-700"
+              className="rounded-lg border border-[#E2DFD8] bg-[#F7F6F2] px-3.5 py-1.5 text-[#1C2331] hover:bg-[#E2DFD8]"
             >
               Cancel
             </button>

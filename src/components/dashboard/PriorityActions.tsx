@@ -1,10 +1,11 @@
 import React from 'react';
 
 const TRANSACTIONS = [
-  { date: '02/26/23', description: 'Whole Foods Market', category: 'Category', amount: -230.00 },
-  { date: '02/26/23', description: 'Salary Deposit', category: 'Salary', amount: 200.00 },
-  { date: '02/26/23', description: 'Adobe Systems', category: 'Category', amount: 100.00 },
-  { date: '02/26/23', description: 'Whole Foods Market', category: 'Category', amount: -50.00 },
+  { date: 'Oct 26', description: 'Razorpay Daily Settlement', category: 'Revenue', amount: 124000.50 },
+  { date: 'Oct 25', description: 'AWS Cloud Services', category: 'Cloud', amount: -45000.00 },
+  { date: 'Oct 25', description: 'Google Workspace', category: 'Software', amount: -12500.00 },
+  { date: 'Oct 24', description: 'Razorpay Daily Settlement', category: 'Revenue', amount: 98000.00 },
+  { date: 'Oct 23', description: 'GrowthMatrix Marketing', category: 'Vendor', amount: -52000.00 },
 ];
 
 export const PriorityActions: React.FC<any> = () => {
@@ -16,10 +17,10 @@ export const PriorityActions: React.FC<any> = () => {
         <table className="w-full text-left border-collapse">
           <thead>
             <tr>
-              <th className="py-2 border-b border-[#E2DFD8] text-[#1C2331] text-xs font-semibold">Date</th>
-              <th className="py-2 border-b border-[#E2DFD8] text-[#1C2331] text-xs font-semibold">Description</th>
-              <th className="py-2 border-b border-[#E2DFD8] text-[#1C2331] text-xs font-semibold">Category</th>
-              <th className="py-2 border-b border-[#E2DFD8] text-[#1C2331] text-xs font-semibold text-right">Amount</th>
+              <th className="py-2 border-b border-[#E2DFD8] text-[#1C2331] text-[11px] uppercase tracking-wider font-semibold">Date</th>
+              <th className="py-2 border-b border-[#E2DFD8] text-[#1C2331] text-[11px] uppercase tracking-wider font-semibold">Description</th>
+              <th className="py-2 border-b border-[#E2DFD8] text-[#1C2331] text-[11px] uppercase tracking-wider font-semibold">Category</th>
+              <th className="py-2 border-b border-[#E2DFD8] text-[#1C2331] text-[11px] uppercase tracking-wider font-semibold text-right">Amount (₹)</th>
             </tr>
           </thead>
           <tbody>
@@ -28,8 +29,8 @@ export const PriorityActions: React.FC<any> = () => {
                 <td className="py-3 text-[13px] text-[#5E6C84]">{tx.date}</td>
                 <td className="py-3 text-[13px] text-[#1C2331]">{tx.description}</td>
                 <td className="py-3 text-[13px] text-[#1C2331]">{tx.category}</td>
-                <td className={`py-3 text-[13px] font-medium text-right ${tx.amount > 0 ? 'text-[#819A88]' : 'text-[#C86A58]'}`}>
-                  {tx.amount > 0 ? '+' : ''}{tx.amount > 0 ? `$${tx.amount.toFixed(2)}` : `-$${Math.abs(tx.amount).toFixed(2)}`}
+                <td className={`py-3 text-[13px] font-medium text-right ${tx.amount > 0 ? 'text-[#3A5A40]' : 'text-[#A34A4A]'}`}>
+                  {tx.amount > 0 ? '+' : ''}₹{Math.abs(tx.amount).toLocaleString()}
                 </td>
               </tr>
             ))}
