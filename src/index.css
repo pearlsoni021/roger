@@ -1,19 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 @import "tailwindcss";
 
 @layer base {
   :root {
-    --bg-canvas: #F5F0E6;
+    --bg-canvas: #F7F6F2;
     --bg-sidebar: #FFFFFF;
     --bg-card: #FFFFFF;
-    --bg-card-hover: #F9F7F4;
-    --border-card: #EAEAEA;
-    --border-subtle: #E5E5E5;
-    --text-primary: #2E2E2E;
-    --text-secondary: #6B6B6B;
+    --bg-card-hover: #F7F6F2;
+    --border-card: #E2DFD8;
+    --border-subtle: #E2DFD8;
+    --text-primary: #1C2331;
+    --text-secondary: #5E6C84;
     --text-muted: #938278;
-    --accent-brown: #8C6239;
-    --accent-brown-hover: #704E2E;
-    --accent-light: #F9F3EB;
+    --accent-sage: #3A5A40;
+    --accent-sage-hover: #2A402D;
+    --accent-navy: #1E3A8A;
+    --accent-light: #F0F4F8;
     
     /* Vintage Status Colors */
     --status-sage: #4CAF50;
@@ -39,27 +41,39 @@
 }
 
 /* =========================================================================
-   AUTHENTIC PREMIUM THEME
-   Soft Beige + Pure White + Rich Bronze
+   EDITORIAL HERITAGE THEME
+   Warm Alabaster + Sage Green + Classic Navy + Lora Serif
    ========================================================================= */
 
 body, #root {
-  background-color: #F5F0E6 !important;
-  color: #2E2E2E !important;
+  background-color: #F7F6F2 !important;
+  color: #1C2331 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* ── Typography Override for Editorial Feel ── */
+h1, h2, h3, .text-3xl, .text-2xl, .text-xl, .font-mono {
+  font-family: 'Lora', serif !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* Numbers in charts and large displays */
+.text-3xl, .text-2xl {
+  font-weight: 500 !important;
 }
 
 /* Sidebar & Header */
 aside {
-  background-color: #FFFFFF !important;
-  border-right: 1px solid #EAEAEA !important;
+  background-color: #F7F6F2 !important;
+  border-right: 1px solid #E2DFD8 !important;
 }
 
 header {
-  background-color: #F5F0E6 !important;
+  background-color: #F7F6F2 !important;
   border-bottom: none !important;
 }
 
-/* ── Card System ── */
+/* ── Card System (Flat, Delicate Borders) ── */
 .glass-card,
 .bg-\[\#0F1629\],
 .bg-\[\#0A0F1C\],
@@ -69,10 +83,10 @@ header {
 .bg-\[\#FCFBF8\],
 .bg-\[\#FFFFFF\] {
   background-color: #FFFFFF !important;
-  border: 1px solid #EAEAEA !important;
-  border-radius: 0.75rem !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
-  color: #2E2E2E !important;
+  border: 1px solid #E2DFD8 !important;
+  border-radius: 0.5rem !important;
+  box-shadow: none !important; /* Flat design */
+  color: #1C2331 !important;
 }
 
 /* Sub-panels and subtle hovers */
@@ -81,8 +95,9 @@ header {
 .hover\:bg-white\/10:hover,
 .hover\:bg-white\/\[0\.02\]:hover,
 .hover\:bg-\[\#E6DFD5\]:hover,
-.hover\:bg-\[\#DFD4C5\]:hover {
-  background-color: #F9F7F4 !important;
+.hover\:bg-\[\#DFD4C5\]:hover,
+.hover\:bg-\[\#F9F7F4\]:hover {
+  background-color: #F7F6F2 !important;
 }
 
 /* ── Borders ── */
@@ -90,9 +105,11 @@ header {
 .border-slate-800,
 .border-slate-700,
 .border-\[\#E6DFD5\],
+.border-\[\#EAEAEA\],
 .divide-\[\#1E293B\] > :not([hidden]) ~ :not([hidden]),
-.divide-\[\#E6DFD5\] > :not([hidden]) ~ :not([hidden]) {
-  border-color: #EAEAEA !important;
+.divide-\[\#E6DFD5\] > :not([hidden]) ~ :not([hidden]),
+.divide-\[\#EAEAEA\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #E2DFD8 !important;
 }
 
 /* ── Typography on Cards ── */
@@ -101,58 +118,37 @@ header {
 .text-slate-100,
 .text-slate-200,
 .text-slate-300,
-.text-\[\#2D1E17\] {
-  color: #2E2E2E !important;
+.text-\[\#2D1E17\],
+.text-\[\#2E2E2E\] {
+  color: #1C2331 !important;
 }
 
 .text-slate-400,
 .text-slate-500,
 .text-\[\#94A3B8\],
-.text-\[\#68554A\] {
-  color: #6B6B6B !important;
+.text-\[\#68554A\],
+.text-\[\#6B6B6B\] {
+  color: #5E6C84 !important;
 }
 
-/* Exceptions for inverted areas if any */
+/* Exceptions for inverted areas */
 .bg-\[\#A67C52\] .text-white,
 .bg-\[\#A67C52\] .text-\[\#0C1222\],
 .bg-\[\#8C6239\] .text-\[\#FCFBF8\],
-.bg-\[\#8C6239\] .text-\[\#FFFFFF\] {
+.bg-\[\#8C6239\] .text-\[\#FFFFFF\],
+.bg-\[\#3A5A40\] .text-\[\#FFFFFF\] {
   color: #FFFFFF !important;
 }
 
-/* ── Status Badges (Premium Tones) ── */
-/* Success / Verified */
-.text-emerald-400,
-.text-emerald-500,
-.text-\[\#4E7358\] {
-  color: var(--status-sage) !important;
-}
-.bg-emerald-500\/10,
-.bg-\[\#EAF0EB\] {
-  background-color: var(--status-sage-bg) !important;
-  border: 1px solid rgba(76, 175, 80, 0.2) !important;
-}
-
-/* Warning / Scheduled */
-.text-amber-400,
-.text-amber-500,
-.text-\[\#9E7209\] {
-  color: var(--status-ochre) !important;
-}
-.bg-amber-500\/10,
-.bg-amber-950\/40,
-.bg-\[\#F8F3E6\] {
-  background-color: var(--status-ochre-bg) !important;
-  border: 1px solid rgba(244, 180, 0, 0.2) !important;
-}
-
-/* ── Primary Action Buttons (Rich Bronze) ── */
+/* ── Primary Action Buttons (Sage Green) ── */
 .bg-\[\#C9A84C\],
 .bg-blue-600,
-.bg-\[\#A67C52\] {
-  background-color: #8C6239 !important;
+.bg-\[\#A67C52\],
+.bg-\[\#8C6239\] {
+  background-color: #3A5A40 !important;
   color: #FFFFFF !important;
-  border-radius: 8px !important;
+  border-radius: 6px !important;
+  font-family: 'Inter', sans-serif !important;
   font-weight: 500 !important;
   border: none !important;
 }
@@ -160,106 +156,109 @@ header {
 .bg-\[\#C9A84C\]:hover,
 .bg-blue-600:hover,
 .hover\:bg-\[\#D4B65E\]:hover,
-.hover\:bg-\[\#8F6641\]:hover {
-  background-color: #704E2E !important;
+.hover\:bg-\[\#8F6641\]:hover,
+.hover\:bg-\[\#704E2E\]:hover {
+  background-color: #2A402D !important;
 }
 
-/* Golden/Active Accents -> Muted Gold */
+/* ── Active/Navy Accents ── */
 .text-\[\#C9A84C\],
-.text-\[\#A67C52\] {
-  color: #B68D5D !important;
+.text-\[\#A67C52\],
+.text-\[\#B68D5D\] {
+  color: #1E3A8A !important;
 }
 .border-\[\#C9A84C\],
 .border-l-\[\#C9A84C\],
 .border-\[\#A67C52\],
-.border-l-\[\#A67C52\] {
-  border-color: #B68D5D !important;
+.border-l-\[\#A67C52\],
+.border-\[\#B68D5D\] {
+  border-color: #1E3A8A !important;
 }
 .bg-\[\#C9A84C\]\/10,
 .bg-\[\#C9A84C\]\/15,
-.bg-\[\#F0E5D8\] {
-  background-color: #F9F3EB !important;
-  color: #B68D5D !important;
+.bg-\[\#F0E5D8\],
+.bg-\[\#F9F3EB\] {
+  background-color: #F0F4F8 !important;
+  color: #1E3A8A !important;
 }
 
 /* ── Inputs & Selects ── */
 input, select {
   background-color: #FFFFFF !important;
-  border: 1px solid #EAEAEA !important;
-  color: #2E2E2E !important;
+  border: 1px solid #E2DFD8 !important;
+  color: #1C2331 !important;
   font-weight: 400 !important;
-  border-radius: 8px !important;
-}
-
-input::placeholder {
-  color: #938278 !important;
+  border-radius: 6px !important;
 }
 
 input:focus, select:focus, button:focus-visible {
   outline: none;
-  border-color: #B68D5D !important;
-  box-shadow: 0 0 0 2px rgba(182, 141, 93, 0.2) !important;
+  border-color: #1E3A8A !important;
+  box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.1) !important;
 }
 
 input[type="range"] {
-  accent-color: #B68D5D !important;
+  accent-color: #3A5A40 !important;
 }
 
 input[type="checkbox"] {
-  accent-color: #B68D5D !important;
+  accent-color: #3A5A40 !important;
   border-radius: 4px !important;
 }
 
 /* ── Tables ── */
 table thead {
   background-color: transparent !important;
-  border-bottom: 1px solid #EAEAEA !important;
+  border-bottom: 1px solid #E2DFD8 !important;
 }
 
 table thead th {
-  color: #6B6B6B !important;
+  color: #5E6C84 !important;
   font-weight: 500 !important;
   font-size: 11px !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
+  letter-spacing: 0.05em !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
 table tbody tr:hover {
-  background-color: #F9F7F4 !important;
+  background-color: #F7F6F2 !important;
 }
 
 table tbody td {
-  color: #2E2E2E !important;
+  color: #1C2331 !important;
 }
 
 /* ── Chart Tooltips ── */
 .recharts-default-tooltip {
   background-color: #FFFFFF !important;
-  border: 1px solid #EAEAEA !important;
-  border-radius: 8px !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
-  color: #2E2E2E !important;
+  border: 1px solid #E2DFD8 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  color: #1C2331 !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
 .recharts-tooltip-item {
-  color: #2E2E2E !important;
+  color: #1C2331 !important;
 }
 
 .recharts-cartesian-grid-horizontal line,
 .recharts-cartesian-grid-vertical line {
-  stroke: #EAEAEA !important;
+  stroke: #E2DFD8 !important;
 }
 
 .recharts-text {
-  fill: #6B6B6B !important;
+  fill: #5E6C84 !important;
   font-size: 11px !important;
   font-weight: 400 !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
 /* ── Modals ── */
 .fixed.inset-0 {
-  background-color: rgba(46, 46, 46, 0.4) !important;
-  backdrop-filter: blur(4px) !important;
+  background-color: rgba(28, 35, 49, 0.3) !important;
+  backdrop-filter: blur(2px) !important;
 }
 
 /* ── Scrollbars ── */
@@ -271,9 +270,9 @@ table tbody td {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #EAEAEA;
+  background: #E2DFD8;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B68D5D;
+  background: #5E6C84;
 }

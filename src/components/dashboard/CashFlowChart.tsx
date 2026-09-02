@@ -25,13 +25,13 @@ const CASHFLOW_DATA = [
 
 export const CashFlowChart: React.FC<CashFlowChartProps> = () => {
   return (
-    <div className="rounded-xl bg-[#FFFFFF] border border-[#EAEAEA] p-6 shadow-sm flex flex-col justify-between h-full min-h-[320px]">
+    <div className="rounded-xl bg-[#FFFFFF] border border-[#E2DFD8] p-6 shadow-sm flex flex-col justify-between h-full min-h-[320px]">
       <div className="flex items-center justify-between pb-4">
         <div>
-          <h3 className="text-base font-semibold text-[#2E2E2E] tracking-tight">Total Revenue & Cashflow</h3>
-          <p className="text-xs font-normal text-[#6B6B6B] mt-0.5">Razorpay Gateway Gross Settlements (₹ in Lakhs)</p>
+          <h3 className="text-base font-semibold text-[#1C2331] tracking-tight">Total Revenue & Cashflow</h3>
+          <p className="text-xs font-normal text-[#5E6C84] mt-0.5">Razorpay Gateway Gross Settlements (₹ in Lakhs)</p>
         </div>
-        <button className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F9F7F4] text-[#6B6B6B] hover:bg-[#EBE5DE] transition-colors font-medium">
+        <button className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F7F6F2] text-[#5E6C84] hover:bg-[#E2DFD8] transition-colors font-medium">
           <ArrowUpRight className="h-4 w-4" />
         </button>
       </div>
@@ -41,8 +41,8 @@ export const CashFlowChart: React.FC<CashFlowChartProps> = () => {
           <BarChart data={CASHFLOW_DATA} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
               <linearGradient id="premiumGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#B68D5D" />
-                <stop offset="100%" stopColor="#8C6239" />
+                <stop offset="0%" stopColor="#5A7A60" />
+                <stop offset="100%" stopColor="#3A5A40" />
               </linearGradient>
             </defs>
             <XAxis 
@@ -79,7 +79,7 @@ export const CashFlowChart: React.FC<CashFlowChartProps> = () => {
               dataKey="value" 
               radius={[6, 6, 6, 6]} 
               maxBarSize={38}
-              activeBar={{ fill: 'url(#premiumGradient)' }}
+              activeBar={{ fill: '#1E3A8A' }}
             >
               {CASHFLOW_DATA.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.fill} />

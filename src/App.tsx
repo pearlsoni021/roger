@@ -205,15 +205,15 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F0E6] flex font-sans">
+    <div className="min-h-screen bg-[#F7F6F2] flex font-sans">
       {/* Toast Notification */}
       {toast && (
-        <div className="fixed top-5 right-5 z-50 flex items-center gap-2.5 rounded-xl border border-[#EAEAEA] bg-[#FFFFFF] px-4 py-3 shadow-md text-xs">
+        <div className="fixed top-5 right-5 z-50 flex items-center gap-2.5 rounded-xl border border-[#E2DFD8] bg-[#FFFFFF] px-4 py-3 shadow-md text-xs">
           {toast.type === 'success' && <CheckCircle2 className="h-4 w-4 text-[#4CAF50] shrink-0" />}
           {toast.type === 'warning' && <AlertCircle className="h-4 w-4 text-[#F4B400] shrink-0" />}
-          {toast.type === 'info' && <Sparkles className="h-4 w-4 text-[#B68D5D] shrink-0" />}
-          <span className="text-[#2E2E2E] font-medium">{toast.message}</span>
-          <button onClick={() => setToast(null)} className="text-[#6B6B6B] hover:text-[#2E2E2E] ml-2">
+          {toast.type === 'info' && <Sparkles className="h-4 w-4 text-[#1E3A8A] shrink-0" />}
+          <span className="text-[#1C2331] font-medium">{toast.message}</span>
+          <button onClick={() => setToast(null)} className="text-[#5E6C84] hover:text-[#1C2331] ml-2">
             <X className="h-3.5 w-3.5" />
           </button>
         </div>

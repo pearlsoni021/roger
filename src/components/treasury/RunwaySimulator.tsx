@@ -92,22 +92,22 @@ export const RunwaySimulator: React.FC<RunwaySimulatorProps> = ({ company }) => 
   return (
     <div className="space-y-5">
       {/* Header Banner */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-[#EAEAEA] bg-[#FFFFFF] p-4">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-[#E2DFD8] bg-[#FFFFFF] p-4">
         <div>
           <div className="flex items-center gap-2">
             <TrendingUp className="h-4 w-4 text-[#4CAF50]" />
-            <h2 className="text-sm font-semibold text-[#2E2E2E]">Monte Carlo Runway & Liquidity Modeler</h2>
+            <h2 className="text-sm font-semibold text-[#1C2331]">Monte Carlo Runway & Liquidity Modeler</h2>
           </div>
-          <p className="text-[11px] text-[#6B6B6B] mt-0.5">
+          <p className="text-[11px] text-[#5E6C84] mt-0.5">
             Simulating <strong>1,000 probabilistic financial trajectories</strong> across stochastic revenue volatility, hiring plans, and cloud spend.
           </p>
         </div>
 
         <button
           onClick={resetToDefault}
-          className="flex items-center gap-1.5 rounded-lg border border-[#EAEAEA] bg-[#F5F0E6] px-3 py-1.5 text-xs font-medium text-[#2E2E2E] hover:bg-[#EBE5DE] transition-colors"
+          className="flex items-center gap-1.5 rounded-lg border border-[#E2DFD8] bg-[#F7F6F2] px-3 py-1.5 text-xs font-medium text-[#1C2331] hover:bg-[#E2DFD8] transition-colors"
         >
-          <RotateCcw className="h-3.5 w-3.5 text-[#6B6B6B]" />
+          <RotateCcw className="h-3.5 w-3.5 text-[#5E6C84]" />
           <span>Reset Parameters</span>
         </button>
       </div>
@@ -115,50 +115,50 @@ export const RunwaySimulator: React.FC<RunwaySimulatorProps> = ({ company }) => 
       {/* Runway Scorecards */}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         {/* P10 Stress Case */}
-        <div className="rounded-xl border border-[#EAEAEA] bg-[#F5F0E6] p-4">
-          <div className="flex items-center justify-between text-xs text-[#6B6B6B] font-medium">
+        <div className="rounded-xl border border-[#E2DFD8] bg-[#F7F6F2] p-4">
+          <div className="flex items-center justify-between text-xs text-[#5E6C84] font-medium">
             <span>P10 Stress Case (Worst 10%)</span>
-            <ShieldAlert className="h-3.5 w-3.5 text-[#6B6B6B]" />
+            <ShieldAlert className="h-3.5 w-3.5 text-[#5E6C84]" />
           </div>
-          <div className="mt-2 text-xl font-bold text-[#2E2E2E] font-mono">
-            {simulation.p10WorstCaseRunwayMonths} <span className="text-xs font-normal text-[#6B6B6B]">Months</span>
+          <div className="mt-2 text-xl font-bold text-[#1C2331] font-mono">
+            {simulation.p10WorstCaseRunwayMonths} <span className="text-xs font-normal text-[#5E6C84]">Months</span>
           </div>
-          <p className="text-[11px] text-[#6B6B6B] mt-1">Severe revenue contraction & market contraction</p>
+          <p className="text-[11px] text-[#5E6C84] mt-1">Severe revenue contraction & market contraction</p>
         </div>
 
         {/* P50 Expected Median */}
-        <div className="rounded-xl border border-[#EAEAEA] bg-[#FFFFFF] p-4">
-          <div className="flex items-center justify-between text-xs text-[#6B6B6B] font-medium">
+        <div className="rounded-xl border border-[#E2DFD8] bg-[#FFFFFF] p-4">
+          <div className="flex items-center justify-between text-xs text-[#5E6C84] font-medium">
             <span>P50 Expected Median</span>
-            <Hourglass className="h-3.5 w-3.5 text-[#6B6B6B]" />
+            <Hourglass className="h-3.5 w-3.5 text-[#5E6C84]" />
           </div>
-          <div className="mt-2 text-xl font-bold text-[#2E2E2E] font-mono">
-            {simulation.projectedRunwayMonths} <span className="text-xs font-normal text-[#6B6B6B]">Months</span>
+          <div className="mt-2 text-xl font-bold text-[#1C2331] font-mono">
+            {simulation.projectedRunwayMonths} <span className="text-xs font-normal text-[#5E6C84]">Months</span>
           </div>
-          <p className="text-[11px] text-[#6B6B6B] mt-1">Estimated zero-cash date: <strong className="text-[#2E2E2E] font-medium">{simulation.cashExhaustionDate}</strong></p>
+          <p className="text-[11px] text-[#5E6C84] mt-1">Estimated zero-cash date: <strong className="text-[#1C2331] font-medium">{simulation.cashExhaustionDate}</strong></p>
         </div>
 
         {/* P90 Best Case */}
-        <div className="rounded-xl border border-[#EAEAEA] bg-[#F5F0E6] p-4">
-          <div className="flex items-center justify-between text-xs text-[#6B6B6B] font-medium">
+        <div className="rounded-xl border border-[#E2DFD8] bg-[#F7F6F2] p-4">
+          <div className="flex items-center justify-between text-xs text-[#5E6C84] font-medium">
             <span>P90 Bull Case (Top 10%)</span>
-            <Zap className="h-3.5 w-3.5 text-[#6B6B6B]" />
+            <Zap className="h-3.5 w-3.5 text-[#5E6C84]" />
           </div>
-          <div className="mt-2 text-xl font-bold text-[#2E2E2E] font-mono">
-            {simulation.p90BestCaseRunwayMonths}+ <span className="text-xs font-normal text-[#6B6B6B]">Months</span>
+          <div className="mt-2 text-xl font-bold text-[#1C2331] font-mono">
+            {simulation.p90BestCaseRunwayMonths}+ <span className="text-xs font-normal text-[#5E6C84]">Months</span>
           </div>
-          <p className="text-[11px] text-[#6B6B6B] mt-1">Strong growth & operating leverage</p>
+          <p className="text-[11px] text-[#5E6C84] mt-1">Strong growth & operating leverage</p>
         </div>
       </div>
 
       {/* Main Grid: Monte Carlo Fan Chart & What-If Sliders */}
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
         {/* Left: Monte Carlo Fan Chart (7 cols) */}
-        <div className="lg:col-span-7 rounded-xl border border-[#EAEAEA] bg-[#FFFFFF] p-4">
+        <div className="lg:col-span-7 rounded-xl border border-[#E2DFD8] bg-[#FFFFFF] p-4">
           <div className="flex items-center justify-between pb-3">
             <div>
-              <h3 className="text-xs font-semibold text-[#2E2E2E]">Cash Reserve Fan Curve (₹ Crores)</h3>
-              <p className="text-[11px] text-[#6B6B6B]">P90 (Bull) ↔ P50 (Expected) ↔ P10 (Stress) 24-Month Projection</p>
+              <h3 className="text-xs font-semibold text-[#1C2331]">Cash Reserve Fan Curve (₹ Crores)</h3>
+              <p className="text-[11px] text-[#5E6C84]">P90 (Bull) ↔ P50 (Expected) ↔ P10 (Stress) 24-Month Projection</p>
             </div>
           </div>
 
@@ -207,35 +207,35 @@ export const RunwaySimulator: React.FC<RunwaySimulatorProps> = ({ company }) => 
           </div>
 
           {/* AI Strategic Insights */}
-          <div className="mt-3 rounded-lg border border-[#EAEAEA] bg-[#F5F0E6] p-3 space-y-1">
-            <div className="flex items-center gap-1.5 text-xs font-medium text-[#6B6B6B]">
+          <div className="mt-3 rounded-lg border border-[#E2DFD8] bg-[#F7F6F2] p-3 space-y-1">
+            <div className="flex items-center gap-1.5 text-xs font-medium text-[#5E6C84]">
               <Sparkles className="h-3.5 w-3.5 text-[#4A6982]" />
               <span>Treasury Agent Observations</span>
             </div>
             {simulation.aiStrategicRecommendations.map((rec, i) => (
-              <p key={i} className="text-[11px] text-[#6B6B6B] leading-relaxed">• {rec}</p>
+              <p key={i} className="text-[11px] text-[#5E6C84] leading-relaxed">• {rec}</p>
             ))}
           </div>
         </div>
 
         {/* Right: Interactive What-If Scenario Builder (5 cols) */}
-        <div className="lg:col-span-5 rounded-xl border border-[#EAEAEA] bg-[#FFFFFF] p-4 space-y-4">
-          <div className="flex items-center justify-between border-b border-[#EAEAEA] pb-2.5">
+        <div className="lg:col-span-5 rounded-xl border border-[#E2DFD8] bg-[#FFFFFF] p-4 space-y-4">
+          <div className="flex items-center justify-between border-b border-[#E2DFD8] pb-2.5">
             <div className="flex items-center gap-2">
-              <Sliders className="h-3.5 w-3.5 text-[#6B6B6B]" />
-              <h3 className="text-xs font-semibold text-[#2E2E2E]">What-If Scenario Modeler</h3>
+              <Sliders className="h-3.5 w-3.5 text-[#5E6C84]" />
+              <h3 className="text-xs font-semibold text-[#1C2331]">What-If Scenario Modeler</h3>
             </div>
-            <span className="text-[10px] text-[#6B6B6B] font-mono">Dynamic Simulation</span>
+            <span className="text-[10px] text-[#5E6C84] font-mono">Dynamic Simulation</span>
           </div>
 
           {/* Slider 1: Hiring Headcount Delta */}
           <div className="space-y-1">
             <div className="flex justify-between text-xs">
-              <span className="text-[#6B6B6B] flex items-center gap-1.5">
-                <Users className="h-3.5 w-3.5 text-[#6B6B6B]" />
+              <span className="text-[#5E6C84] flex items-center gap-1.5">
+                <Users className="h-3.5 w-3.5 text-[#5E6C84]" />
                 Team Headcount Change
               </span>
-              <span className="font-semibold text-[#2E2E2E] font-mono">
+              <span className="font-semibold text-[#1C2331] font-mono">
                 {scenario.headcountDelta > 0 ? `+${scenario.headcountDelta}` : scenario.headcountDelta} Members
               </span>
             </div>
@@ -248,7 +248,7 @@ export const RunwaySimulator: React.FC<RunwaySimulatorProps> = ({ company }) => 
               onChange={(e) => setScenario({ ...scenario, headcountDelta: Number(e.target.value) })}
               className="w-full accent-blue-600 cursor-pointer"
             />
-            <div className="flex justify-between text-[10px] text-[#6B6B6B]">
+            <div className="flex justify-between text-[10px] text-[#5E6C84]">
               <span>-10 Layoff</span>
               <span>0 (Current)</span>
               <span>+20 Hiring</span>
@@ -258,11 +258,11 @@ export const RunwaySimulator: React.FC<RunwaySimulatorProps> = ({ company }) => 
           {/* Slider 2: Monthly Revenue Growth Rate */}
           <div className="space-y-1">
             <div className="flex justify-between text-xs">
-              <span className="text-[#6B6B6B] flex items-center gap-1.5">
-                <TrendingUp className="h-3.5 w-3.5 text-[#6B6B6B]" />
+              <span className="text-[#5E6C84] flex items-center gap-1.5">
+                <TrendingUp className="h-3.5 w-3.5 text-[#5E6C84]" />
                 Monthly Revenue Growth Rate
               </span>
-              <span className="font-semibold text-[#2E2E2E] font-mono">{scenario.monthlyRevenueGrowthPercent}% /mo</span>
+              <span className="font-semibold text-[#1C2331] font-mono">{scenario.monthlyRevenueGrowthPercent}% /mo</span>
             </div>
             <input
               type="range"
@@ -273,7 +273,7 @@ export const RunwaySimulator: React.FC<RunwaySimulatorProps> = ({ company }) => 
               onChange={(e) => setScenario({ ...scenario, monthlyRevenueGrowthPercent: Number(e.target.value) })}
               className="w-full accent-emerald-600 cursor-pointer"
             />
-            <div className="flex justify-between text-[10px] text-[#6B6B6B]">
+            <div className="flex justify-between text-[10px] text-[#5E6C84]">
               <span>-10% Contraction</span>
               <span>+5% Base</span>
               <span>+25% High Growth</span>
@@ -283,11 +283,11 @@ export const RunwaySimulator: React.FC<RunwaySimulatorProps> = ({ company }) => 
           {/* Slider 3: Cloud & SaaS Spend Cut */}
           <div className="space-y-1">
             <div className="flex justify-between text-xs">
-              <span className="text-[#6B6B6B] flex items-center gap-1.5">
-                <Cloud className="h-3.5 w-3.5 text-[#6B6B6B]" />
+              <span className="text-[#5E6C84] flex items-center gap-1.5">
+                <Cloud className="h-3.5 w-3.5 text-[#5E6C84]" />
                 Cloud & SaaS Optimization
               </span>
-              <span className="font-semibold text-[#2E2E2E] font-mono">-{scenario.cloudSpendReductionPercent}%</span>
+              <span className="font-semibold text-[#1C2331] font-mono">-{scenario.cloudSpendReductionPercent}%</span>
             </div>
             <input
               type="range"
@@ -298,7 +298,7 @@ export const RunwaySimulator: React.FC<RunwaySimulatorProps> = ({ company }) => 
               onChange={(e) => setScenario({ ...scenario, cloudSpendReductionPercent: Number(e.target.value) })}
               className="w-full accent-slate-400 cursor-pointer"
             />
-            <div className="flex justify-between text-[10px] text-[#6B6B6B]">
+            <div className="flex justify-between text-[10px] text-[#5E6C84]">
               <span>0% Current</span>
               <span>20% Moderate</span>
               <span>40% Aggressive Cut</span>
@@ -308,11 +308,11 @@ export const RunwaySimulator: React.FC<RunwaySimulatorProps> = ({ company }) => 
           {/* Slider 4: Fundraise Round Injection */}
           <div className="space-y-1">
             <div className="flex justify-between text-xs">
-              <span className="text-[#6B6B6B] flex items-center gap-1.5">
-                <DollarSign className="h-3.5 w-3.5 text-[#6B6B6B]" />
+              <span className="text-[#5E6C84] flex items-center gap-1.5">
+                <DollarSign className="h-3.5 w-3.5 text-[#5E6C84]" />
                 Planned Funding Injection (₹ Cr)
               </span>
-              <span className="font-semibold text-[#2E2E2E] font-mono">
+              <span className="font-semibold text-[#1C2331] font-mono">
                 ₹{(scenario.fundraiseAmountINR / 10000000).toFixed(1)} Cr
               </span>
             </div>
@@ -325,7 +325,7 @@ export const RunwaySimulator: React.FC<RunwaySimulatorProps> = ({ company }) => 
               onChange={(e) => setScenario({ ...scenario, fundraiseAmountINR: Number(e.target.value) })}
               className="w-full accent-blue-500 cursor-pointer"
             />
-            <div className="flex justify-between text-[10px] text-[#6B6B6B]">
+            <div className="flex justify-between text-[10px] text-[#5E6C84]">
               <span>₹0 (Bootstrap)</span>
               <span>₹5 Cr (Seed)</span>
               <span>₹20 Cr (Series A)</span>
@@ -333,8 +333,8 @@ export const RunwaySimulator: React.FC<RunwaySimulatorProps> = ({ company }) => 
           </div>
 
           {/* Stress Presets Quick Buttons */}
-          <div className="pt-2 border-t border-[#EAEAEA]">
-            <span className="text-[10px] font-medium text-[#6B6B6B] uppercase tracking-wide block mb-1.5">
+          <div className="pt-2 border-t border-[#E2DFD8]">
+            <span className="text-[10px] font-medium text-[#5E6C84] uppercase tracking-wide block mb-1.5">
               Preset Stress Scenarios
             </span>
             <div className="space-y-1.5">
@@ -350,13 +350,13 @@ export const RunwaySimulator: React.FC<RunwaySimulatorProps> = ({ company }) => 
                       setScenario({ ...scenario, gatewayMdrRatePercent: 2.5 });
                     }
                   }}
-                  className="w-full flex items-center justify-between rounded-md border border-[#EAEAEA] bg-[#F5F0E6] p-2 text-left hover:border-[#EAEAEA] transition-colors"
+                  className="w-full flex items-center justify-between rounded-md border border-[#E2DFD8] bg-[#F7F6F2] p-2 text-left hover:border-[#E2DFD8] transition-colors"
                 >
                   <div>
-                    <div className="text-xs font-medium text-[#2E2E2E]">{stress.title}</div>
-                    <div className="text-[10px] text-[#6B6B6B]">{stress.impactDescription}</div>
+                    <div className="text-xs font-medium text-[#1C2331]">{stress.title}</div>
+                    <div className="text-[10px] text-[#5E6C84]">{stress.impactDescription}</div>
                   </div>
-                  <span className="text-xs font-mono font-medium text-[#6B6B6B]">-{stress.runwayReductionMonths}mo</span>
+                  <span className="text-xs font-mono font-medium text-[#5E6C84]">-{stress.runwayReductionMonths}mo</span>
                 </button>
               ))}
             </div>

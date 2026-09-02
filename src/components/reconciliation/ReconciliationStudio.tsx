@@ -55,7 +55,7 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
   const getStatusBadge = (status: MatchStatus, resolutionStatus: string) => {
     if (resolutionStatus === 'RESOLVED') {
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-md border border-[#EAEAEA] bg-[#F5F0E6] px-2 py-0.5 text-[11px] font-medium text-[#2E2E2E]">
+        <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E2DFD8] bg-[#F7F6F2] px-2 py-0.5 text-[11px] font-medium text-[#1C2331]">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
           Balanced (Journal Posted)
         </span>
@@ -64,7 +64,7 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
 
     if (resolutionStatus === 'FLAGGED_UNRESOLVED' || status === 'UNRESOLVED_EXCEPTION') {
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-md border border-purple-900/50 bg-[#F9F3EB] px-2 py-0.5 text-[11px] font-medium text-purple-300">
+        <span className="inline-flex items-center gap-1.5 rounded-md border border-purple-900/50 bg-[#F0F4F8] px-2 py-0.5 text-[11px] font-medium text-purple-300">
           <span className="h-1.5 w-1.5 rounded-full bg-purple-500"></span>
           Honest Exception (Legal Ops)
         </span>
@@ -74,7 +74,7 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
     switch (status) {
       case 'MATCHED':
         return (
-          <span className="inline-flex items-center gap-1.5 rounded-md border border-[#EAEAEA] bg-[#F5F0E6] px-2 py-0.5 text-[11px] font-medium text-[#6B6B6B]">
+          <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E2DFD8] bg-[#F7F6F2] px-2 py-0.5 text-[11px] font-medium text-[#5E6C84]">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
             Exact 3-Way Match
           </span>
@@ -88,7 +88,7 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
         );
       case 'TIMING_LAG':
         return (
-          <span className="inline-flex items-center gap-1.5 rounded-md border border-[#EAEAEA] bg-[#F5F0E6] px-2 py-0.5 text-[11px] font-medium text-[#6B6B6B]">
+          <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E2DFD8] bg-[#F7F6F2] px-2 py-0.5 text-[11px] font-medium text-[#5E6C84]">
             <span className="h-1.5 w-1.5 rounded-full bg-blue-400"></span>
             Timing Float (T+2)
           </span>
@@ -102,7 +102,7 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
         );
       case 'GHOST_PAYMENT':
         return (
-          <span className="inline-flex items-center gap-1.5 rounded-md border border-[#EAEAEA] bg-[#F5F0E6] px-2 py-0.5 text-[11px] font-medium text-[#6B6B6B]">
+          <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E2DFD8] bg-[#F7F6F2] px-2 py-0.5 text-[11px] font-medium text-[#5E6C84]">
             <span className="h-1.5 w-1.5 rounded-full bg-indigo-400"></span>
             Ghost Payment
           </span>
@@ -115,16 +115,16 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
   return (
     <div className="space-y-5">
       {/* Top Banner & Control Bar */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-[#EAEAEA] bg-[#FFFFFF] p-4">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-[#E2DFD8] bg-[#FFFFFF] p-4">
         <div>
           <div className="flex items-center gap-2">
             <Scale className="h-4 w-4 text-[#4A6982]" />
-            <h2 className="text-sm font-semibold text-[#2E2E2E]">3-Way Financial Reconciliation Studio</h2>
+            <h2 className="text-sm font-semibold text-[#1C2331]">3-Way Financial Reconciliation Studio</h2>
             <span className="rounded bg-[#E7ECEF] border border-blue-800/60 px-2 py-0.5 text-[10px] font-mono text-blue-300">
               Track 4 Benchmark Batch: {records.length} Records
             </span>
           </div>
-          <p className="text-[11px] text-[#6B6B6B] mt-0.5">
+          <p className="text-[11px] text-[#5E6C84] mt-0.5">
             Automated reconciliation across <strong>Razorpay Gateway Settlements</strong>, <strong>Bank Feeds (MT940)</strong>, and <strong>ERP Invoices</strong>.
           </p>
         </div>
@@ -132,16 +132,16 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
         <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={() => setIsAuditModalOpen(true)}
-            className="flex items-center gap-1.5 rounded-lg border border-[#EAEAEA] bg-[#F5F0E6] px-3 py-1.5 text-xs font-medium text-[#2E2E2E] hover:bg-[#EBE5DE] transition-colors"
+            className="flex items-center gap-1.5 rounded-lg border border-[#E2DFD8] bg-[#F7F6F2] px-3 py-1.5 text-xs font-medium text-[#1C2331] hover:bg-[#E2DFD8] transition-colors"
           >
-            <FileText className="h-3.5 w-3.5 text-[#6B6B6B]" />
+            <FileText className="h-3.5 w-3.5 text-[#5E6C84]" />
             <span>Audit Certificate</span>
           </button>
 
           {discrepancies.length > 0 && (
             <button
               onClick={onAutoResolveAll}
-              className="flex items-center gap-1.5 rounded-lg border border-[#EAEAEA] bg-[#F5F0E6] px-3 py-1.5 text-xs font-medium text-[#2E2E2E] hover:bg-[#EBE5DE] hover:text-[#2E2E2E] transition-colors"
+              className="flex items-center gap-1.5 rounded-lg border border-[#E2DFD8] bg-[#F7F6F2] px-3 py-1.5 text-xs font-medium text-[#1C2331] hover:bg-[#E2DFD8] hover:text-[#1C2331] transition-colors"
             >
               <CheckCircle className="h-3.5 w-3.5 text-[#4CAF50]" />
               <span>Auto-Balance {discrepancies.length} Variances</span>
@@ -150,7 +150,7 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
 
           <button
             onClick={() => setIsLiveLogOpen(true)}
-            className="flex items-center gap-1.5 rounded-lg bg-[#8C6239] px-3.5 py-1.5 text-xs font-medium text-[#2E2E2E] hover:bg-[#704E2E] transition-colors shadow-sm"
+            className="flex items-center gap-1.5 rounded-lg bg-[#3A5A40] px-3.5 py-1.5 text-xs font-medium text-[#1C2331] hover:bg-[#2A402D] transition-colors shadow-sm"
           >
             <Sparkles className="h-3.5 w-3.5" />
             <span>Run 3-Way Match ({records.length} Batch)</span>
@@ -160,31 +160,31 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
 
       {/* Track 4 Evaluation Bar (Honest Exception List & Match Rate Bar) */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
-        <div className="rounded-lg border border-[#EAEAEA] bg-[#F5F0E6] p-3">
-          <div className="text-[10px] font-medium text-[#6B6B6B] uppercase">Batch Match Rate</div>
-          <div className="text-base font-bold text-[#2E2E2E] font-mono mt-1">{metrics.batchMatchRatePercent}%</div>
-          <div className="text-[10px] text-[#6B6B6B] mt-0.5">{matchedCount}/{records.length} records verified</div>
+        <div className="rounded-lg border border-[#E2DFD8] bg-[#F7F6F2] p-3">
+          <div className="text-[10px] font-medium text-[#5E6C84] uppercase">Batch Match Rate</div>
+          <div className="text-base font-bold text-[#1C2331] font-mono mt-1">{metrics.batchMatchRatePercent}%</div>
+          <div className="text-[10px] text-[#5E6C84] mt-0.5">{matchedCount}/{records.length} records verified</div>
         </div>
 
-        <div className="rounded-lg border border-[#EAEAEA] bg-[#F5F0E6] p-3">
-          <div className="text-[10px] font-medium text-[#6B6B6B] uppercase">Total Audited Volume</div>
-          <div className="text-base font-bold text-[#2E2E2E] font-mono mt-1">{formatINR(records.reduce((s, r) => s + r.gatewayGrossINR, 0), { compact: true })}</div>
-          <div className="text-[10px] text-[#6B6B6B] mt-0.5 font-mono">{metrics.throughputRecordsPerSec} rec/sec</div>
+        <div className="rounded-lg border border-[#E2DFD8] bg-[#F7F6F2] p-3">
+          <div className="text-[10px] font-medium text-[#5E6C84] uppercase">Total Audited Volume</div>
+          <div className="text-base font-bold text-[#1C2331] font-mono mt-1">{formatINR(records.reduce((s, r) => s + r.gatewayGrossINR, 0), { compact: true })}</div>
+          <div className="text-[10px] text-[#5E6C84] mt-0.5 font-mono">{metrics.throughputRecordsPerSec} rec/sec</div>
         </div>
 
-        <div className="rounded-lg border border-[#EAEAEA] bg-[#F5F0E6] p-3">
-          <div className="text-[10px] font-medium text-[#6B6B6B] uppercase">Fee Drift Variances</div>
-          <div className="text-base font-bold text-[#2E2E2E] font-mono mt-1">{discrepancies.length} Items</div>
-          <div className="text-[10px] text-[#6B6B6B] mt-0.5 font-mono">1-click auto-balance</div>
+        <div className="rounded-lg border border-[#E2DFD8] bg-[#F7F6F2] p-3">
+          <div className="text-[10px] font-medium text-[#5E6C84] uppercase">Fee Drift Variances</div>
+          <div className="text-base font-bold text-[#1C2331] font-mono mt-1">{discrepancies.length} Items</div>
+          <div className="text-[10px] text-[#5E6C84] mt-0.5 font-mono">1-click auto-balance</div>
         </div>
 
-        <div className="rounded-lg border border-[#EAEAEA] bg-[#F5F0E6] p-3">
-          <div className="text-[10px] font-medium text-[#6B6B6B] uppercase">Settlement Timing Float</div>
-          <div className="text-base font-bold text-[#2E2E2E] font-mono mt-1">{timingLags.length} Pending</div>
-          <div className="text-[10px] text-[#6B6B6B] mt-0.5">T+2 clearing window</div>
+        <div className="rounded-lg border border-[#E2DFD8] bg-[#F7F6F2] p-3">
+          <div className="text-[10px] font-medium text-[#5E6C84] uppercase">Settlement Timing Float</div>
+          <div className="text-base font-bold text-[#1C2331] font-mono mt-1">{timingLags.length} Pending</div>
+          <div className="text-[10px] text-[#5E6C84] mt-0.5">T+2 clearing window</div>
         </div>
 
-        <div className="rounded-lg border border-purple-900/40 bg-[#F9F3EB] p-3">
+        <div className="rounded-lg border border-purple-900/40 bg-[#F0F4F8] p-3">
           <div className="text-[10px] font-medium text-purple-300 uppercase">Honest Exception List</div>
           <div className="text-base font-bold text-purple-200 font-mono mt-1">{unresolvable.length} Exception</div>
           <div className="text-[10px] text-purple-400 mt-0.5">Routed to Legal Ops</div>
@@ -192,11 +192,11 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex items-center gap-1.5 border-b border-[#EAEAEA] pb-2 text-xs overflow-x-auto">
+      <div className="flex items-center gap-1.5 border-b border-[#E2DFD8] pb-2 text-xs overflow-x-auto">
         <button
           onClick={() => setFilterTab('ALL')}
           className={`rounded-md px-2.5 py-1 font-medium transition-colors ${
-            filterTab === 'ALL' ? 'bg-[#F5F0E6] text-[#2E2E2E]' : 'text-[#6B6B6B] hover:text-[#2E2E2E]'
+            filterTab === 'ALL' ? 'bg-[#F7F6F2] text-[#1C2331]' : 'text-[#5E6C84] hover:text-[#1C2331]'
           }`}
         >
           All Records ({records.length})
@@ -204,7 +204,7 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
         <button
           onClick={() => setFilterTab('DISCREPANCIES')}
           className={`rounded-md px-2.5 py-1 font-medium transition-colors ${
-            filterTab === 'DISCREPANCIES' ? 'bg-[#F5F0E6] text-[#2E2E2E]' : 'text-[#6B6B6B] hover:text-[#2E2E2E]'
+            filterTab === 'DISCREPANCIES' ? 'bg-[#F7F6F2] text-[#1C2331]' : 'text-[#5E6C84] hover:text-[#1C2331]'
           }`}
         >
           Variances ({discrepancies.length})
@@ -212,7 +212,7 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
         <button
           onClick={() => setFilterTab('TIMING_LAG')}
           className={`rounded-md px-2.5 py-1 font-medium transition-colors ${
-            filterTab === 'TIMING_LAG' ? 'bg-[#F5F0E6] text-[#2E2E2E]' : 'text-[#6B6B6B] hover:text-[#2E2E2E]'
+            filterTab === 'TIMING_LAG' ? 'bg-[#F7F6F2] text-[#1C2331]' : 'text-[#5E6C84] hover:text-[#1C2331]'
           }`}
         >
           Timing Float ({timingLags.length})
@@ -228,7 +228,7 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
         <button
           onClick={() => setFilterTab('MATCHED')}
           className={`rounded-md px-2.5 py-1 font-medium transition-colors ${
-            filterTab === 'MATCHED' ? 'bg-[#F5F0E6] text-[#2E2E2E]' : 'text-[#6B6B6B] hover:text-[#2E2E2E]'
+            filterTab === 'MATCHED' ? 'bg-[#F7F6F2] text-[#1C2331]' : 'text-[#5E6C84] hover:text-[#1C2331]'
           }`}
         >
           Clean Matches ({matchedCount})
@@ -236,10 +236,10 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
       </div>
 
       {/* 3-Way Match Matrix Table */}
-      <div className="rounded-xl border border-[#EAEAEA] bg-[#FFFFFF] overflow-hidden">
+      <div className="rounded-xl border border-[#E2DFD8] bg-[#FFFFFF] overflow-hidden">
         <div className="overflow-x-auto max-h-[520px]">
           <table className="w-full text-left text-xs">
-            <thead className="sticky top-0 border-b border-[#EAEAEA] bg-[#FFFFFF] text-[11px] font-medium text-[#6B6B6B] uppercase tracking-wider z-10">
+            <thead className="sticky top-0 border-b border-[#E2DFD8] bg-[#FFFFFF] text-[11px] font-medium text-[#5E6C84] uppercase tracking-wider z-10">
               <tr>
                 <th className="py-2.5 px-3.5">Record ID</th>
                 <th className="py-2.5 px-3.5">1. Gateway Gross</th>
@@ -256,30 +256,30 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
                 <tr 
                   key={rec.id}
                   onClick={() => setSelectedRecord(rec)}
-                  className="cursor-pointer hover:bg-[#F5F0E6] transition-colors group"
+                  className="cursor-pointer hover:bg-[#F7F6F2] transition-colors group"
                 >
                   <td className="py-3 px-3.5">
-                    <div className="font-semibold text-[#2E2E2E] group-hover:text-[#4A6982]">{rec.id}</div>
-                    <div className="text-[10px] text-[#6B6B6B] font-sans">{rec.orderId}</div>
+                    <div className="font-semibold text-[#1C2331] group-hover:text-[#4A6982]">{rec.id}</div>
+                    <div className="text-[10px] text-[#5E6C84] font-sans">{rec.orderId}</div>
                   </td>
-                  <td className="py-3 px-3.5 text-[#2E2E2E]">
+                  <td className="py-3 px-3.5 text-[#1C2331]">
                     {formatINR(rec.gatewayGrossINR)}
                   </td>
-                  <td className="py-3 px-3.5 text-[#6B6B6B]">
+                  <td className="py-3 px-3.5 text-[#5E6C84]">
                     {formatINR(rec.gatewayMdrINR)}
                   </td>
-                  <td className="py-3 px-3.5 text-[#6B6B6B]">
+                  <td className="py-3 px-3.5 text-[#5E6C84]">
                     {formatINR(rec.bankCreditINR)}
                   </td>
-                  <td className="py-3 px-3.5 text-[#6B6B6B] font-sans">
+                  <td className="py-3 px-3.5 text-[#5E6C84] font-sans">
                     {rec.invoiceNumber ? (
-                      <span className="font-mono text-[#6B6B6B]">{rec.invoiceNumber}</span>
+                      <span className="font-mono text-[#5E6C84]">{rec.invoiceNumber}</span>
                     ) : (
-                      <span className="text-[#6B6B6B] text-[11px]">Unrecorded</span>
+                      <span className="text-[#5E6C84] text-[11px]">Unrecorded</span>
                     )}
                   </td>
                   <td className="py-3 px-3.5 font-bold">
-                    <span className={rec.varianceINR === 0 ? 'text-[#6B6B6B]' : 'text-[#2E2E2E]'}>
+                    <span className={rec.varianceINR === 0 ? 'text-[#5E6C84]' : 'text-[#1C2331]'}>
                       {formatINR(rec.varianceINR)}
                     </span>
                   </td>
@@ -292,7 +292,7 @@ export const ReconciliationStudio: React.FC<ReconciliationStudioProps> = ({
                         e.stopPropagation();
                         setSelectedRecord(rec);
                       }}
-                      className="inline-flex items-center gap-1 rounded border border-[#EAEAEA] bg-[#F5F0E6] px-2 py-1 text-[11px] font-medium text-[#6B6B6B] hover:bg-[#EBE5DE] hover:text-[#2E2E2E]"
+                      className="inline-flex items-center gap-1 rounded border border-[#E2DFD8] bg-[#F7F6F2] px-2 py-1 text-[11px] font-medium text-[#5E6C84] hover:bg-[#E2DFD8] hover:text-[#1C2331]"
                     >
                       <span>Review</span>
                       <ArrowUpRight className="h-3 w-3" />

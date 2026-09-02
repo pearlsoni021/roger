@@ -16,7 +16,7 @@ const RECENT_TRANSACTIONS = [
     refId: '#REC-2026-9049',
     amount: 580000,
     status: 'Verified',
-    statusColor: 'bg-[#F9F3EB] text-[#B68D5D]',
+    statusColor: 'bg-[#F0F4F8] text-[#1E3A8A]',
   },
   {
     id: 'tx_02',
@@ -25,7 +25,7 @@ const RECENT_TRANSACTIONS = [
     refId: '#INV-2026-0881',
     amount: 450000,
     status: 'TDS Paid',
-    statusColor: 'bg-[#F9F3EB] text-[#B68D5D]',
+    statusColor: 'bg-[#F0F4F8] text-[#1E3A8A]',
   },
   {
     id: 'tx_03',
@@ -51,23 +51,23 @@ export const PriorityActions: React.FC<PriorityActionsProps> = ({
   onNavigateToTab,
 }) => {
   return (
-    <div className="bg-[#FFFFFF] border border-[#EAEAEA] rounded-xl p-6 shadow-sm">
+    <div className="bg-[#FFFFFF] border border-[#E2DFD8] rounded-xl p-6 shadow-sm">
       {/* Header */}
-      <div className="flex items-center justify-between pb-4 border-b border-[#EAEAEA]">
+      <div className="flex items-center justify-between pb-4 border-b border-[#E2DFD8]">
         <div>
-          <h3 className="text-base font-semibold text-[#2E2E2E] tracking-tight">Recent Settlement & Payout Feeds</h3>
-          <p className="text-xs font-normal text-[#6B6B6B] mt-0.5">Real-time ledger entries from Gateway and RazorpayX banking</p>
+          <h3 className="text-base font-semibold text-[#1C2331] tracking-tight">Recent Settlement & Payout Feeds</h3>
+          <p className="text-xs font-normal text-[#5E6C84] mt-0.5">Real-time ledger entries from Gateway and RazorpayX banking</p>
         </div>
         <div className="flex items-center gap-2">
           <button 
             onClick={() => onNavigateToTab('reconciliation')}
-            className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F9F7F4] text-[#6B6B6B] hover:bg-[#EBE5DE] transition-colors font-medium"
+            className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F7F6F2] text-[#5E6C84] hover:bg-[#E2DFD8] transition-colors font-medium"
           >
             <RotateCw className="h-3.5 w-3.5" />
           </button>
           <button 
             onClick={() => onNavigateToTab('reconciliation')}
-            className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F9F7F4] text-[#6B6B6B] hover:bg-[#EBE5DE] transition-colors font-medium"
+            className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F7F6F2] text-[#5E6C84] hover:bg-[#E2DFD8] transition-colors font-medium"
           >
             <ArrowUpRight className="h-4 w-4" />
           </button>
@@ -78,7 +78,7 @@ export const PriorityActions: React.FC<PriorityActionsProps> = ({
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs">
           <thead>
-            <tr className="border-b border-[#EAEAEA] text-xs font-medium text-[#6B6B6B]">
+            <tr className="border-b border-[#E2DFD8] text-xs font-medium text-[#5E6C84]">
               <th className="py-3 px-2">Transaction Name</th>
               <th className="py-3 px-2">Source</th>
               <th className="py-3 px-2">Reference ID</th>
@@ -91,18 +91,18 @@ export const PriorityActions: React.FC<PriorityActionsProps> = ({
               <tr 
                 key={tx.id}
                 onClick={() => onNavigateToTab('reconciliation')}
-                className="cursor-pointer hover:bg-[#F9F7F4] transition-colors"
+                className="cursor-pointer hover:bg-[#F7F6F2] transition-colors"
               >
                 <td className="py-3.5 px-2">
-                  <div className="font-medium text-[#2E2E2E]">{tx.description}</div>
+                  <div className="font-medium text-[#1C2331]">{tx.description}</div>
                 </td>
-                <td className="py-3.5 px-2 text-[#6B6B6B] font-normal">
+                <td className="py-3.5 px-2 text-[#5E6C84] font-normal">
                   {tx.source}
                 </td>
-                <td className="py-3.5 px-2 text-[#6B6B6B] font-mono text-xs font-normal">
+                <td className="py-3.5 px-2 text-[#5E6C84] font-mono text-xs font-normal">
                   {tx.refId}
                 </td>
-                <td className="py-3.5 px-2 font-mono font-medium text-[#2E2E2E] text-sm">
+                <td className="py-3.5 px-2 font-mono font-medium text-[#1C2331] text-sm">
                   {formatINR(tx.amount)}
                 </td>
                 <td className="py-3.5 px-2 text-right">
