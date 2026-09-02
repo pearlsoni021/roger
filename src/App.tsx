@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Navbar } from './components/layout/Navbar';
-import { Sidebar, TabType } from './components/layout/Sidebar';
+import { Navbar, TabType } from './components/layout/Navbar';
+import { Sidebar } from './components/layout/Sidebar';
 import { MetricCards } from './components/dashboard/MetricCards';
 import { CashFlowChart } from './components/dashboard/CashFlowChart';
 import { ExpenseBreakdown } from './components/dashboard/ExpenseBreakdown';
@@ -21,7 +21,7 @@ import { calculateReconciliationMetrics } from './services/reconciliationEngine'
 import { CompanyProfile, ReconciliationRecord } from './types/finance';
 import { VendorInvoice } from './types/vendor';
 import { FinancialAnomaly } from './types/agent';
-import { CheckCircle2, AlertCircle, Sparkles, X } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Sparkles, X, ChevronRight } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export function App() {
@@ -205,7 +205,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F6F2] flex font-sans">
+    <div className="min-h-screen bg-[#EBE9E4] flex justify-center p-0 md:p-6 font-sans">
       {/* Toast Notification */}
       {toast && (
         <div className="fixed top-5 right-5 z-50 flex items-center gap-2.5 rounded-xl border border-[#E2DFD8] bg-[#FFFFFF] px-4 py-3 shadow-md text-xs">
@@ -219,53 +219,86 @@ export function App() {
         </div>
       )}
 
-      {/* Left Sidebar */}
-      <Sidebar
-        activeTab={activeTab}
-        onSelectTab={setActiveTab}
-        openAnomaliesCount={openAnomaliesCount}
-        unreconciledCount={unreconciledCount}
-      />
-
-      {/* Right Content Area */}
-      <div className="flex-1 flex flex-col min-w-0">
-        {/* Top Header Navbar */}
+      {/* Main App Container */}
+      <div className="w-full max-w-7xl bg-[#F7F6F2] rounded-xl border border-[#E2DFD8] shadow-[0_2px_20px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col relative">
         <Navbar
+          activeTab={activeTab}
+          onSelectTab={setActiveTab}
           companies={companies}
           selectedCompany={selectedCompany}
-          onSelectCompany={setSelectedCompany}
-          onOpenDemo={() => setActiveTab('demo')}
-          onOpenCopilot={() => setActiveTab('copilot')}
         />
 
         {/* Tab Content Body */}
-        <main className="flex-1 p-6 pt-2 overflow-y-auto max-w-7xl w-full">
+        <main className="flex-1 p-6 md:p-10 overflow-y-auto">
           {activeTab === 'dashboard' && (
             <div className="space-y-6">
-              {/* Row 1: 4 Metric Cards */}
-              <MetricCards
-                company={selectedCompany}
-                reconciliationHealth={reconMetrics.reconciliationHealthScore}
-                openAnomaliesCount={openAnomaliesCount}
-                onNavigateToTab={setActiveTab}
-              />
-
-              {/* Row 2: CashFlow Bar Chart + Calendar Widget */}
-              <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-                <div className="lg:col-span-8">
-                  <CashFlowChart companyName={selectedCompany.name} />
-                </div>
-                <div className="lg:col-span-4">
-                  <ExpenseBreakdown />
-                </div>
+              {/* Top Greeting */}
+              <div className="mb-8">
+                <h1 className="text-3xl md:text-4xl font-serif text-[#1C2331] mb-1">Good morning, Alexander.</h1>
+                <p className="text-[#5E6C84] text-sm">Your portfolio overview for October 26, 2023</p>
               </div>
 
-              {/* Row 3: Recent Transactions Table */}
-              <PriorityActions
-                onNavigateToTab={setActiveTab}
-                onAutoReconcile={handleAutoResolveAll}
-                onExecutePayouts={handleExecuteBatchPayout}
-              />
+              {/* Layout Grid (3 columns to match reference image) */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                {/* Column 1: Net Worth & Transactions */}
+                <div className="lg:col-span-5 space-y-6">
+                  <CashFlowChart companyName={selectedCompany.name} />
+                  <PriorityActions
+                    onNavigateToTab={setActiveTab}
+                    onAutoReconcile={handleAutoResolveAll}
+                    onExecutePayouts={handleExecuteBatchPayout}
+                  />
+                </div>
+
+                {/* Column 2: Account Balances, Asset Allocation, Performance */}
+                <div className="lg:col-span-4 space-y-6">
+                  <MetricCards
+                    company={selectedCompany}
+                    reconciliationHealth={reconMetrics.reconciliationHealthScore}
+                    openAnomaliesCount={openAnomaliesCount}
+                    onNavigateToTab={setActiveTab}
+                  />
+                  <ExpenseBreakdown />
+                </div>
+
+                {/* Column 3: Premium Insights (Reusing Copilot logic/Sidebar style) */}
+                <div className="lg:col-span-3 space-y-6">
+                  <div className="bg-[#FFFFFF] border border-[#E2DFD8] rounded-lg p-5">
+                    <h3 className="font-serif text-[#1C2331] text-lg mb-4">Premium Handcrafted Insights</h3>
+                    
+                    <div className="space-y-4 border-b border-[#E2DFD8] pb-4">
+                      <p className="text-[13px] text-[#1C2331] font-medium leading-relaxed">Navigating Market Volatility: A Conservative Approach</p>
+                      <button className="text-[#1E3A8A] text-[11px] font-medium flex items-center gap-1 hover:underline">
+                        Read Article <ChevronRight className="h-3 w-3" />
+                      </button>
+                    </div>
+                    
+                    <div className="space-y-4 border-b border-[#E2DFD8] py-4">
+                      <p className="text-[13px] text-[#1C2331] font-medium leading-relaxed">Optimizing Your Retirement Strategy</p>
+                      <button className="text-[#1E3A8A] text-[11px] font-medium flex items-center gap-1 hover:underline">
+                        Read Article <ChevronRight className="h-3 w-3" />
+                      </button>
+                    </div>
+                    
+                    <div className="space-y-4 pt-4">
+                      <p className="text-[13px] text-[#1C2331] font-medium leading-relaxed">Tax-Efficient Investing Tips</p>
+                      <button className="text-[#1E3A8A] text-[11px] font-medium flex items-center gap-1 hover:underline">
+                        Read Article <ChevronRight className="h-3 w-3" />
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="bg-[#FFFFFF] border border-[#E2DFD8] rounded-lg p-5">
+                    <h3 className="font-serif text-[#1C2331] text-lg mb-2">Advisor Connection</h3>
+                    <p className="text-[#5E6C84] text-[11px] mb-4 leading-relaxed">Stay connected in real time to your personal financial advisor.</p>
+                    <button className="text-[#1E3A8A] text-[11px] font-medium flex items-center gap-1 hover:underline">
+                      Schedule a Consultation <ChevronRight className="h-3 w-3" />
+                    </button>
+                  </div>
+                </div>
+
+              </div>
             </div>
           )}
 
@@ -288,42 +321,6 @@ export function App() {
               invoices={vendorInvoices}
               onAddInvoice={handleAddInvoice}
               onExecuteBatchPayout={handleExecuteBatchPayout}
-            />
-          )}
-
-          {activeTab === 'copilot' && (
-            <ConversationalCFO
-              company={selectedCompany}
-              reconciliationRecords={reconciliationRecords}
-              vendorInvoices={vendorInvoices}
-              onTriggerAction={(actionType) => {
-                if (actionType === 'RESOLVE_ALL_DISCREPANCIES') {
-                  handleAutoResolveAll();
-                  setActiveTab('reconciliation');
-                } else if (actionType === 'EXPORT_26Q') {
-                  setActiveTab('vendors');
-                }
-              }}
-            />
-          )}
-
-          {activeTab === 'anomalies' && (
-            <AnomalyRadar
-              anomalies={anomalies}
-              onResolveAnomaly={handleResolveAnomaly}
-              onNavigateToTab={setActiveTab}
-            />
-          )}
-
-          {activeTab === 'demo' && (
-            <DemoControlPanel
-              onInjectMdrDiscrepancy={handleInjectMdrDiscrepancy}
-              onInjectCloudSpike={handleInjectCloudSpike}
-              onInjectFakeGstinInvoice={handleInjectFakeGstinInvoice}
-              onInjectTimingFloat={handleInjectTimingFloat}
-              onAutoReconcileAll={handleAutoResolveAll}
-              onResetBenchmark={handleResetBenchmark}
-              onNavigateToTab={setActiveTab}
             />
           )}
 

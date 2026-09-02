@@ -72,20 +72,35 @@ export const SettingsHub: React.FC<SettingsHubProps> = ({ company, onSave }) => 
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleTestConnection = () => {
+  const handleTestConnection = async () => {
     setTestingConnection(true);
     setTestSuccess(false);
-    setTimeout(() => {
+    try {
+      const response = await fetch('http://127.0.0.1:5000/api/settings/test-connection', { method: 'POST' });
+      if (response.ok) {
+        setTestSuccess(true);
+        setTimeout(() => setTestSuccess(false), 4000);
+      }
+    } catch (e) {
+      console.error('Connection test failed', e);
+    } finally {
       setTestingConnection(false);
-      setTestSuccess(true);
-      setTimeout(() => setTestSuccess(false), 4000);
-    }, 1200);
+    }
   };
 
-  const handleSave = () => {
-    setIsSaved(true);
-    if (onSave) onSave();
-    setTimeout(() => setIsSaved(false), 3000);
+  const handleSave = async () => {
+    try {
+      await fetch('http://127.0.0.1:5000/api/settings/save', { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      setIsSaved(true);
+      if (onSave) onSave();
+      setTimeout(() => setIsSaved(false), 3000);
+    } catch (e) {
+      console.error('Failed to save settings', e);
+    }
   };
 
   return (

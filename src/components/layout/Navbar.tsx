@@ -1,125 +1,69 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Search, ChevronDown, User } from 'lucide-react';
 import { CompanyProfile } from '../../types/finance';
-import { 
-  Search, 
-  Bell, 
-  Calendar, 
-  Sparkles, 
-  SlidersHorizontal, 
-  Building2, 
-  ChevronDown 
-} from 'lucide-react';
+
+export type TabType = 'dashboard' | 'reconciliation' | 'treasury' | 'vendors' | 'copilot' | 'anomalies' | 'demo' | 'settings';
 
 interface NavbarProps {
+  activeTab: TabType;
+  onSelectTab: (tab: TabType) => void;
   companies: CompanyProfile[];
   selectedCompany: CompanyProfile;
-  onSelectCompany: (company: CompanyProfile) => void;
-  onOpenDemo: () => void;
-  onOpenCopilot: () => void;
-  currentTheme?: string;
-  onSelectTheme?: (theme: any) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({
-  companies,
-  selectedCompany,
-  onSelectCompany,
-  onOpenDemo,
-  onOpenCopilot,
-}) => {
-  const [period, setPeriod] = useState<'Day' | 'Week' | 'Month' | 'Year'>('Month');
+export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
+  const tabs = [
+    { id: 'dashboard' as TabType, label: 'Dashboard' },
+    { id: 'reconciliation' as TabType, label: 'Accounts' },
+    { id: 'treasury' as TabType, label: 'Investments' },
+    { id: 'vendors' as TabType, label: 'Planning' },
+    { id: 'settings' as TabType, label: 'Activity' }
+  ];
 
   return (
-    <header className="w-full bg-[#F7F6F2] py-4 px-6">
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        {/* Left: Page Title */}
-        <div className="flex items-center gap-3">
-          <h1 className="text-2xl font-semibold tracking-tight text-[#1C2331]">
-            Dashboard
-          </h1>
-          <div className="relative hidden sm:block">
-            <select
-              aria-label="Select Company"
-              value={selectedCompany.id}
-              onChange={(e) => {
-                const found = companies.find(c => c.id === e.target.value);
-                if (found) onSelectCompany(found);
-              }}
-              className="appearance-none cursor-pointer rounded-lg border border-[#E2DFD8] bg-[#FFFFFF] py-1.5 pl-8 pr-7 text-xs font-normal text-[#5E6C84] hover:border-[#1E3A8A] focus:outline-none transition-colors"
-            >
-              {companies.map((comp) => (
-                <option key={comp.id} value={comp.id}>
-                  {comp.name}
-                </option>
-              ))}
-            </select>
-            <Building2 className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[#5E6C84]" />
-            <ChevronDown className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[#5E6C84]" />
-          </div>
+    <header className="bg-[#F7F6F2] border-b border-[#E2DFD8] sticky top-0 z-40">
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        {/* Left: Brand */}
+        <div className="flex flex-col justify-center cursor-pointer" onClick={() => onSelectTab('dashboard')}>
+          <span className="text-xl font-serif text-[#1C2331] leading-none tracking-tight">AURA</span>
+          <span className="text-[9px] text-[#5E6C84] uppercase tracking-[0.2em] mt-0.5">FINANCE</span>
         </div>
 
-        {/* Center/Right: Period Filter Pills & Search */}
-        <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-start md:justify-end">
-          {/* Timeframe Pill Switcher */}
-          <div className="flex items-center gap-1 rounded-lg bg-[#FFFFFF] p-1 border border-[#E2DFD8] text-xs font-normal">
-            {(['Day', 'Week', 'Month', 'Year'] as const).map((p) => (
+        {/* Center: Navigation Links */}
+        <nav className="hidden md:flex items-center gap-8">
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
               <button
-                key={p}
-                onClick={() => setPeriod(p)}
-                className={`rounded-md px-3 py-1 transition-all ${
-                  period === p
-                    ? 'bg-[#3A5A40] text-[#FCFBF8] font-medium'
-                    : 'text-[#5E6C84] font-normal hover:text-[#1C2331]'
+                key={tab.id}
+                onClick={() => onSelectTab(tab.id)}
+                className={`text-[13px] relative py-5 transition-colors ${
+                  isActive ? 'text-[#1C2331] font-medium' : 'text-[#5E6C84] font-normal hover:text-[#1C2331]'
                 }`}
               >
-                {p}
+                {tab.label}
+                {isActive && (
+                  <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#1C2331]" />
+                )}
               </button>
-            ))}
-          </div>
+            );
+          })}
+        </nav>
 
-          {/* Date Range Pill */}
-          <div className="hidden xl:flex items-center gap-1.5 rounded-lg bg-[#FFFFFF] px-3.5 py-1.5 text-xs font-normal text-[#5E6C84] border border-[#E2DFD8]">
-            <Calendar className="h-3.5 w-3.5 text-[#5E6C84]" />
-            <span>1 Sep 2026 - 30 Sep 2026</span>
+        {/* Right: User & Actions */}
+        <div className="flex items-center gap-5">
+          <div className="flex items-center gap-2 cursor-pointer group">
+            <div className="h-7 w-7 rounded-full bg-[#E2DFD8] flex items-center justify-center text-[#5E6C84] group-hover:bg-[#D4D1CA] transition-colors">
+              <User className="h-4 w-4" />
+            </div>
+            <div className="flex items-center gap-1">
+              <span className="text-[13px] text-[#1C2331] font-medium">Alexander K.</span>
+              <ChevronDown className="h-3.5 w-3.5 text-[#5E6C84]" />
+            </div>
           </div>
-
-          {/* Search Pill */}
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="rounded-lg border border-[#E2DFD8] bg-[#FFFFFF] py-1.5 pl-8 pr-4 text-xs font-normal text-[#5E6C84] placeholder:text-[#5E6C84] focus:outline-none w-36 sm:w-48"
-            />
-            <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[#5E6C84]" />
-          </div>
-
-          {/* Ask CFO Copilot Button */}
-          <button
-            onClick={onOpenCopilot}
-            className="flex items-center gap-1.5 rounded-lg bg-[#3A5A40] px-4 py-1.5 text-xs font-medium text-[#FCFBF8] hover:bg-[#2A402D] transition-colors"
-          >
-            <Sparkles className="h-3.5 w-3.5 text-[#FCFBF8]" />
-            <span>CFO AI</span>
+          <button className="text-[#5E6C84] hover:text-[#1C2331] transition-colors">
+            <Search className="h-4 w-4" />
           </button>
-
-          {/* Demo Controls Button */}
-          <button
-            onClick={onOpenDemo}
-            className="flex items-center gap-1.5 rounded-lg bg-[#FFFFFF] border border-[#E2DFD8] px-3.5 py-1.5 text-xs font-normal text-[#5E6C84] hover:text-[#1C2331] transition-colors"
-          >
-            <SlidersHorizontal className="h-3.5 w-3.5 text-[#5E6C84]" />
-            <span className="hidden sm:inline">Sandbox</span>
-          </button>
-
-          {/* Notification Bell */}
-          <button className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FFFFFF] border border-[#E2DFD8] text-[#5E6C84] hover:text-[#1C2331] transition-colors font-normal">
-            <Bell className="h-3.5 w-3.5" />
-          </button>
-
-          {/* User Profile Avatar */}
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#FFFFFF] border-2 border-[#1E3A8A] text-[#1E3A8A] font-medium text-xs">
-            RP
-          </div>
         </div>
       </div>
     </header>

@@ -130,6 +130,19 @@ app.post('/api/copilot/chat', (req: Request, res: Response) => {
 
   res.json({ success: true, response });
 });
+// 7. Settings Hub
+app.post('/api/settings/save', (req: Request, res: Response) => {
+  // In a real app, save to database here.
+  const data = req.body;
+  res.json({ success: true, message: 'Settings saved successfully.', data });
+});
+
+app.post('/api/settings/test-connection', (req: Request, res: Response) => {
+  // Mock testing Razorpay connection
+  setTimeout(() => {
+    res.json({ success: true, message: 'Razorpay API Connection Successful. Webhooks verified.' });
+  }, 1200);
+});
 
 app.listen(PORT, () => {
   console.log(`⚡ Razorpay LedgerMind AI Backend Server listening on http://127.0.0.1:${PORT}`);

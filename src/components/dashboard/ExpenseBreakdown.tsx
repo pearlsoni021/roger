@@ -1,161 +1,88 @@
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, TrendingUp, Clock, CheckCircle2, AlertCircle, ArrowUpRight } from 'lucide-react';
-import { formatINR } from '../../utils/formatters';
+import React from 'react';
+import { ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, XAxis, Tooltip } from 'recharts';
 
-interface DailyScheduleItem {
-  time: string;
-  title: string;
-  type: 'payout' | 'reconciliation' | 'tax' | 'audit';
-  amount?: number;
-  status: 'Completed' | 'Pending' | 'In Progress';
-}
+const ALLOCATION_DATA = [
+  { name: 'Equities', value: 45, color: '#1E3A8A' }, // Navy
+  { name: 'Bonds', value: 30, color: '#819A88' }, // Sage
+  { name: 'Real Estate', value: 15, color: '#C6A98F' }, // Tan
+  { name: 'Cash', value: 10, color: '#E2DFD8' }, // Light Gray
+];
 
-const SCHEDULE_DATA: Record<number, DailyScheduleItem[]> = {
-  17: [
-    { time: '10:00 AM', title: 'UPI AutoPay Recurring Settlement', type: 'reconciliation', amount: 340000, status: 'Completed' },
-    { time: '02:30 PM', title: 'Vendor Payout Batch #902 (Marketing)', type: 'payout', amount: 185000, status: 'Completed' },
-  ],
-  18: [
-    { time: '11:15 AM', title: 'Gateway MDR SLA Rate Verification', type: 'audit', status: 'Completed' },
-    { time: '04:00 PM', title: 'ICICI Bank MT940 Statement Ingestion', type: 'reconciliation', amount: 620000, status: 'Completed' },
-  ],
-  19: [
-    { time: '09:30 AM', title: 'RazorpayX Vendor Payout Run', type: 'payout', amount: 522000, status: 'Completed' },
-    { time: '01:45 PM', title: '3-Way Batch Reconciliation (60 Recs)', type: 'reconciliation', amount: 1450000, status: 'In Progress' },
-    { time: '05:00 PM', title: 'Section 194J TDS Challan Compilation', type: 'tax', amount: 34000, status: 'Pending' },
-  ],
-  20: [
-    { time: '10:30 AM', title: 'AWS Cloud OpEx Journal Posting', type: 'payout', amount: 450000, status: 'Pending' },
-    { time: '03:00 PM', title: 'Form 26Q Pre-Filing Validation', type: 'tax', status: 'Pending' },
-  ],
-  21: [
-    { time: '11:00 AM', title: 'Weekend Settlement Float Audit (T+2)', type: 'audit', amount: 313600, status: 'Pending' },
-  ],
-};
+const PERFORMANCE_DATA = [
+  { month: 'Jan', portfolio: 4000, benchmark: 2400 },
+  { month: 'Feb', portfolio: 3000, benchmark: 1398 },
+  { month: 'Mar', portfolio: 2000, benchmark: 9800 },
+  { month: 'Apr', portfolio: 2780, benchmark: 3908 },
+  { month: 'May', portfolio: 1890, benchmark: 4800 },
+  { month: 'Jun', portfolio: 2390, benchmark: 3800 },
+  { month: 'Jul', portfolio: 3490, benchmark: 4300 },
+];
 
 export const ExpenseBreakdown: React.FC = () => {
-  const [selectedDate, setSelectedDate] = useState<number>(19);
-  const [monthOffset, setMonthOffset] = useState<number>(0);
-
-  const baseDays = [
-    { day: 'Tue', date: 17 + monthOffset * 7 },
-    { day: 'Wed', date: 18 + monthOffset * 7 },
-    { day: 'Thu', date: 19 + monthOffset * 7 },
-    { day: 'Fri', date: 20 + monthOffset * 7 },
-    { day: 'Sat', date: 21 + monthOffset * 7 },
-  ];
-
-  const currentSchedule = SCHEDULE_DATA[selectedDate] || [
-    { time: '10:00 AM', title: 'Autonomous General Ledger Reconciliation', type: 'reconciliation', status: 'Pending' },
-    { time: '03:30 PM', title: 'RazorpayX Payout Verification', type: 'payout', status: 'Pending' },
-  ];
-
   return (
-    <div className="bg-[#FFFFFF] border border-[#E2DFD8] rounded-xl p-5 shadow-sm flex flex-col justify-between h-full min-h-[360px]">
-      {/* Top: Calendar Widget Header */}
-      <div>
-        <div className="flex items-center justify-between pb-2.5">
-          <button 
-            onClick={() => setMonthOffset(prev => Math.max(prev - 1, -1))}
-            className="flex h-7 w-7 items-center justify-center rounded-lg text-[#5E6C84] hover:bg-[#F7F6F2] hover:text-[#1C2331] font-medium transition-colors"
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </button>
-          <span className="text-xs font-semibold text-[#1C2331] tracking-tight">September 2026</span>
-          <button 
-            onClick={() => setMonthOffset(prev => Math.min(prev + 1, 1))}
-            className="flex h-7 w-7 items-center justify-center rounded-lg text-[#5E6C84] hover:bg-[#F7F6F2] hover:text-[#1C2331] font-medium transition-colors"
-          >
-            <ChevronRight className="h-4 w-4" />
-          </button>
-        </div>
-
-        {/* Interactive Days Row */}
-        <div className="grid grid-cols-5 gap-1.5 pt-1 text-center">
-          {baseDays.map((d) => {
-            const isSelected = d.date === selectedDate;
-            return (
-              <button
-                key={d.date}
-                onClick={() => setSelectedDate(d.date)}
-                className={`flex flex-col items-center justify-center py-2 rounded-lg transition-all ${
-                  isSelected
-                    ? 'bg-[#3A5A40] text-[#FCFBF8] shadow-sm scale-105'
-                    : 'text-[#5E6C84] hover:bg-[#F7F6F2]'
-                }`}
-              >
-                <span className={`text-[11px] font-medium ${isSelected ? 'text-[#FCFBF8]/80' : 'text-[#5E6C84]'}`}>
-                  {d.day}
-                </span>
-                <span className={`text-xs font-medium mt-0.5 ${isSelected ? 'text-[#FCFBF8]' : 'text-[#5E6C84]'}`}>
-                  {d.date}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Middle: Active Scheduled Operations for Selected Date (Fills Empty Gap!) */}
-      <div className="my-3 py-2.5 px-3 rounded-lg bg-[#F7F6F2] border border-[#E2DFD8] space-y-2">
-        <div className="flex items-center justify-between text-[11px] font-medium text-[#5E6C84] uppercase tracking-wider">
-          <span>Schedule for Sep {selectedDate}</span>
-          <span className="text-[10px] font-normal text-[#5E6C84]">{currentSchedule.length} Tasks</span>
-        </div>
-
-        <div className="space-y-1.5 max-h-28 overflow-y-auto pr-1">
-          {currentSchedule.map((item, idx) => (
-            <div key={idx} className="flex items-center justify-between text-xs bg-[#FFFFFF] p-2 rounded-lg border border-[#E2DFD8] shadow-sm">
-              <div className="flex items-center gap-2 min-w-0">
-                <div className="text-[10px] font-mono font-normal text-[#5E6C84] shrink-0">
-                  {item.time}
-                </div>
-                <div className="font-medium text-[#1C2331] truncate text-[11px]">
-                  {item.title}
-                </div>
+    <div className="space-y-6">
+      {/* Asset Allocation */}
+      <div className="bg-[#FFFFFF] border border-[#E2DFD8] rounded-lg p-5 min-h-[220px]">
+        <h3 className="font-serif text-[#1C2331] text-lg mb-4">Asset Allocation</h3>
+        <div className="flex items-center gap-6">
+          <div className="h-32 w-32 relative">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={ALLOCATION_DATA}
+                  innerRadius={35}
+                  outerRadius={55}
+                  paddingAngle={5}
+                  dataKey="value"
+                  stroke="none"
+                >
+                  {ALLOCATION_DATA.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="space-y-2.5">
+            {ALLOCATION_DATA.map((item) => (
+              <div key={item.name} className="flex items-center gap-2">
+                <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: item.color }} />
+                <span className="text-[#1C2331] text-[13px]">{item.name}</span>
               </div>
-              <div className="flex items-center gap-1.5 shrink-0 ml-2">
-                {item.amount && (
-                  <span className="font-mono font-medium text-[#1C2331] text-[11px]">
-                    {formatINR(item.amount, { compact: true })}
-                  </span>
-                )}
-                <span className={`rounded-md px-1.5 py-0.5 text-[9px] font-medium ${
-                  item.status === 'Completed' ? 'bg-[#E8F5E9] text-[#4CAF50]' :
-                  item.status === 'In Progress' ? 'bg-[#F0F4F8] text-[#1E3A8A]' :
-                  'bg-[#E6DFD5] text-[#5E6C84]'
-                }`}>
-                  {item.status}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Bottom: Controller Reconciliation Health & Growth */}
-      <div className="pt-2 border-t border-[#E2DFD8] flex items-center justify-between">
-        <div>
-          <div className="text-xs font-medium text-[#5E6C84]">Reconciliation Velocity</div>
-          <div className="mt-0.5 flex items-center gap-1 text-xs font-normal text-[#4CAF50]">
-            <TrendingUp className="h-3.5 w-3.5" />
-            <span>1,450 records / sec</span>
+            ))}
           </div>
         </div>
+      </div>
 
-        {/* Circular Progress Gauge */}
-        <div className="relative flex items-center justify-center h-11 w-11 rounded-full border-4 border-[#E2DFD8] bg-[#F7F6F2] shrink-0">
-          <svg className="absolute inset-0 h-full w-full -rotate-90" viewBox="0 0 36 36">
-            <path
-              className="text-[#1E3A8A] stroke-current"
-              strokeWidth="3.5"
-              strokeDasharray="80, 100"
-              strokeLinecap="round"
-              fill="none"
-              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-            />
-          </svg>
-          <span className="text-[11px] font-medium text-[#1C2331]">80%</span>
+      {/* Investment Performance */}
+      <div className="bg-[#FFFFFF] border border-[#E2DFD8] rounded-lg p-5">
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="font-serif text-[#1C2331] text-lg">Investment Performance</h3>
+          <div className="flex gap-2">
+            <button className="text-[11px] font-medium text-[#1C2331] border-b border-[#1C2331] pb-0.5">1M</button>
+            <button className="text-[11px] font-normal text-[#5E6C84]">6M</button>
+            <button className="text-[11px] font-normal text-[#5E6C84]">1Y</button>
+            <button className="text-[11px] font-normal text-[#5E6C84]">ALL</button>
+          </div>
+        </div>
+        
+        <div className="h-36 w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={PERFORMANCE_DATA} margin={{ top: 5, right: 0, left: 0, bottom: 0 }}>
+              <Tooltip 
+                contentStyle={{
+                  backgroundColor: '#FFFFFF',
+                  borderColor: '#E2DFD8',
+                  borderRadius: '6px',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
+                  color: '#1C2331',
+                  fontSize: '12px'
+                }}
+              />
+              <Line type="monotone" dataKey="portfolio" stroke="#819A88" strokeWidth={2} dot={false} />
+              <Line type="monotone" dataKey="benchmark" stroke="#1E3A8A" strokeWidth={2} dot={false} />
+            </LineChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </div>
