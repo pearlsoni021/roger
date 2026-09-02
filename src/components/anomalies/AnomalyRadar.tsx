@@ -35,14 +35,14 @@ export const AnomalyRadar: React.FC<AnomalyRadarProps> = ({
         );
       case 'WARNING':
         return (
-          <span className="inline-flex items-center gap-1.5 rounded border border-amber-900/50 bg-[#F8F3E6] px-2 py-0.5 text-[11px] font-medium text-[#9E7209]">
+          <span className="inline-flex items-center gap-1.5 rounded border border-amber-900/50 bg-[#FFF8E1] px-2 py-0.5 text-[11px] font-medium text-[#F4B400]">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
             Advisory
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center gap-1.5 rounded border border-[#E6DFD5] bg-[#F5F0E6] px-2 py-0.5 text-[11px] font-medium text-[#68554A]">
+          <span className="inline-flex items-center gap-1.5 rounded border border-[#EAEAEA] bg-[#F5F0E6] px-2 py-0.5 text-[11px] font-medium text-[#6B6B6B]">
             <span className="h-1.5 w-1.5 rounded-full bg-slate-400"></span>
             Operational Info
           </span>
@@ -53,20 +53,20 @@ export const AnomalyRadar: React.FC<AnomalyRadarProps> = ({
   return (
     <div className="space-y-5">
       {/* Top Banner */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-[#E6DFD5] bg-[#FCFBF8] p-4">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-[#EAEAEA] bg-[#FFFFFF] p-4">
         <div>
           <div className="flex items-center gap-2">
-            <AlertTriangle className="h-4 w-4 text-[#68554A]" />
-            <h2 className="text-sm font-semibold text-[#2D1E17]">Financial Leakage & Anomaly Watchdog</h2>
+            <AlertTriangle className="h-4 w-4 text-[#6B6B6B]" />
+            <h2 className="text-sm font-semibold text-[#2E2E2E]">Financial Leakage & Anomaly Watchdog</h2>
           </div>
-          <p className="text-[11px] text-[#68554A] mt-0.5">
+          <p className="text-[11px] text-[#6B6B6B] mt-0.5">
             Continuous background telemetry scanning for <strong>MDR fee drift</strong>, <strong>SaaS subscription seat creep</strong>, and <strong>tax threshold compliance</strong>.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 rounded-lg border border-[#E6DFD5] bg-[#F5F0E6] px-3.5 py-1.5 text-xs">
-          <span className="text-[#68554A]">Identified Leakage at Risk: </span>
-          <strong className="text-[#2D1E17] font-mono font-bold">{formatINR(totalLeakageAtRiskINR)}</strong>
+        <div className="flex items-center gap-2 rounded-lg border border-[#EAEAEA] bg-[#F5F0E6] px-3.5 py-1.5 text-xs">
+          <span className="text-[#6B6B6B]">Identified Leakage at Risk: </span>
+          <strong className="text-[#2E2E2E] font-mono font-bold">{formatINR(totalLeakageAtRiskINR)}</strong>
         </div>
       </div>
 
@@ -75,27 +75,27 @@ export const AnomalyRadar: React.FC<AnomalyRadarProps> = ({
         {openAnomalies.map((anom) => (
           <div
             key={anom.id}
-            className="rounded-xl border border-[#E6DFD5] bg-[#FCFBF8] p-4 hover:border-[#E6DFD5] transition-colors shadow-sm"
+            className="rounded-xl border border-[#EAEAEA] bg-[#FFFFFF] p-4 hover:border-[#EAEAEA] transition-colors shadow-sm"
           >
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-[#E6DFD5] pb-2.5">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-[#EAEAEA] pb-2.5">
               <div className="flex items-center gap-2">
                 {getSeverityBadge(anom.severity)}
-                <h3 className="text-xs font-semibold text-[#2D1E17]">{anom.title}</h3>
+                <h3 className="text-xs font-semibold text-[#2E2E2E]">{anom.title}</h3>
               </div>
               <div className="flex items-center gap-3 text-[11px]">
-                <span className="text-[#68554A]">Detected {anom.detectedAt}</span>
-                <span className="rounded bg-[#FCFBF8] border border-[#E6DFD5] px-2 py-0.5 font-mono text-[#2D1E17] font-medium">
+                <span className="text-[#6B6B6B]">Detected {anom.detectedAt}</span>
+                <span className="rounded bg-[#FFFFFF] border border-[#EAEAEA] px-2 py-0.5 font-mono text-[#2E2E2E] font-medium">
                   Impact: {formatINR(anom.financialImpactINR)}
                 </span>
               </div>
             </div>
 
-            <p className="mt-2.5 text-xs text-[#68554A] leading-relaxed">
+            <p className="mt-2.5 text-xs text-[#6B6B6B] leading-relaxed">
               {anom.description}
             </p>
 
-            <div className="mt-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 rounded-lg border border-[#E6DFD5] bg-[#F5F0E6] p-3">
-              <div className="flex items-center gap-2 text-xs text-[#68554A]">
+            <div className="mt-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 rounded-lg border border-[#EAEAEA] bg-[#F5F0E6] p-3">
+              <div className="flex items-center gap-2 text-xs text-[#6B6B6B]">
                 <Sparkles className="h-3.5 w-3.5 text-[#4A6982] shrink-0" />
                 <span><strong>Recommendation</strong>: {anom.aiSuggestedAction}</span>
               </div>
@@ -110,10 +110,10 @@ export const AnomalyRadar: React.FC<AnomalyRadarProps> = ({
                       onResolveAnomaly(anom.id);
                     }
                   }}
-                  className="flex items-center gap-1.5 rounded-md bg-[#F5F0E6] border border-[#E6DFD5] px-3 py-1 text-xs font-medium text-[#2D1E17] hover:bg-[#E6DFD5] transition-colors"
+                  className="flex items-center gap-1.5 rounded-md bg-[#F5F0E6] border border-[#EAEAEA] px-3 py-1 text-xs font-medium text-[#2E2E2E] hover:bg-[#EBE5DE] transition-colors"
                 >
                   <span>Remediate</span>
-                  <ArrowRight className="h-3 w-3 text-[#68554A]" />
+                  <ArrowRight className="h-3 w-3 text-[#6B6B6B]" />
                 </button>
               </div>
             </div>
@@ -123,17 +123,17 @@ export const AnomalyRadar: React.FC<AnomalyRadarProps> = ({
         {/* Resolved Anomalies History */}
         {resolvedAnomalies.length > 0 && (
           <div className="pt-3">
-            <h4 className="text-[11px] font-medium text-[#68554A] uppercase tracking-wider mb-2">
+            <h4 className="text-[11px] font-medium text-[#6B6B6B] uppercase tracking-wider mb-2">
               Recently Resolved Items ({resolvedAnomalies.length})
             </h4>
             <div className="space-y-1.5">
               {resolvedAnomalies.map((anom) => (
-                <div key={anom.id} className="flex items-center justify-between rounded-lg border border-[#E6DFD5] bg-[#F5F0E6] p-2.5 text-xs">
+                <div key={anom.id} className="flex items-center justify-between rounded-lg border border-[#EAEAEA] bg-[#F5F0E6] p-2.5 text-xs">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
-                    <span className="text-[#68554A]">{anom.title}</span>
+                    <span className="text-[#6B6B6B]">{anom.title}</span>
                   </div>
-                  <span className="text-[#68554A] text-[11px]">Resolved</span>
+                  <span className="text-[#6B6B6B] text-[11px]">Resolved</span>
                 </div>
               ))}
             </div>

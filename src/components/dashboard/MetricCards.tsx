@@ -20,14 +20,14 @@ export const MetricCards: React.FC<MetricCardsProps> = ({
       {/* 1. Hero Metric Card */}
       <div 
         onClick={() => onNavigateToTab('treasury')}
-        className="cursor-pointer group rounded-xl bg-[#FCFBF8] border border-[#E6DFD5] border-l-4 border-l-[#A67C52] p-5 shadow-sm hover:bg-[#F2EBE1] transition-all flex flex-col justify-between min-h-[140px]"
+        className="cursor-pointer group rounded-xl bg-[#FFFFFF] border border-[#EAEAEA] border-l-4 border-l-[#A67C52] p-5 shadow-sm hover:bg-[#F9F7F4] transition-all flex flex-col justify-between min-h-[140px]"
       >
         <div className="flex items-center justify-between">
-          <span className="text-xs font-medium text-[#68554A] tracking-wide">Total Liquid Reserves</span>
-          <ArrowUpRight className="h-4 w-4 text-[#68554A] group-hover:text-[#A67C52] group-hover:scale-110 transition-all" />
+          <span className="text-xs font-medium text-[#6B6B6B] tracking-wide">Total Liquid Reserves</span>
+          <ArrowUpRight className="h-4 w-4 text-[#6B6B6B] group-hover:text-[#B68D5D] group-hover:scale-110 transition-all" />
         </div>
         <div>
-          <div className="text-3xl font-semibold tracking-tight text-[#2D1E17] font-mono drop-shadow-sm">
+          <div className="text-3xl font-semibold tracking-tight text-[#2E2E2E] font-mono drop-shadow-sm">
             {formatINR(company.totalCashINR, { compact: true })}
           </div>
           <div className="mt-2 inline-flex items-center gap-1.5 text-xs font-normal text-emerald-400 bg-emerald-500/10 rounded-md px-2 py-0.5">
@@ -38,12 +38,12 @@ export const MetricCards: React.FC<MetricCardsProps> = ({
       </div>
 
       {/* 2. Metric Card: Monthly Net Burn */}
-      <div className="rounded-xl bg-[#FCFBF8] border border-[#E6DFD5] p-5 shadow-sm hover:bg-[#F2EBE1] transition-all flex flex-col justify-between min-h-[140px]">
+      <div className="rounded-xl bg-[#FFFFFF] border border-[#EAEAEA] p-5 shadow-sm hover:bg-[#F9F7F4] transition-all flex flex-col justify-between min-h-[140px]">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-medium text-[#68554A] tracking-wide">Monthly Net Burn</span>
+          <span className="text-xs font-medium text-[#6B6B6B] tracking-wide">Monthly Net Burn</span>
         </div>
         <div>
-          <div className="text-3xl font-semibold tracking-tight text-[#2D1E17] font-mono">
+          <div className="text-3xl font-semibold tracking-tight text-[#2E2E2E] font-mono">
             {formatINR(company.monthlyBurnINR, { compact: true })}
           </div>
           <div className="mt-2 inline-flex items-center gap-1.5 text-xs font-normal text-emerald-400 bg-emerald-500/10 rounded-md px-2 py-0.5">
@@ -56,15 +56,15 @@ export const MetricCards: React.FC<MetricCardsProps> = ({
       {/* 3. Metric Card: Runway Forecast */}
       <div 
         onClick={() => onNavigateToTab('treasury')}
-        className="cursor-pointer group rounded-xl bg-[#FCFBF8] border border-[#E6DFD5] p-5 shadow-sm hover:bg-[#F2EBE1] transition-all flex flex-col justify-between min-h-[140px]"
+        className="cursor-pointer group rounded-xl bg-[#FFFFFF] border border-[#EAEAEA] p-5 shadow-sm hover:bg-[#F9F7F4] transition-all flex flex-col justify-between min-h-[140px]"
       >
         <div className="flex items-center justify-between">
-          <span className="text-xs font-medium text-[#68554A] tracking-wide">Runway Forecast</span>
-          <ArrowUpRight className="h-4 w-4 text-[#68554A] group-hover:text-[#A67C52] transition-colors" />
+          <span className="text-xs font-medium text-[#6B6B6B] tracking-wide">Runway Forecast</span>
+          <ArrowUpRight className="h-4 w-4 text-[#6B6B6B] group-hover:text-[#B68D5D] transition-colors" />
         </div>
         <div>
-          <div className="text-3xl font-semibold tracking-tight text-[#2D1E17] font-mono">
-            {company.runwayMonths} <span className="text-base font-medium text-[#68554A]">Months</span>
+          <div className="text-3xl font-semibold tracking-tight text-[#2E2E2E] font-mono">
+            {company.runwayMonths} <span className="text-base font-medium text-[#6B6B6B]">Months</span>
           </div>
           <div className="mt-2 inline-flex items-center gap-1.5 text-xs font-normal text-emerald-400 bg-emerald-500/10 rounded-md px-2 py-0.5">
             <TrendingUp className="h-3.5 w-3.5" />
@@ -76,14 +76,14 @@ export const MetricCards: React.FC<MetricCardsProps> = ({
       {/* 4. Metric Card: Reconciliation Health */}
       <div 
         onClick={() => onNavigateToTab('reconciliation')}
-        className="cursor-pointer group rounded-xl bg-[#FCFBF8] border border-[#E6DFD5] p-5 shadow-sm hover:bg-[#F2EBE1] transition-all flex flex-col justify-between min-h-[140px]"
+        className="cursor-pointer group rounded-xl bg-[#FFFFFF] border border-[#EAEAEA] p-5 shadow-sm hover:bg-[#F9F7F4] transition-all flex flex-col justify-between min-h-[140px]"
       >
         <div className="flex items-center justify-between">
-          <span className="text-xs font-medium text-[#68554A] tracking-wide">Reconciliation Health</span>
-          <ArrowUpRight className="h-4 w-4 text-[#68554A] group-hover:text-[#A67C52] transition-colors" />
+          <span className="text-xs font-medium text-[#6B6B6B] tracking-wide">Reconciliation Health</span>
+          <ArrowUpRight className="h-4 w-4 text-[#6B6B6B] group-hover:text-[#B68D5D] transition-colors" />
         </div>
         <div>
-          <div className="text-3xl font-semibold tracking-tight text-[#2D1E17] font-mono">
+          <div className="text-3xl font-semibold tracking-tight text-[#2E2E2E] font-mono">
             {reconciliationHealth}%
           </div>
           <div className="mt-2 inline-flex items-center gap-1.5 text-xs font-normal text-emerald-400 bg-emerald-500/10 rounded-md px-2 py-0.5">

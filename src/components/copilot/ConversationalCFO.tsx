@@ -88,24 +88,24 @@ export const ConversationalCFO: React.FC<ConversationalCFOProps> = ({
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-7.5rem)] rounded-xl border border-[#E6DFD5] bg-[#FCFBF8] overflow-hidden shadow-lg">
+    <div className="flex flex-col h-[calc(100vh-7.5rem)] rounded-xl border border-[#EAEAEA] bg-[#FFFFFF] overflow-hidden shadow-lg">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-[#E6DFD5] bg-[#F5F0E6] px-5 py-3.5">
+      <div className="flex items-center justify-between border-b border-[#EAEAEA] bg-[#F5F0E6] px-5 py-3.5">
         <div className="flex items-center gap-2.5">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#A67C52] text-[#2D1E17]">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#8C6239] text-[#2E2E2E]">
             <Bot className="h-4 w-4" />
           </div>
           <div>
-            <h2 className="text-xs font-semibold text-[#2D1E17] flex items-center gap-2">
+            <h2 className="text-xs font-semibold text-[#2E2E2E] flex items-center gap-2">
               <span>Razorpay CFO Copilot AI</span>
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
             </h2>
-            <p className="text-[11px] text-[#68554A]">Context: <strong className="text-[#68554A] font-medium">{company.name}</strong></p>
+            <p className="text-[11px] text-[#6B6B6B]">Context: <strong className="text-[#6B6B6B] font-medium">{company.name}</strong></p>
           </div>
         </div>
-        <div className="text-right text-[11px] text-[#68554A]">
+        <div className="text-right text-[11px] text-[#6B6B6B]">
           <span>AI Engine: </span>
-          <span className="text-[#2D1E17] font-medium font-mono">Vulcan Finance</span>
+          <span className="text-[#2E2E2E] font-medium font-mono">Vulcan Finance</span>
         </div>
       </div>
 
@@ -121,8 +121,8 @@ export const ConversationalCFO: React.FC<ConversationalCFOProps> = ({
               <div
                 className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-xs font-bold ${
                   isUser
-                    ? 'bg-[#A67C52] text-[#2D1E17]'
-                    : 'bg-[#F5F0E6] text-[#68554A] border border-[#E6DFD5]'
+                    ? 'bg-[#8C6239] text-[#2E2E2E]'
+                    : 'bg-[#F5F0E6] text-[#6B6B6B] border border-[#EAEAEA]'
                 }`}
               >
                 {isUser ? <User className="h-3.5 w-3.5" /> : <Bot className="h-3.5 w-3.5" />}
@@ -131,16 +131,16 @@ export const ConversationalCFO: React.FC<ConversationalCFOProps> = ({
               <div
                 className={`max-w-2xl rounded-xl p-3.5 text-xs leading-relaxed ${
                   isUser
-                    ? 'bg-[#A67C52] text-[#2D1E17] rounded-tr-none'
-                    : 'bg-[#F5F0E6] border border-[#E6DFD5] text-[#2D1E17] rounded-tl-none'
+                    ? 'bg-[#8C6239] text-[#2E2E2E] rounded-tr-none'
+                    : 'bg-[#F5F0E6] border border-[#EAEAEA] text-[#2E2E2E] rounded-tl-none'
                 }`}
               >
                 {/* Agent Thought Steps Dropdown */}
                 {msg.reasoningSteps && msg.reasoningSteps.length > 0 && (
-                  <div className="mb-2.5 rounded-lg border border-[#E6DFD5] bg-[#FCFBF8] p-2">
+                  <div className="mb-2.5 rounded-lg border border-[#EAEAEA] bg-[#FFFFFF] p-2">
                     <button
                       onClick={() => setExpandedThoughtId(expandedThoughtId === msg.id ? null : msg.id)}
-                      className="flex w-full items-center justify-between text-[11px] font-medium text-[#68554A] hover:text-[#2D1E17]"
+                      className="flex w-full items-center justify-between text-[11px] font-medium text-[#6B6B6B] hover:text-[#2E2E2E]"
                     >
                       <span className="flex items-center gap-1.5">
                         <Sparkles className="h-3 w-3 text-[#4A6982]" />
@@ -154,12 +154,12 @@ export const ConversationalCFO: React.FC<ConversationalCFOProps> = ({
                     </button>
 
                     {expandedThoughtId === msg.id && (
-                      <div className="mt-2 space-y-1.5 border-t border-[#E6DFD5] pt-2 font-mono text-[10px]">
+                      <div className="mt-2 space-y-1.5 border-t border-[#EAEAEA] pt-2 font-mono text-[10px]">
                         {msg.reasoningSteps.map((step) => (
-                          <div key={step.id} className="text-[#68554A] flex items-start gap-1.5">
+                          <div key={step.id} className="text-[#6B6B6B] flex items-start gap-1.5">
                             <CheckCircle2 className="h-3 w-3 text-emerald-500 shrink-0 mt-0.5" />
                             <div>
-                              <span className="text-[#68554A] font-semibold">[{step.agentRole}]</span> {step.thought}
+                              <span className="text-[#6B6B6B] font-semibold">[{step.agentRole}]</span> {step.thought}
                             </div>
                           </div>
                         ))}
@@ -175,12 +175,12 @@ export const ConversationalCFO: React.FC<ConversationalCFOProps> = ({
 
                 {/* Embedded Interactive Chart */}
                 {msg.chartData && (
-                  <div className="mt-3 rounded-lg border border-[#E6DFD5] bg-[#FCFBF8] p-3">
-                    <div className="text-[11px] font-medium text-[#68554A] mb-2 flex items-center gap-1.5">
+                  <div className="mt-3 rounded-lg border border-[#EAEAEA] bg-[#FFFFFF] p-3">
+                    <div className="text-[11px] font-medium text-[#6B6B6B] mb-2 flex items-center gap-1.5">
                       {msg.chartData.chartType === 'BAR' ? (
-                        <BarChart3 className="h-3.5 w-3.5 text-[#68554A]" />
+                        <BarChart3 className="h-3.5 w-3.5 text-[#6B6B6B]" />
                       ) : (
-                        <PieIcon className="h-3.5 w-3.5 text-[#68554A]" />
+                        <PieIcon className="h-3.5 w-3.5 text-[#6B6B6B]" />
                       )}
                       <span>{msg.chartData.title}</span>
                     </div>
@@ -224,25 +224,25 @@ export const ConversationalCFO: React.FC<ConversationalCFOProps> = ({
 
                 {/* Action Button */}
                 {msg.actionButton && (
-                  <div className="mt-2.5 pt-2 border-t border-[#E6DFD5]">
+                  <div className="mt-2.5 pt-2 border-t border-[#EAEAEA]">
                     <button
                       onClick={() => onTriggerAction && onTriggerAction(msg.actionButton!.actionType, msg.actionButton!.payload)}
-                      className="flex items-center gap-1.5 rounded-md bg-[#F5F0E6] border border-[#E6DFD5] px-2.5 py-1 text-[11px] font-medium text-[#2D1E17] hover:bg-[#E6DFD5] transition-colors"
+                      className="flex items-center gap-1.5 rounded-md bg-[#F5F0E6] border border-[#EAEAEA] px-2.5 py-1 text-[11px] font-medium text-[#2E2E2E] hover:bg-[#EBE5DE] transition-colors"
                     >
                       <span>{msg.actionButton.label}</span>
-                      <ArrowRight className="h-3 w-3 text-[#68554A]" />
+                      <ArrowRight className="h-3 w-3 text-[#6B6B6B]" />
                     </button>
                   </div>
                 )}
 
                 {/* Suggested Follow-up chips */}
                 {msg.suggestedFollowUps && msg.suggestedFollowUps.length > 0 && (
-                  <div className="mt-2.5 flex flex-wrap gap-1.5 pt-2 border-t border-[#E6DFD5]">
+                  <div className="mt-2.5 flex flex-wrap gap-1.5 pt-2 border-t border-[#EAEAEA]">
                     {msg.suggestedFollowUps.map((chip, idx) => (
                       <button
                         key={idx}
                         onClick={() => handleSend(chip)}
-                        className="rounded-md border border-[#E6DFD5] bg-[#FCFBF8] px-2 py-0.5 text-[10px] text-[#68554A] hover:border-[#E6DFD5] hover:text-[#2D1E17] transition-colors"
+                        className="rounded-md border border-[#EAEAEA] bg-[#FFFFFF] px-2 py-0.5 text-[10px] text-[#6B6B6B] hover:border-[#EAEAEA] hover:text-[#2E2E2E] transition-colors"
                       >
                         {chip}
                       </button>
@@ -255,7 +255,7 @@ export const ConversationalCFO: React.FC<ConversationalCFOProps> = ({
         })}
 
         {isTyping && (
-          <div className="flex items-center gap-2 text-xs text-[#68554A] bg-[#F5F0E6] p-2.5 rounded-lg border border-[#E6DFD5] w-fit">
+          <div className="flex items-center gap-2 text-xs text-[#6B6B6B] bg-[#F5F0E6] p-2.5 rounded-lg border border-[#EAEAEA] w-fit">
             <Loader2 className="h-3.5 w-3.5 animate-spin" />
             <span>Analyzing financial models and ledger...</span>
           </div>
@@ -263,7 +263,7 @@ export const ConversationalCFO: React.FC<ConversationalCFOProps> = ({
       </div>
 
       {/* Input Bar */}
-      <div className="border-t border-[#E6DFD5] bg-[#F5F0E6] p-3.5">
+      <div className="border-t border-[#EAEAEA] bg-[#F5F0E6] p-3.5">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -276,12 +276,12 @@ export const ConversationalCFO: React.FC<ConversationalCFOProps> = ({
             placeholder="Ask about cash burn, 3-way reconciliation, TDS filings, or runway scenarios..."
             value={inputQuery}
             onChange={(e) => setInputQuery(e.target.value)}
-            className="flex-1 rounded-lg border border-[#E6DFD5] bg-[#FCFBF8] px-3.5 py-2 text-xs text-[#2D1E17] placeholder-slate-500 focus:border-slate-500 focus:outline-none"
+            className="flex-1 rounded-lg border border-[#EAEAEA] bg-[#FFFFFF] px-3.5 py-2 text-xs text-[#2E2E2E] placeholder-slate-500 focus:border-slate-500 focus:outline-none"
           />
           <button
             type="submit"
             disabled={!inputQuery.trim()}
-            className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#A67C52] text-[#2D1E17] hover:bg-[#8F6641] disabled:opacity-40 transition-colors shadow-sm"
+            className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#8C6239] text-[#2E2E2E] hover:bg-[#704E2E] disabled:opacity-40 transition-colors shadow-sm"
           >
             <Send className="h-3.5 w-3.5" />
           </button>

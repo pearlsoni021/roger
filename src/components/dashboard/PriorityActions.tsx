@@ -16,7 +16,7 @@ const RECENT_TRANSACTIONS = [
     refId: '#REC-2026-9049',
     amount: 580000,
     status: 'Verified',
-    statusColor: 'bg-[#F0E5D8] text-[#A67C52]',
+    statusColor: 'bg-[#F9F3EB] text-[#B68D5D]',
   },
   {
     id: 'tx_02',
@@ -25,7 +25,7 @@ const RECENT_TRANSACTIONS = [
     refId: '#INV-2026-0881',
     amount: 450000,
     status: 'TDS Paid',
-    statusColor: 'bg-[#F0E5D8] text-[#A67C52]',
+    statusColor: 'bg-[#F9F3EB] text-[#B68D5D]',
   },
   {
     id: 'tx_03',
@@ -34,7 +34,7 @@ const RECENT_TRANSACTIONS = [
     refId: '#REC-2026-9004',
     amount: 120000,
     status: 'Matched',
-    statusColor: 'bg-[#EAF0EB] text-[#4E7358]',
+    statusColor: 'bg-[#E8F5E9] text-[#4CAF50]',
   },
   {
     id: 'tx_04',
@@ -43,7 +43,7 @@ const RECENT_TRANSACTIONS = [
     refId: '#DSP-2026-9921',
     amount: 42500,
     status: 'Review',
-    statusColor: 'bg-[#F8F3E6] text-[#9E7209]',
+    statusColor: 'bg-[#FFF8E1] text-[#F4B400]',
   },
 ];
 
@@ -51,23 +51,23 @@ export const PriorityActions: React.FC<PriorityActionsProps> = ({
   onNavigateToTab,
 }) => {
   return (
-    <div className="bg-[#FCFBF8] border border-[#E6DFD5] rounded-xl p-6 shadow-sm">
+    <div className="bg-[#FFFFFF] border border-[#EAEAEA] rounded-xl p-6 shadow-sm">
       {/* Header */}
-      <div className="flex items-center justify-between pb-4 border-b border-[#E6DFD5]">
+      <div className="flex items-center justify-between pb-4 border-b border-[#EAEAEA]">
         <div>
-          <h3 className="text-base font-semibold text-[#2D1E17] tracking-tight">Recent Settlement & Payout Feeds</h3>
-          <p className="text-xs font-normal text-[#68554A] mt-0.5">Real-time ledger entries from Gateway and RazorpayX banking</p>
+          <h3 className="text-base font-semibold text-[#2E2E2E] tracking-tight">Recent Settlement & Payout Feeds</h3>
+          <p className="text-xs font-normal text-[#6B6B6B] mt-0.5">Real-time ledger entries from Gateway and RazorpayX banking</p>
         </div>
         <div className="flex items-center gap-2">
           <button 
             onClick={() => onNavigateToTab('reconciliation')}
-            className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F2EBE1] text-[#68554A] hover:bg-[#E6DFD5] transition-colors font-medium"
+            className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F9F7F4] text-[#6B6B6B] hover:bg-[#EBE5DE] transition-colors font-medium"
           >
             <RotateCw className="h-3.5 w-3.5" />
           </button>
           <button 
             onClick={() => onNavigateToTab('reconciliation')}
-            className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F2EBE1] text-[#68554A] hover:bg-[#E6DFD5] transition-colors font-medium"
+            className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F9F7F4] text-[#6B6B6B] hover:bg-[#EBE5DE] transition-colors font-medium"
           >
             <ArrowUpRight className="h-4 w-4" />
           </button>
@@ -78,7 +78,7 @@ export const PriorityActions: React.FC<PriorityActionsProps> = ({
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs">
           <thead>
-            <tr className="border-b border-[#E6DFD5] text-xs font-medium text-[#68554A]">
+            <tr className="border-b border-[#EAEAEA] text-xs font-medium text-[#6B6B6B]">
               <th className="py-3 px-2">Transaction Name</th>
               <th className="py-3 px-2">Source</th>
               <th className="py-3 px-2">Reference ID</th>
@@ -91,18 +91,18 @@ export const PriorityActions: React.FC<PriorityActionsProps> = ({
               <tr 
                 key={tx.id}
                 onClick={() => onNavigateToTab('reconciliation')}
-                className="cursor-pointer hover:bg-[#F2EBE1] transition-colors"
+                className="cursor-pointer hover:bg-[#F9F7F4] transition-colors"
               >
                 <td className="py-3.5 px-2">
-                  <div className="font-medium text-[#2D1E17]">{tx.description}</div>
+                  <div className="font-medium text-[#2E2E2E]">{tx.description}</div>
                 </td>
-                <td className="py-3.5 px-2 text-[#68554A] font-normal">
+                <td className="py-3.5 px-2 text-[#6B6B6B] font-normal">
                   {tx.source}
                 </td>
-                <td className="py-3.5 px-2 text-[#68554A] font-mono text-xs font-normal">
+                <td className="py-3.5 px-2 text-[#6B6B6B] font-mono text-xs font-normal">
                   {tx.refId}
                 </td>
-                <td className="py-3.5 px-2 font-mono font-medium text-[#2D1E17] text-sm">
+                <td className="py-3.5 px-2 font-mono font-medium text-[#2E2E2E] text-sm">
                   {formatINR(tx.amount)}
                 </td>
                 <td className="py-3.5 px-2 text-right">

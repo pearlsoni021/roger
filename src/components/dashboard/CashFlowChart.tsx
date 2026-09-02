@@ -15,23 +15,23 @@ interface CashFlowChartProps {
 }
 
 const CASHFLOW_DATA = [
-  { month: 'Jan', value: 7.2, fill: '#D7CCC8' },
-  { month: 'Feb', value: 6.4, fill: '#D7CCC8' },
-  { month: 'Mar', value: 9.8, fill: '#A67C52' }, // Highlighted active bar
-  { month: 'Apr', value: 5.1, fill: '#D7CCC8' },
-  { month: 'May', value: 8.6, fill: '#D7CCC8' },
-  { month: 'Jun', value: 3.5, fill: '#D7CCC8' },
+  { month: 'Jan', value: 7.2, fill: '#EAEAEA' },
+  { month: 'Feb', value: 6.4, fill: '#EAEAEA' },
+  { month: 'Mar', value: 9.8, fill: 'url(#premiumGradient)' }, // Highlighted active bar with gradient
+  { month: 'Apr', value: 5.1, fill: '#EAEAEA' },
+  { month: 'May', value: 8.6, fill: '#EAEAEA' },
+  { month: 'Jun', value: 3.5, fill: '#EAEAEA' },
 ];
 
 export const CashFlowChart: React.FC<CashFlowChartProps> = () => {
   return (
-    <div className="rounded-xl bg-[#FCFBF8] border border-[#E6DFD5] p-6 shadow-sm flex flex-col justify-between h-full min-h-[320px]">
+    <div className="rounded-xl bg-[#FFFFFF] border border-[#EAEAEA] p-6 shadow-sm flex flex-col justify-between h-full min-h-[320px]">
       <div className="flex items-center justify-between pb-4">
         <div>
-          <h3 className="text-base font-semibold text-[#2D1E17] tracking-tight">Total Revenue & Cashflow</h3>
-          <p className="text-xs font-normal text-[#68554A] mt-0.5">Razorpay Gateway Gross Settlements (₹ in Lakhs)</p>
+          <h3 className="text-base font-semibold text-[#2E2E2E] tracking-tight">Total Revenue & Cashflow</h3>
+          <p className="text-xs font-normal text-[#6B6B6B] mt-0.5">Razorpay Gateway Gross Settlements (₹ in Lakhs)</p>
         </div>
-        <button className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F2EBE1] text-[#68554A] hover:bg-[#E6DFD5] transition-colors font-medium">
+        <button className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F9F7F4] text-[#6B6B6B] hover:bg-[#EBE5DE] transition-colors font-medium">
           <ArrowUpRight className="h-4 w-4" />
         </button>
       </div>
@@ -39,6 +39,12 @@ export const CashFlowChart: React.FC<CashFlowChartProps> = () => {
       <div className="h-56 w-full mt-2">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={CASHFLOW_DATA} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+            <defs>
+              <linearGradient id="premiumGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#B68D5D" />
+                <stop offset="100%" stopColor="#8C6239" />
+              </linearGradient>
+            </defs>
             <XAxis 
               dataKey="month" 
               stroke="#938278" 
@@ -73,6 +79,7 @@ export const CashFlowChart: React.FC<CashFlowChartProps> = () => {
               dataKey="value" 
               radius={[6, 6, 6, 6]} 
               maxBarSize={38}
+              activeBar={{ fill: 'url(#premiumGradient)' }}
             >
               {CASHFLOW_DATA.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.fill} />

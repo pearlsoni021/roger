@@ -50,18 +50,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
   ];
 
   return (
-    <aside className="w-64 shrink-0 bg-[#FCFBF8] border-r border-[#E6DFD5] p-5 flex flex-col justify-between hidden lg:flex min-h-screen">
+    <aside className="w-64 shrink-0 bg-[#FFFFFF] border-r border-[#EAEAEA] p-5 flex flex-col justify-between hidden lg:flex min-h-screen">
       <div>
         {/* Brand Logo Header */}
         <div className="flex items-center gap-3 px-2 mb-8">
-          <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-transparent border-2 border-[#A67C52] text-[#A67C52] font-semibold text-sm shadow-sm">
-            <ShieldCheck className="h-5 w-5 text-[#A67C52]" />
+          <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-transparent border-2 border-[#B68D5D] text-[#B68D5D] font-semibold text-sm shadow-sm">
+            <ShieldCheck className="h-5 w-5 text-[#B68D5D]" />
           </div>
           <div>
-            <div className="font-bold text-xl text-[#2D1E17] tracking-tight leading-none">
+            <div className="font-bold text-xl text-[#2E2E2E] tracking-tight leading-none">
               Razorpay
             </div>
-            <div className="text-[11px] font-normal text-[#68554A] mt-0.5">
+            <div className="text-[11px] font-normal text-[#6B6B6B] mt-0.5">
               LedgerMind AI
             </div>
           </div>
@@ -78,17 +78,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 onClick={() => onSelectTab(item.id)}
                 className={`flex w-full items-center justify-between rounded-lg px-3.5 py-3 text-xs font-medium transition-all ${
                   isActive
-                    ? 'bg-[#F0E5D8] text-[#A67C52] border-l-2 border-[#A67C52]'
-                    : 'text-[#68554A] hover:text-[#2D1E17] hover:bg-black/5 border-l-2 border-transparent'
+                    ? 'bg-[#F9F3EB] text-[#B68D5D] border-l-2 border-[#B68D5D]'
+                    : 'text-[#6B6B6B] hover:text-[#2E2E2E] hover:bg-black/5 border-l-2 border-transparent'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <Icon className={`h-4 w-4 ${isActive ? 'text-[#A67C52]' : 'text-[#68554A]'}`} />
-                  <span className={isActive ? 'text-[#A67C52] font-medium' : 'text-[#68554A] font-medium'}>{item.label}</span>
+                  <Icon className={`h-4 w-4 ${isActive ? 'text-[#B68D5D]' : 'text-[#6B6B6B]'}`} />
+                  <span className={isActive ? 'text-[#B68D5D] font-medium' : 'text-[#6B6B6B] font-medium'}>{item.label}</span>
                 </div>
 
                 {item.badge && (
-                  <span className="rounded-md px-2 py-0.5 text-[10px] font-medium bg-[#F0E5D8] text-[#A67C52]">
+                  <span className="rounded-md px-2 py-0.5 text-[10px] font-medium bg-[#F9F3EB] text-[#B68D5D]">
                     {item.badge}
                   </span>
                 )}
@@ -100,37 +100,37 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Middle/Bottom: Dark Promo Card */}
       <div className="space-y-6">
-        <div className="rounded-xl bg-[#FCFBF8] p-4 shadow-sm border border-[#E6DFD5] border-l-2 border-l-[#A67C52]">
+        <div className="rounded-xl bg-[#FFFFFF] p-4 shadow-sm border border-[#EAEAEA] border-l-2 border-l-[#A67C52]">
           <div className="flex items-center gap-2">
-            <Zap className="h-4 w-4 text-[#A67C52] shrink-0" />
-            <div className="text-xs font-medium text-[#2D1E17]">Track 4: Controller</div>
+            <Zap className="h-4 w-4 text-[#B68D5D] shrink-0" />
+            <div className="text-xs font-medium text-[#2E2E2E]">Track 4: Controller</div>
           </div>
-          <p className="text-[11px] text-[#68554A] mt-1.5 leading-relaxed font-normal">
+          <p className="text-[11px] text-[#6B6B6B] mt-1.5 leading-relaxed font-normal">
             Autonomous 3-way reconciliation, Monte Carlo runway & tax hub.
           </p>
           <div className="mt-3">
-            <span className="inline-block w-full text-center rounded-lg bg-[#F0E5D8] py-1.5 text-[11px] font-medium text-[#A67C52]">
+            <span className="inline-block w-full text-center rounded-lg bg-[#F9F3EB] py-1.5 text-[11px] font-medium text-[#B68D5D]">
               Live AI Swarm
             </span>
           </div>
         </div>
 
         {/* Bottom System Links */}
-        <div className="space-y-1 pt-2 border-t border-[#E6DFD5] text-xs font-medium text-[#68554A]">
+        <div className="space-y-1 pt-2 border-t border-[#EAEAEA] text-xs font-medium text-[#6B6B6B]">
           <button 
             onClick={() => onSelectTab('settings')}
             className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 transition-colors font-medium ${
-              activeTab === 'settings' ? 'bg-[#F0E5D8] text-[#A67C52] border-l-2 border-[#A67C52]' : 'hover:text-[#2D1E17] hover:bg-black/5 border-l-2 border-transparent text-[#68554A]'
+              activeTab === 'settings' ? 'bg-[#F9F3EB] text-[#B68D5D] border-l-2 border-[#B68D5D]' : 'hover:text-[#2E2E2E] hover:bg-black/5 border-l-2 border-transparent text-[#6B6B6B]'
             }`}
           >
-            <Settings className={`h-4 w-4 ${activeTab === 'settings' ? 'text-[#A67C52]' : 'text-[#68554A]'}`} />
+            <Settings className={`h-4 w-4 ${activeTab === 'settings' ? 'text-[#B68D5D]' : 'text-[#6B6B6B]'}`} />
             <span>Settings</span>
           </button>
           <button 
             onClick={() => onSelectTab('copilot')}
-            className="flex w-full items-center gap-3 rounded-lg px-3 py-2 hover:text-[#2D1E17] hover:bg-black/5 transition-colors font-medium border-l-2 border-transparent text-[#68554A]"
+            className="flex w-full items-center gap-3 rounded-lg px-3 py-2 hover:text-[#2E2E2E] hover:bg-black/5 transition-colors font-medium border-l-2 border-transparent text-[#6B6B6B]"
           >
-            <HelpCircle className="h-4 w-4 text-[#68554A]" />
+            <HelpCircle className="h-4 w-4 text-[#6B6B6B]" />
             <span>Help Center</span>
           </button>
         </div>
